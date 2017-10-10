@@ -1,6 +1,7 @@
 class Stop < ApplicationRecord
-  belongs_to Tour
-  belongs_to Admin
+  belongs_to :tour
+  belongs_to :admin
+
   require 'csv'
 
   def self.import(file)

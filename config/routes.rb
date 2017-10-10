@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   post '/stops', to: 'stops#import'
   root to: "stops#index"
 
-  resources :admin
-
+  resources :organizations do
+    resources :admin
+  end
+  
   resources :tour do
     resources :stop do
       collection do
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   # get 'admin/index'
   #
   # get 'admin/show'
