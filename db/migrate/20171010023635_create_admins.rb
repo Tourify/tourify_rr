@@ -8,7 +8,7 @@ class CreateAdmins < ActiveRecord::Migration[5.1]
       t.string :password_digest,
                 null: false,
                 length: { maximum: 20 }
-      t.belongs_to :organization, foreign_key: true
+      # t.belongs_to :organization, foreign_key: true
       t.timestamps
     end
   end

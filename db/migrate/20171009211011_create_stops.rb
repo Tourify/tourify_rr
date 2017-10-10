@@ -13,8 +13,8 @@ class CreateStops < ActiveRecord::Migration[5.1]
       t.integer :gps_long, default: 0
       t.integer :gps_lat, default: 0
       t.string :badge
-      t.belongs_to :tour, foreign_key: true
-      t.belongs_to :admin, foreign_key: true
+      # t.belongs_to :tour, foreign_key: true
+      # t.belongs_to :admin, foreign_key: true
       t.timestamps
     end
   end
