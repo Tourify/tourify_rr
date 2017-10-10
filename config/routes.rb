@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :admin
   end
+  
   resources :tour do
     resources :stop do
       collection do
