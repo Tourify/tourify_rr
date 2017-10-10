@@ -23,9 +23,20 @@ class AdminController < ApplicationController
 
   def update
     @admin = Admin.find(params[:id])
-
+    @admin.update!(admin_params)
+    render :show
   end
 
   def destroy
+    @admin = Admin.find(params[:id])
+    @admin.destroy
+    render json: {deleted: true}
   end
+
+  private
+
+  def admin_params
+    params.require(:admin).permit(:username, :password)
+  end
+
 end
