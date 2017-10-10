@@ -7,12 +7,11 @@ Rails.application.routes.draw do
 
   resources :organizations do
     resources :admin
-  end
-
-  resources :tours do
-    resources :stops do
-      collection do
-        post :import
+    resources :tours do
+      resources :stops do
+        collection do
+          post :import
+        end
       end
     end
   end

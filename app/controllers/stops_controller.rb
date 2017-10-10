@@ -1,5 +1,6 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :update, :destroy]
+  before_action :get_tour, only: [:create]
 
   def new
     @stop = Stop.new
@@ -7,6 +8,7 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
+    render 'index.json'
   end
 
   def create
@@ -34,6 +36,10 @@ class StopsController < ApplicationController
 
   def set_stop
     @stop = Stop.find(params[:id])
+  end
+
+  def get_tour
+    @tour = Tour.find(params[:tour_id])
   end
 
   def stop_params
