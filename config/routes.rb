@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :admin do
-    resources :tour do
-      resources :stop do
-        collection do
-          post :import
-        end
+  get '/stops', to: 'stops#index'
+  post '/stops', to: 'stops#import'
+  root to: "stops#index"
+
+  resources :admin
+
+  resources :tour do
+    resources :stop do
+      collection do
+        post :import
       end
     end
-  root to: "stops#index"
   end
   # get 'admin/index'
   #
