@@ -1,7 +1,7 @@
 json.id @tour.id
 json.name @tour.name
 json.description @tour.description
-# json.stop_count
+json.stop_count @tour.stops.count
 json.distance @tour.distance
 json.time_in_mins @tour.time_in_mins
 
