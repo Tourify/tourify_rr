@@ -3,11 +3,12 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
+    render 'index.json'
   end
 
-  # def show
-  #   render 'show.json'
-  # end
+  def show
+    render 'show.json'
+  end
 
   def import
     Stop.import(params[:file])
