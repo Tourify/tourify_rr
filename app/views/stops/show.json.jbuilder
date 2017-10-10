@@ -1,0 +1,12 @@
+json.Stop_num @stop.Stop_num
+json.Name @stop.Name
+json.Description @stop.Description
+json.Location @stop.Location
+json.Directions_to_next_stop @stop.Directions_to_next_stop
+json.Travel_tip @stop.Travel_tip
+json.GPS_long @stop.GPS_long
+json.GPS_lat @stop.GPS_lat
+json.Learn_more_URL @stop.Learn_more_URL
+json.Image_current @stop.Image_current
+json.Image_historic @stop.Image_historic
+json.Badge @stop.Badge

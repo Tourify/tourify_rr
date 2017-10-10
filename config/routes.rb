@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         end
       end
     end
+  root to: "stops#index"
   end
   # get 'admin/index'
   #
