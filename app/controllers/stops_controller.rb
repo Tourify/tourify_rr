@@ -11,7 +11,7 @@ class StopsController < ApplicationController
 
   def import
     Stop.import(params[:file])
-    redirect_to stops_path, notice: "Data imported"
+    redirect_to root_url, notice: "Data imported"
   end
 
   private

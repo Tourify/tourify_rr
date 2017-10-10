@@ -1,4 +1,6 @@
 class Stop < ApplicationRecord
+  belongs_to Tour
+  belongs_to Admin
   require 'csv'
 
   def self.import(file)
