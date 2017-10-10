@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  # get '/stops', to: 'stops#index'
-  # post '/stops', to: 'stops#import'
-  # root to: "stops#index"
+  get '/stops', to: 'stops#index'
+  post '/stops', to: 'stops#import'
+  root to: "stops#index"
 
   resources :organizations do
     resources :admin
