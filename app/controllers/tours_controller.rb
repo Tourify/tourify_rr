@@ -1,4 +1,4 @@
-class TourController < ApplicationController
+class ToursController < ApplicationController
   # before_action :set_tour
 
   def index
