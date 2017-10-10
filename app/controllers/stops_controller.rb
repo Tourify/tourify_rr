@@ -15,7 +15,9 @@ class StopsController < ApplicationController
   end
 
   private
+  
   def set_stop
     @stop = Stop.find(params[:id])
   end
+
 end
