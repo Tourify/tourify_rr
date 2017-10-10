@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :admin
   end
-  
-  resources :tour do
-    resources :stop do
+
+  resources :tours do
+    resources :stops do
       collection do
         post :import
       end
