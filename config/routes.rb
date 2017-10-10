@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :organizations
   resources :admin do
     resources :tour do
       resources :stop do
