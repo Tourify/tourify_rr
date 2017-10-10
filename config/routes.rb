@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'stops/index'
-
-  get 'stops/import'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :stops do
+    collection do
+      post :import
+    end
+  end
+  root to: "stops#index"
 end
