@@ -1,7 +1,12 @@
 class OrganizationsController < ApplicationController
+  # skip_before_action :verify_authenticity_token
 
   def new
     @organization = Organization.new
+  end
+
+  def index
+    @organizations = Organization.all
   end
 
   def show
