@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get '/', to:'index#index'
 
   get '/stops', to: 'stops#index'
-  post '/stops', to: 'stops#import'
+ post '/stops', to: 'stops#import'
   root to: "stops#index"
 
   resources :organizations do
@@ -16,29 +17,29 @@ Rails.application.routes.draw do
     end
   end
 
-  # get 'admin/index'
-  #
-  # get 'admin/show'
-  #
-  # get 'admin/create'
-  #
-  # get 'admin/update'
-  #
-  # get 'admin/destroy'
-  #
-  # get 'tour/index'
-  #
-  # get 'tour/show'
-  #
-  # get 'tour/create'
-  #
-  # get 'tour/update'
-  #
-  # get 'tour/destroy'
-  #
-  # get 'stops/index'
-  #
-  # get 'stops/import'
+   get 'admin/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+   get 'admin/show'
+
+   get 'admin/create'
+
+   get 'admin/update'
+
+   get 'admin/destroy'
+
+   get 'tour/index'
+
+   get 'tour/show'
+
+   get 'tour/create'
+
+   get 'tour/update'
+
+   get 'tour/destroy'
+
+   get 'stops/index'
+
+   get 'stops/import'
+
+#   For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
