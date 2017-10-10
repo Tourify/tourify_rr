@@ -1,19 +1,20 @@
 class CreateStops < ActiveRecord::Migration[5.1]
   def change
     create_table :stops do |t|
-      t.integer :Stop_num
-      t.string :Name
-      t.string :Directions_to_next_stop
-      t.string :Learn_more_URL
-      t.text :Travel_tip
-      t.text :Description
-      t.string :Location
-      t.string :Image_current
-      t.string :Image_historic
-      t.integer :GPS_long
-      t.integer :GPS_lat
-      t.string :Badge
-      # t.references :post, foreign_key: true
+      t.integer :stop_num
+      t.string :name
+      t.string :directions_to_next_stop
+      t.string :learn_more_URL
+      t.text :travel_tip
+      t.text :description
+      t.string :location
+      t.string :image_current
+      t.string :image_historic
+      t.integer :gps_long
+      t.integer :gps_lat
+      t.string :badge
+      t.belongs_to :tour, foreign_key: true
+      t.belongs_to :admin, foreign_key: true
       t.timestamps
     end
   end

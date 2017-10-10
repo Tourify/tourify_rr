@@ -10,26 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009211011) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "stops", force: :cascade do |t|
-    t.integer "Stop_num"
-    t.string "Name"
-    t.string "Directions_to_next_stop"
-    t.string "Learn_more_URL"
-    t.text "Travel_tip"
-    t.text "Description"
-    t.string "Location"
-    t.string "Image_current"
-    t.string "Image_historic"
-    t.integer "GPS_long"
-    t.integer "GPS_lat"
-    t.string "Badge"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end
