@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   resources :admin do
     resources :tour do
-      resources :stop
-        post :import
+      resources :stop do
+        collection do
+          post :import
+        end
+      end
     end
   end
   # get 'admin/index'
