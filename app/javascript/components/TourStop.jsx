@@ -9,6 +9,7 @@ export default class TourStop extends React.Component {
         </div>
         <div className = "tourstop-header-text">
           <h1>Location Title</h1>
+          <p>Current Tour:</p>
         </div>
           <div className = "tourstop-header-links">
             <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-pin-100px.png" alt = "icon"/>
@@ -24,9 +25,9 @@ export default class TourStop extends React.Component {
             <p>Tip for this location</p>
           </div>
           <div className = "tourstop-footer-links">
-            <a href = "">Left Arrow</a>
+            <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-arrow.png"/>
             <a href = "">TOUR HOME</a>
-            <a href = "">Right Arrow</a>
+            <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-arrow-right.png"/>
           </div>
         </div>
         </div>
