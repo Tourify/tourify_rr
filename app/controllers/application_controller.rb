@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery with: :exception
+    include SessionsHelper
 
   private
 
@@ -9,4 +11,3 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
 end
-  # protect_from_forgery with: :exception

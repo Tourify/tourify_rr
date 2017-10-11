@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  get 'signup', to: 'admins#new', as: 'signup'
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-
   get '/', to: 'index#index'
 
-  # get '/stops', to: 'stops#index'
-  # post '/stops', to: 'stops#import'
-  # root to: "stops#index"
-
+  resources :sessions
   resources :organizations do
+    get 'register', to: 'admins#new', as: 'register'
     resources :admins
     resources :tours do
       resources :stops do
