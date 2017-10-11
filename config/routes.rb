@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get '/', to: 'index#index'
 
   # get '/stops', to: 'stops#index'
@@ -6,13 +8,12 @@ Rails.application.routes.draw do
   # root to: "stops#index"
 
   resources :organizations do
-    resources :admin
-  end
-
-  resources :tours do
-    resources :stops do
-      collection do
-        post :import
+    resources :admins
+    resources :tours do
+      resources :stops do
+        collection do
+          post :import
+        end
       end
     end
   end
