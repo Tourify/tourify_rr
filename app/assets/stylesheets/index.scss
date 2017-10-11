@@ -9,6 +9,14 @@ body{
 
 nav{
   width: 100%;
+  background-color: transparent;
+  top:0;
+  position: absolute;
+}
+
+nav img{
+  margin-top: 15px;
+  width: 300px;
 }
 
 footer{
@@ -24,13 +32,13 @@ footer{
   margin: 0 auto;
   text-align:justify;
   color: #777879;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 .tourstop-main-photo{
   width: 100%;
   height: 25vh;
-  background-color: grey;
+  background-color: lightgrey;
   margin-bottom: 40px;
 }
 
@@ -38,23 +46,30 @@ footer{
   text-align: center;
   color: #E34008;
   font-size: 30px;
+  padding-bottom: 0;
 }
 
 .tourstop-header-links{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
   margin: 0 auto;
   color: #E34008;
-  font-size: 25px;
+  font-size: 35px;
+  width: 45vw;
 
+}
+
+.tourstop-header-links img{
+  height: 100px;
 }
 
 .tourstop-header-links a{
   color: #E34008;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 35px;
+
 }
 
 .tourstop-travel-tip{

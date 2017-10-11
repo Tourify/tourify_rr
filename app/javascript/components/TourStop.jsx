@@ -5,14 +5,15 @@ export default class TourStop extends React.Component {
     return(
       <div>
         <div className = 'tourstop-main-photo'>
-          <img src = "" alt = "tour-stop"/>
+          <img src = ""/>
         </div>
         <div className = "tourstop-header-text">
           <h1>Location Title</h1>
         </div>
           <div className = "tourstop-header-links">
-            <img src = "" alt = "icon"/>
-            <p>Street Name | </p>
+            <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-pin-100px.png" alt = "icon"/>
+            <p>Street Name</p>
+            <p>|</p>
             <p><a href = "">        Website</a></p>
           </div>
           <div className = "tourstop-body">
