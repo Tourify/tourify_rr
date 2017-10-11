@@ -1,5 +1,4 @@
-class AdminController < ApplicationController
-  # skip_before_action :verify_authenticity_token
+class AdminsController < ApplicationController
   before_action :authenticate, only: [:update, :destroy]
 
   def new
@@ -48,8 +47,11 @@ class AdminController < ApplicationController
       if @admin.save
         render :show, status: :accepted
       else
-        render json: {error: "You are not authorized to update this admin"}, status: :unauthorized
+        render 'edit'
       end
+    else
+      render json: {error: "You are not authorized to update this admin"}, status: :unauthorized
+    end
   end
 
   def destroy
@@ -60,6 +62,7 @@ class AdminController < ApplicationController
     else
       ender json: {error: "You are not authorized to delete this admin"}, status: :unauthorized
     end
+  end
 
   private
 

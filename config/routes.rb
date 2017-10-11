@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: "stops#index"
 
   resources :organizations do
-    resources :admin
+    resources :admins
     resources :tours do
       resources :stops do
         collection do
