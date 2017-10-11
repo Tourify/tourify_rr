@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
   before_action :get_organization
-  before_action
+  before_action :set_tour, except: [:index, :new, :create]
+  # before_action :logged_in?, only: [:show]
 
   def index
   end
@@ -10,8 +11,10 @@ class ToursController < ApplicationController
   end
 
   def show
-    @tour = Tour.find(params[:id])
-    render 'show.json'
+    if logged_in?
+      render :action => 'show.html' and return
+    end
+    render :action => 'show.json'
   end
 
   def create
@@ -31,6 +34,10 @@ class ToursController < ApplicationController
 
   private
 
+  def set_tour
+    @tour = Tour.find(params[:id])
+  end
+
   def tour_params
     params.require(:tour).permit(:name, :description, :distance, :time_in_mins)
   end
@@ -39,4 +46,7 @@ class ToursController < ApplicationController
     @organization = Organization.find(params[:organization_id])
   end
 
+  # def is_admin?
+  #   set_tour
+  # end
 end
