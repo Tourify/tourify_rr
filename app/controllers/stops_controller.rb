@@ -8,7 +8,7 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
-    render 'index.json'
+    # render 'index.json'
   end
 
   def create
