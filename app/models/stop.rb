@@ -14,7 +14,7 @@ class Stop < ApplicationRecord
         stop.first.update_attributes(stop_hash)
       else
         Stop.create!(stop_hash.merge(tour: tour))
-        byebug
+        # byebug
       end # end if !stop.nil?
     end # end CSV.foreach
   end # end self.import(file)
