@@ -19,7 +19,7 @@ class AdminsController < ApplicationController
     @admin.organization = @organization
 
     if @admin.save
-      render @admin
+      redirect_to '/login'
 
     else
       render json: {
@@ -27,17 +27,6 @@ class AdminsController < ApplicationController
       }, status: :bad_request
     end
 
-  end
-
-  def login
-  admin = Admin.find_by(username: params[:username]).try(:authenticate, params[:password])
-    if !admin
-      render status: :unauthorized, json: {
-        "error": "There is no user with that email and password"
-      }
-    else
-      render json: {token: admin.token}
-    end
   end
 
   def update
