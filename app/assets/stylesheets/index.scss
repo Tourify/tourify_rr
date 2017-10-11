@@ -1,10 +1,10 @@
 // Place all the styles related to the index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 body{
   margin: 0;
   font-family: 'Lato', sans-serif;
-
 }
 
 nav{
@@ -32,7 +32,8 @@ footer{
   margin: 0 auto;
   text-align:justify;
   color: #777879;
-  line-height: 1.3;
+  line-height: 1.4;
+  font-weight: 300;
 }
 
 .tourstop-main-photo{
@@ -40,7 +41,6 @@ footer{
   height: 25vh;
   margin-bottom: 40px;
   overflow: hidden;
-
 }
 
 .tourstop-header-text{
@@ -93,7 +93,6 @@ footer{
   justify-content: center;
   padding: 15px;
   line-height: 1.1;
-
 }
 
 
