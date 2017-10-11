@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get '/', to: 'index#index'
 
   # get '/stops', to: 'stops#index'
