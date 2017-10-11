@@ -1,7 +1,12 @@
 class ToursController < ApplicationController
   before_action :get_organization
+  before_action
 
   def index
+  end
+
+  def new
+    @tour = Tour.new
   end
 
   def show
@@ -10,12 +15,12 @@ class ToursController < ApplicationController
   end
 
   def create
-    # @tour = Tour.new(tour_params)
-    #
-    # if @tour.save
-    #   redirect_to tour_stop_index_path
-    # else
-    #   redirect_to root
+    @tour = Tour.new(tour_params)
+    @tour.admin_id = 1
+    @tour.organization = @organization
+
+    @tour.save!
+    redirect_to organization_path@organization
   end
 
   def update
@@ -33,5 +38,5 @@ class ToursController < ApplicationController
   def get_organization
     @organization = Organization.find(params[:organization_id])
   end
-  
+
 end
