@@ -6,7 +6,6 @@ class Stop < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-
       stop_hash = row.to_hash
       stop = Stop.where(id: stop_hash["id"])
 
@@ -14,7 +13,7 @@ class Stop < ApplicationRecord
         stop.first.update_attributes(stop_hash)
       else
         Stop.create!(stop_hash)
-      end # end if !stop.nil?
-    end # end CSV.foreach
-  end # end self.import(file)
+      end
+    end
+  end
 end

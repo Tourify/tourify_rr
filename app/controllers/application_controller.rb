@@ -1,26 +1,13 @@
 class ApplicationController < ActionController::Base
-  include ActionController::HttpAuthentication::Token::ControllerMethods
+    protect_from_forgery with: :exception
+    include SessionsHelper
 
   private
 
-  def authenticate
-    authenticate_token || render_unauthorized
+  def logged_in?
+    @current_user ||= User.find(session[:admin_id]) if session[:admin_id]
   end
 
-  def authenticate_token
-    authenticate_with_http_token do |token, options|
-      @admin = Admin.find_by(token: token)
-    end
-  end
+  helper_method :logged_in?
 
-  def render_unauthorized
-    self.headers['WWW-Authenticate'] = 'Token realm="Application"'
-    render json: {error: 'Bad credentials'}, status: :unauthorized
-  end
-
-  def current_user
-    @admin
-  end
-  
 end
-  # protect_from_forgery with: :exception

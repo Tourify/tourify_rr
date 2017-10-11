@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  get '/', to:'index#index'
 
-  get '/stops', to: 'stops#index'
- post '/stops', to: 'stops#import'
-  root to: "stops#index"
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get '/', to: 'index#index'
 
+  resources :sessions
   resources :organizations do
-    resources :admin
+    get 'register', to: 'admins#new', as: 'register'
+    resources :admins
     resources :tours do
       resources :stops do
         collection do
@@ -15,30 +16,30 @@ Rails.application.routes.draw do
       end
     end
   end
-
-   get 'admin/index'
-
-   get 'admin/show'
-
-   get 'admin/create'
-
-   get 'admin/update'
-
-   get 'admin/destroy'
-
-   get 'tour/index'
-
-   get 'tour/show'
-
-   get 'tour/create'
-
-   get 'tour/update'
-
-   get 'tour/destroy'
-
-   get 'stops/index'
-
-   get 'stops/import'
+   #
+  #  get 'admin/index'
+   #
+  #  get 'admin/show'
+   #
+  #  get 'admin/create'
+   #
+  #  get 'admin/update'
+   #
+  #  get 'admin/destroy'
+   #
+  #  get 'tour/index'
+   #
+  #  get 'tour/show'
+   #
+  #  get 'tour/create'
+   #
+  #  get 'tour/update'
+   #
+  #  get 'tour/destroy'
+   #
+  #  get 'stops/index'
+   #
+  #  get 'stops/import'
 
 #   For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,4 @@
-class AdminController < ApplicationController
-  # skip_before_action :verify_authenticity_token
+class AdminsController < ApplicationController
   before_action :authenticate, only: [:update, :destroy]
 
   def new
@@ -20,7 +19,7 @@ class AdminController < ApplicationController
     @admin.organization = @organization
 
     if @admin.save
-      render @admin
+      redirect_to '/login'
 
     else
       render json: {
@@ -30,17 +29,6 @@ class AdminController < ApplicationController
 
   end
 
-  def login
-  admin = Admin.find_by(username: params[:username]).try(:authenticate, params[:password])
-    if !admin
-      render status: :unauthorized, json: {
-        "error": "There is no user with that email and password"
-      }
-    else
-      render json: {token: admin.token}
-    end
-  end
-
   def update
     @admin = Admin.find(params[:id])
     if @admin == current_user
@@ -48,8 +36,11 @@ class AdminController < ApplicationController
       if @admin.save
         render :show, status: :accepted
       else
-        render json: {error: "You are not authorized to update this admin"}, status: :unauthorized
+        render 'edit'
       end
+    else
+      render json: {error: "You are not authorized to update this admin"}, status: :unauthorized
+    end
   end
 
   def destroy
@@ -60,6 +51,7 @@ class AdminController < ApplicationController
     else
       ender json: {error: "You are not authorized to delete this admin"}, status: :unauthorized
     end
+  end
 
   private
 

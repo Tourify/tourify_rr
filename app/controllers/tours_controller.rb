@@ -1,11 +1,11 @@
 class ToursController < ApplicationController
-  # before_action :set_tour
+  before_action :get_organization
 
   def index
   end
 
   def show
-    # @tour = Tour.find(params[:id])
+    @tour = Tour.find(params[:id])
     render 'show.json'
   end
 
@@ -25,11 +25,13 @@ class ToursController < ApplicationController
   end
 
   private
-    def tour_params
-      params.require(:tour).permit(:name, :description, :distance, :time_in_mins)
-    end
 
-  # def set_tour
-  #   @tour =
-  # end
+  def tour_params
+    params.require(:tour).permit(:name, :description, :distance, :time_in_mins)
+  end
+
+  def get_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+  
 end
