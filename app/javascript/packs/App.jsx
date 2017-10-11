@@ -4,12 +4,23 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Test from '../components/test';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Baselayout from '../components/Baselayout';
+import TourStop from '../components/TourStop';
+import Home from '../components/Home';
 
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Test />,
+    <BrowserRouter>
+      <Baselayout>
+      <Switch>
+        <Route exact path = "/" component={TourStop}/>
+      </Switch>
+    </Baselayout>
+    </BrowserRouter>
+
+    ,
     document.getElementById('mount')
   )
 })

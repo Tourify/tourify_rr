@@ -1,3 +1,102 @@
 // Place all the styles related to the index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+
+}
+
+nav{
+  width: 100%;
+  background-color: transparent;
+  top:0;
+  position: absolute;
+}
+
+nav img{
+  margin-top: 15px;
+  width: 300px;
+}
+
+footer{
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+// tour stop //
+
+.tourstop-body{
+  width: 80vw;
+  margin: 0 auto;
+  text-align:justify;
+  color: #777879;
+  line-height: 1.1;
+}
+
+.tourstop-main-photo{
+  width: 100%;
+  height: 25vh;
+  background-color: lightgrey;
+  margin-bottom: 40px;
+}
+
+.tourstop-header-text h1{
+  text-align: center;
+  color: #E34008;
+  font-size: 45px;
+  padding-bottom: 0;
+}
+
+.tourstop-header-text p {
+  text-align: center;
+  color: #777879;
+  font-size: 15px;
+  padding-bottom: 0;
+}
+
+.tourstop-header-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0 auto;
+  color: #E34008;
+  font-size: 35px;
+  width: 45vw;
+
+}
+
+.tourstop-header-links img{
+  height: 100px;
+}
+
+.tourstop-header-links a{
+  color: #E34008;
+  text-decoration: none;
+  font-size: 35px;
+
+}
+
+.tourstop-travel-tip{
+  height: 100px;
+  background-color: lightgrey;
+  margin-top: 40px
+}
+
+.tourstop-footer-links{
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  align-items: center;
+  font-size: 35px;
+}
+
+.tourstop-footer-links a{
+  color: #E34008;
+  text-decoration: none;
+}
