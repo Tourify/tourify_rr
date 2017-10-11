@@ -1,0 +1,31 @@
+<h1>Creator's Homepage for Organization</h1>
+
+<h2>Your organization currently has the following tours: </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3">Links</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organization.tours.each do |tour| %>
+      <tr>
+        <td><%=tour.name       %></td>
+        <td><%=tour.description        %></td>
+        <td><%= link_to 'See tour details', organization_tour_path(@organization) %></td>
+        <td><%= link_to 'Edit tour details', edit_organization_tour_path(@organization) %></td>
+        <td><%= link_to 'Delete tour', organization_tour_path(@organization), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<h2><%= link_to 'Create a new tour', new_organization_tour_path(@organization) %></h2>
