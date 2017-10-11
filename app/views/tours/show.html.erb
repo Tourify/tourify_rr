@@ -1,0 +1,26 @@
+<ul>
+  <li>Name: <%= @tour.name %></li>
+  <li>Description: <%= @tour.description %></li>
+  <li>Distance: <%= @tour.distance %></li>
+  <li>Time: <%= @tour.time_in_mins %></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stop Number</th>
+      <th>Name</th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @tour.stops.each do |stop| %>
+      <tr>
+        <td><%= stop.stop_num %></td>
+        <td><%= stop.name %></td>
+        <td><%= link_to 'See stop details', organization_tour_stop_path(@organization, @tour, stop.id) %></td>
+        <td><%= link_to 'Edit tour details', edit_organization_tour_stop_path(@organization, @tour, stop.id) %></td>
+        <td><%= link_to 'Delete tour', organization_tour_stop_path(@organization, @tour, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
