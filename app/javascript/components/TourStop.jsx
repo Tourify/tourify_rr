@@ -1,28 +1,46 @@
 import React from "react";
 
 export default class TourStop extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      tourInfo: []
+    }
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/organizations/1/tours/1/stops/1').then(results =>{
+      return results.json();
+    }).then(data =>{
+      this.setState({tourInfo: data});
+    })
+  }
+
+
   render(){
+    console.log(this.state.tourInfo)
     return(
       <div>
         <div className = 'tourstop-main-photo'>
-          <img src = ""/>
+          <img src = {this.state.tourInfo.image_current}/>
         </div>
         <div className = "tourstop-header-text">
-          <h1>Location Title</h1>
+          <h1>{this.state.tourInfo.name}</h1>
           <p>Current Tour:</p>
         </div>
           <div className = "tourstop-header-links">
             <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-pin-100px.png" alt = "icon"/>
-            <p>Street Name</p>
-            <p>|</p>
-            <p><a href = "">        Website</a></p>
+            <p>{this.state.tourInfo.location} | <a href = {this.state.tourInfo.learn_more_URL}>Website</a></p>
+  
           </div>
           <div className = "tourstop-body">
           <div className = "tourstop-body-text">
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+            <p>{this.state.tourInfo.description}</p>
           </div>
           <div className = "tourstop-travel-tip">
-            <p>Tip for this location</p>
+            <p>{this.state.tourInfo.travel_tip}</p>
           </div>
           <div className = "tourstop-footer-links">
             <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-arrow.png"/>

@@ -1,2 +1,19 @@
-<h1>Tour#new</h1>
-<p>Find me in app/views/tour/create.html.erb</p>
+<h1>Submit your new tour on this form.</h1>
+
+<%= form_for @tour, url: {action: "create"} do |form| %>
+
+
+  <p>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
