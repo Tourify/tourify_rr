@@ -1,7 +1,6 @@
 class ToursController < ApplicationController
   before_action :get_organization
   before_action :set_tour, except: [:index, :new, :create]
-  # before_action :logged_in?, only: [:show]
 
   def index
   end
