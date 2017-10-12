@@ -2,6 +2,7 @@ json.id @tour.id
 json.name @tour.name
 json.description @tour.description
 json.stop_count @tour.stops.count
+json.main_tour_photo @tour.main_tour_photo
 json.distance @tour.distance
 json.time_in_mins @tour.time_in_mins
 

@@ -1,34 +1,16 @@
-<table>
-  <th>
-    <tr>
-      <th>Stop Number</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Directions to next stop</th>
-      <th>Travel tip</th>
-      <th>GPS longitude</th>
-      <th>GPS latitude</th>
-      <th>Learn_more_URL</th>
-      <th>Image Current</th>
-      <th>Image Historic</th>
-      <th>Badge</th>
-    </tr>
-  </thread>
-  <tbody>
-      <tr>
-        <td><%= @stop.stop_num %></td>
-        <td><%= @stop.name %></td>
-        <td><%= @stop.description %></td>
-        <td><%= @stop.location %></td>
-        <td><%= @stop.directions_to_next_stop %></td>
-        <td><%= @stop.travel_tip %></td>
-        <td><%= @stop.gps_long %></td>
-        <td><%= @stop.gps_lat %></td>
-        <td><%= @stop.learn_more_URL %></td>
-        <td><%= @stop.image_current %></td>
-        <td><%= @stop.image_historic %></td>
-        <td><%= @stop.badge %></td>
-      </tr>
-  </tbody>
-</table>
+<div class="hp">
+  <ul>
+    <li><span class="bold_text">Stop Number: </span><%= @stop.stop_num %></li>
+    <li><span class="bold_text">Name: </span><%= @stop.name %></li>
+    <li><span class="bold_text">Description: </span><%= @stop.description %></li>
+    <li><span class="bold_text">Location: </span><%= @stop.location %></li>
+    <li><span class="bold_text">Directions to next stop: </span><%= @stop.directions_to_next_stop %></li>
+    <li><span class="bold_text">Travel tip: </span><%= @stop.travel_tip %></li>
+    <li><span class="bold_text">GPS longitude: </span><%= @stop.gps_long %></li>
+    <li><span class="bold_text">GPS latitude: </span><%= @stop.gps_lat %></li>
+    <li><span class="bold_text">Learn_more_URL: </span><%= @stop.learn_more_URL %></li>
+    <li><span class="bold_text">Image Current: </span><%= @stop.image_current %></li>
+    <li><span class="bold_text">Image Historic: </span><%= @stop.image_historic %></li>
+    <li><span class="bold_text">Badge: </span><%= @stop.badge %></li>
+  </ul>
+</div>

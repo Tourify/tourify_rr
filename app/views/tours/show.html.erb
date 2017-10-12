@@ -1,13 +1,14 @@
-<h1><strong><%= @tour.name %> for <%= @organization.name %><strong></h1>
+<div class="hp">
+  <h1><strong><%= @tour.name %> for <%= @organization.name %><strong></h1>
 
-<%= link_to "Logout", logout_path %>
+  <%= link_to "Logout", logout_path %>
 
-<ul>
-  <li>Name: <%= @tour.name %></li>
-  <li>Description: <%= @tour.description %>.</li>
-  <li>Distance: <%= @tour.distance %> miles</li>
-  <li>Time: <%= @tour.time_in_mins %> minutes</li>
-</ul>
+  <ul>
+    <li>Name: <%= @tour.name %></li>
+    <li>Description: <%= @tour.description %>.</li>
+    <li>Distance: <%= @tour.distance %> miles</li>
+    <li>Time: <%= @tour.time_in_mins %> minutes</li>
+  </ul>
 
 <%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %>
 
@@ -20,13 +21,15 @@
   </thread>
   <tbody>
     <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
-      <tr>
-        <td><%= stop.stop_num %></td>
-        <td><%= stop.name %></td>
-        <td><%= link_to 'See stop details', organization_tour_stop_path(@organization, @tour, stop.id) %></td>
-        <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization, @tour, stop.id) %></td>
-        <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization, @tour, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
+        <tr>
+          <td><%= stop.stop_num %></td>
+          <td><%= stop.name %></td>
+          <td><%= link_to 'See stop details', organization_tour_stop_path(@organization, @tour, stop.id) %></td>
+          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization, @tour, stop.id) %></td>
+          <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization, @tour, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+
+</div>
