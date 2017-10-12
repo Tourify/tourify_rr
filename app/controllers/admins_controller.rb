@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-  before_action :authenticate, only: [:update, :destroy]
+  # before_action :get_organization, only: [:create, :update, :destroy]
+  # before_action :authenticate, only: [:update, :destroy]
 
   def new
     @admin = Admin.new
@@ -17,16 +18,11 @@ class AdminsController < ApplicationController
     @organization = Organization.find(params[:organization_id])
     @admin = Admin.new(admin_params)
     @admin.organization = @organization
-
     if @admin.save
-      redirect_to '/login'
-
+      redirect_to '/login', notice: 'Admin account created for #{@organization.name}!'
     else
-      render json: {
-        errors: @admin.errors
-      }, status: :bad_request
+      render 'new'
     end
-
   end
 
   def update
@@ -34,12 +30,12 @@ class AdminsController < ApplicationController
     if @admin == current_user
       @admin.update!(admin_params)
       if @admin.save
-        render :show, status: :accepted
+        redirect_to @organization, status: :accepted
       else
         render 'edit'
       end
     else
-      render json: {error: "You are not authorized to update this admin"}, status: :unauthorized
+      render 'edit', {error: "You are not authorized to update this admin"}, status: :unauthorized
     end
   end
 
@@ -58,5 +54,9 @@ class AdminsController < ApplicationController
   def admin_params
     params.require(:admin).permit(:username, :password)
   end
+
+  # def get_organization
+  #   @orgaization = Organization.find(params[:organization_id])
+  # end
 
 end

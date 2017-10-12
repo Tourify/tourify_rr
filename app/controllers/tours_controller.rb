@@ -21,12 +21,25 @@ class ToursController < ApplicationController
     @tour = Tour.new(tour_params)
     @tour.admin_id = 1
     @tour.organization = @organization
-
-    @tour.save!
-    redirect_to organization_path@organization
+    if @tour.save!
+      redirect_to organization_path@organization
+    else
+      render 'new', errors: @tour.errors
+    end
   end
 
   def update
+    if logged_in? && current_user.organization == @organization
+      @tour.update!(tour_params)
+      if @tour.save
+        render :show, status: :accepted
+      else
+        render 'edit'
+      end
+    else
+      flash[:notice] = 'You do not have authorization to edit this tour.'
+      render 'show'
+    end
   end
 
   def destroy
