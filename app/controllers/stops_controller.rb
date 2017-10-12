@@ -1,5 +1,5 @@
 class StopsController < ApplicationController
-  before_action :set_stop, only: [:show, :update, :destroy]
+  before_action :set_stop, only: [:show, :edit, :update, :destroy]
   before_action :get_tour, only: [:create]
 
   def new
@@ -25,6 +25,10 @@ class StopsController < ApplicationController
   def import
     Stop.import(params[:file])
     redirect_to organization_tour_stops_path, notice: "Data imported"
+  end
+
+  def edit
+
   end
 
   def update
