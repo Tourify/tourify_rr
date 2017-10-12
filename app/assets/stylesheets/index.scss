@@ -104,7 +104,6 @@ footer{
   font-size: 28px;
 }
 
-
 .tour-map{
   width: 100%;
   height: 25vh;
@@ -115,20 +114,6 @@ footer{
   font-size: 40px;
 }
 
-.tour-start-button {
-  text-align: center;
-  font-size: 45px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  margin: 40px;
-  color: white;
-  background: #E34008;
-  padding: 25px 40px;
-  border-radius: 50px;
-  border: none;
-  // width: 600px;
-}
-
 .tour-list {
   display: flex;
   flex-direction: column;
@@ -136,21 +121,41 @@ footer{
   align-content: center;
 }
 
+.tour-start-button {
+  // text-align: center;
+  font-size: 45px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 40px auto;
+  color: white;
+  background: $primary-color;
+  padding: 25px 40px;
+  border-radius: 50px;
+  border: none;
+  width: 400px;
+}
+
 .tour-stop-preview {
   display: flex;
   flex-direction: row;
-  margin: 10px;
-  height: 200px;
+  margin: 20px 40px;
+  height: 250px;
+}
+
+
+.tour-stop-image img {
+  height: 250px;
 }
 
 .tour-stop-image {
   height: 100%;
-  width: 20%;
+  width: 25%;
   background: #E34008;
+  overflow: hidden;
 }
 
 .tour-stop-text {
-  width: 80%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   background: lightgrey;
