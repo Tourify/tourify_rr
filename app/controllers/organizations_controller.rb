@@ -10,6 +10,10 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+    if logged_in?
+      render :action => 'show.html' and return
+    end
+    render :action => 'show.json'
   end
 
   def create

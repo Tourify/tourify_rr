@@ -19,7 +19,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
     @admin.organization = @organization
     if @admin.save
-      redirect_to '/login', notice: 'Admin account created for #{@organization.name}!'
+      redirect_to '/login', notice: 'Admin account created!'
     else
       render 'new'
     end
