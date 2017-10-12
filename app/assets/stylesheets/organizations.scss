@@ -2,12 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  margin: 15px;
+}
 
 table {
   border-collapse: separate;
-  border-spacing: 50px 0;
+  border-spacing: 20px 0;
 }
 
 td {
   padding: 10px 0;
+}
+
+td a {
+  font-size: small;
 }

@@ -16,7 +16,10 @@ class StopsController < ApplicationController
   end
 
   def show
-    render 'show.json'
+    if logged_in?
+      render :action => 'show.html' and return
+    end
+    render :action => 'show.json'
   end
 
   def import
@@ -24,11 +27,15 @@ class StopsController < ApplicationController
     redirect_to organization_tour_stops_path, notice: "Data imported"
   end
 
-  def updated
+  def update
+    # @organization = Organization.find(params[:organization_id])
+    # @tour = Tour.find(params[:tour_id])
+    # @stop = Stop.find(params[:id])
     @stop.update!(stop_params)
   end
 
   def destroy
+    @stop = Stop.find(params[:id])
     @stop.destroy
   end
 

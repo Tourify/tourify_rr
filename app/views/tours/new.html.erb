@@ -1,12 +1,44 @@
 <h1>Submit your new tour on this form.</h1>
 
-<%= form_with(model: tour, local: true) do |form| %>
-  <% if tour.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tour.errors.count, "error") %> prohibited this tour from being saved: </h2>
-      <ul>
-        <% tour.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-      </ul>
-    </div>
+<% if @tour.errors.any? %>
+  <div class="error_messages">
+    <ul>
+      <% @admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @tour, url: {action: "create"} do |form| %>
+
+  <p>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :main_tour_photo %><br>
+    <%= form.text_field :main_tour_photo %>
+  </p>
+
+  <p>
+    <%= form.label :distance %><br>
+    <%= form.text_field :distance %> miles
+  </p>
+
+  <p>
+    <%= form.label :time_in_mins %><br>
+    <%= form.text_field :time_in_mins %>
+  </p>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
