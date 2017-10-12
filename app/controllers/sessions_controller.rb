@@ -6,9 +6,10 @@ class SessionsController < ApplicationController
 
   def create
     admin = Admin.find_by(username: params[:username])
+    organization = admin.organization
     if admin && admin.authenticate(params[:password])
       session[:admin_id] = admin.id
-      redirect_to '/'
+      redirect_to organization, notice: 'Logged in!'
     else
       flash.now.alert = 'Username or password is invalid'
       render :new
@@ -17,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:admin_id] = nil
+    flash[:notice] = 'You have successfully logged out.'
     redirect_to '/login'
   end
 
