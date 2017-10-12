@@ -4,8 +4,13 @@ export default class Home extends React.Component {
   render(){
     return(
       <div>
-       <h1>I will be the home page!</h1>
+      <div className = "tour-main-photo">
+        <div className = "tour-main-text">
+          <div><h1>DURHAM, NC</h1></div>
+          <div><h2>City intro sentence will go here.</h2></div>
+        </div>
       </div>
+    </div>
     )
   }
 }
