@@ -21,16 +21,30 @@ class OrganizationsController < ApplicationController
     render :show, status: :created
   end
 
-  def updated
+  def update
     @organization = Organization.find(params[:id])
-    @organization.update!(organization_params)
-    render :show
+    if logged_in? && current_user.organization == @organization
+      @organization.update!(organization_params)
+      if @organization.save
+        flash[:notice] = 'Organization information sucessfully updated'
+        render :show
+      else
+        flash[:notice] = 'Invalid update. Please try again.'
+        render :edit
+      end
+    end
   end
 
   def destroy
     @organization = Organization.find(params[:id])
-    @organization.destroy
-    render json: {deleted: true}
+    if logged_in? && current_user.organization == @organization
+      @organization.destroy
+      flash[:notice] = 'Organization successfully deleted.'
+      redirect_to '/'
+    else
+      flash[:notice] = 'You are not authorized to delete this Organization.'
+      render 'show'
+    end
   end
 
   private

@@ -1,6 +1,4 @@
 class AdminsController < ApplicationController
-  # before_action :get_organization, only: [:create, :update, :destroy]
-  # before_action :authenticate, only: [:update, :destroy]
 
   def new
     @admin = Admin.new
@@ -26,6 +24,7 @@ class AdminsController < ApplicationController
   end
 
   def update
+    @organization = Organization.find(params[:organization_id])
     @admin = Admin.find(params[:id])
     if @admin == current_user
       @admin.update!(admin_params)
@@ -40,12 +39,14 @@ class AdminsController < ApplicationController
   end
 
   def destroy
+    @organization = Organization.find(params[:organization_id])
     @admin = Admin.find(params[:id])
     if @admin == current_user
       @admin.destroy
-      render json: {deleted: true}
+      flash[:notice] = 'Admin account deleted from Organization.'
+      redirect_to @organization
     else
-      ender json: {error: "You are not authorized to delete this admin"}, status: :unauthorized
+      render 'edit'
     end
   end
 
@@ -54,9 +55,5 @@ class AdminsController < ApplicationController
   def admin_params
     params.require(:admin).permit(:username, :password)
   end
-
-  # def get_organization
-  #   @orgaization = Organization.find(params[:organization_id])
-  # end
 
 end
