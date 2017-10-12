@@ -3,7 +3,6 @@
 
   <% if @admin.errors.any? %>
     <div class="error_messages">
-      <h2>Form is invalid</h2>
       <ul>
         <% @admin.errors.full_messages.each do |message| %>
           <li><%= message %></li>

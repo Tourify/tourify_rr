@@ -6,12 +6,17 @@ class SessionsController < ApplicationController
 
   def create
     admin = Admin.find_by(username: params[:username])
-    organization = admin.organization
-    if admin && admin.authenticate(params[:password])
-      session[:admin_id] = admin.id
-      redirect_to organization, notice: 'Logged in!'
+    if admin
+      organization = admin.organization
+      if admin.authenticate(params[:password])
+        session[:admin_id] = admin.id
+        redirect_to organization, notice: 'Logged in!'
+      else
+        flash.now.alert = 'Username or password is invalid'
+        render :new
+      end
     else
-      flash.now.alert = 'Username or password is invalid'
+      flash.now.alert = 'Username not found'
       render :new
     end
   end
