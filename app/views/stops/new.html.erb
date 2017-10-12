@@ -1,0 +1,78 @@
+<h1>New Stop</h1>
+
+<% if @stop.errors.any? %>
+  <div class="error_messages">
+    <ul>
+      <% @stop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @stop, url: {action: "create"} do |form| %>
+
+  <p>
+    <%= form.label :stop_num %><br />
+    <%= form.text_field :stop_num %>
+  </p>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :directions_to_next_stop %><br />
+    <%= form.text_field :directions_to_next_stop %>
+  </p>
+
+  <p>
+    <%= form.label :learn_more_URL %><br>
+    <%= form.text_field :learn_more_URL %>
+  </p>
+
+  <p>
+    <%= form.label :travel_tip %><br />
+    <%= form.text_field :travel_tip %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :location %><br>
+    <%= form.text_field :location %>
+  </p>
+
+  <p>
+    <%= form.label :image_current %><br>
+    <%= form.text_field :image_current %> miles
+  </p>
+
+  <p>
+    <%= form.label :image_historic %><br>
+    <%= form.text_field :image_historic %>
+  </p>
+
+  <p>
+    <%= form.label :gps_long %><br>
+    <%= form.text_field :gps_long %> miles
+  </p>
+
+  <p>
+    <%= form.label :gps_lat %><br>
+    <%= form.text_field :gps_lat %>
+  </p>
+
+  <p>
+    <%= form.label :badge %><br>
+    <%= form.text_field :badge %>
+  </p>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

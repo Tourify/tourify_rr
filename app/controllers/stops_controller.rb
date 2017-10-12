@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
-  before_action :set_stop, only: [:show, :update, :destroy]
-  before_action :get_tour, only: [:create]
+  before_action :set_stop, only: [:show, :update, :destroy, :edit]
+  before_action :get_tour, only: [:create, :new]
 
   def new
     @stop = Stop.new
@@ -27,15 +27,20 @@ class StopsController < ApplicationController
     redirect_to organization_tour_stops_path, notice: "Data imported"
   end
 
+  def edit
+  end
+
   def update
-    # @organization = Organization.find(params[:organization_id])
-    # @tour = Tour.find(params[:tour_id])
-    # @stop = Stop.find(params[:id])
-    @stop.update!(stop_params)
+    if current_user = stop.admin
+      @stop.update!(stop_params)
+      redirect_to @stop
+    else
+      flash[:notice] = "You are not authorized."
+      render 'edit'
+    end
   end
 
   def destroy
-    @stop = Stop.find(params[:id])
     @stop.destroy
   end
 

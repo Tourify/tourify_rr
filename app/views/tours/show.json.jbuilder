@@ -1,11 +1,11 @@
 json.id @tour.id
 json.name @tour.name
 json.description @tour.description
-# json.stop_count @tour.stops.count
+json.stop_count @tour.stops.count
 json.distance @tour.distance
 json.time_in_mins @tour.time_in_mins
 
-json.stops @tour.stops do |stop|
+json.stops @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop|
   json.stop_num stop.stop_num
   json.name stop.name
   json.description stop.description
