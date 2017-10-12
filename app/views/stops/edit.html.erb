@@ -1,0 +1,77 @@
+<<h1>Edit Stop</h1>
+
+<%= form_for @stop do |f| %>
+
+<% if @stop.errors.any? %>
+  <div class="error_messages">
+    <ul>
+    <% @stop.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :stop_num %><br />
+    <%= f.text_field :stop_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 12, :cols => 35 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :directions_to_next_stop %><br />
+    <%= f.text_field :directions_to_next_stop %>
+  </div>
+
+  <div class="field">
+    <%= f.label :learn_more_URL %><br />
+    <%= f.text_field :learn_more_URL %>
+  </div>
+
+  <div class="field">
+    <%= f.label :travel_tip %><br />
+    <%= f.text_field :travel_tip %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_current %><br />
+    <%= f.text_field :image_current %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_historic %><br />
+    <%= f.text_field :image_historic %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gps_long %><br />
+    <%= f.text_field :gps_long %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gpa_lat %><br />
+    <%= f.text_field :gpa_lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :badge %><br />
+    <%= f.text_field :badge %>
+  </div>
+
+  <div class="actions"><%= f.submit %></div>
+
+<% end %>
