@@ -28,19 +28,18 @@ export default class TourStop extends React.Component {
         </div>
         <div className = "tourstop-header-text">
           <h1>{this.state.tourInfo.name}</h1>
-          <p>Current Tour:</p>
         </div>
           <div className = "tourstop-header-links">
             <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-pin-100px.png" alt = "icon"/>
             <p>{this.state.tourInfo.location} | <a href = {this.state.tourInfo.learn_more_URL}>Website</a></p>
-  
+
           </div>
           <div className = "tourstop-body">
           <div className = "tourstop-body-text">
             <p>{this.state.tourInfo.description}</p>
           </div>
           <div className = "tourstop-travel-tip">
-            <p>{this.state.tourInfo.travel_tip}</p>
+            <h2>{this.state.tourInfo.travel_tip}</h2>
           </div>
           <div className = "tourstop-footer-links">
             <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-arrow.png"/>
