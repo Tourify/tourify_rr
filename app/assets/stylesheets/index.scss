@@ -7,7 +7,7 @@ $accent-color: #777879;
 $accent-color-light: lightgrey;
 
 body{
-  margin: 0;
+  margin: 0!important;
   font-family: 'Lato', sans-serif;
 }
 
@@ -45,6 +45,7 @@ footer{
   height: 25vh;
   margin-bottom: 40px;
   overflow: hidden;
+  background: gray;
 }
 
 .tourstop-header-text{
@@ -75,7 +76,6 @@ footer{
   color: $primary-color;
   font-size: 35px;
   width: 80vw;
-
 }
 
 .tourstop-header-links img{
@@ -86,7 +86,6 @@ footer{
   color: $primary-color;
   text-decoration: none;
   font-size: 35px;
-
 }
 
 .tourstop-travel-tip{
@@ -106,6 +105,71 @@ footer{
 }
 
 
+.tour-map{
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+  background: lightgray;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+}
+
+.tour-start-button {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 40px;
+  color: white;
+  background: #E34008;
+  padding: 25px 40px;
+  border-radius: 50px;
+  border: none;
+  // width: 600px;
+}
+
+.tour-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.tour-stop-preview {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  height: 200px;
+}
+
+.tour-stop-image {
+  height: 100%;
+  width: 20%;
+  background: #E34008;
+}
+
+.tour-stop-text {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background: lightgrey;
+}
+
+.tour-stop-preview h1 {
+  color: #E34008;
+  font-size: 40px;
+  margin: 20px;
+}
+
+.tour-stop-preview p {
+  font-weight: 300;
+  font-size: 40px ;
+  margin: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .tourstop-footer-links{
   width: 80vw;
@@ -124,27 +188,89 @@ footer{
 }
 
 // main tour page //
-.tour-main-photo{
-  height: 40vh;
-  background-image: url('https://static1.squarespace.com/static/56eff436c2ea5144e9b6dce0/5861b28bbe6594106ff76705/5861b2aa03596eeb527fe719/1482883865229/Downtown-Durham-NC.jpg');
+@media screen and (min-width: 375px){
+  .tour-main-photo{
+    height: 700px;
+    background-image: url('https://static1.squarespace.com/static/56eff436c2ea5144e9b6dce0/5861b28bbe6594106ff76705/5861b2aa03596eeb527fe719/1482883865229/Downtown-Durham-NC.jpg');
 
-}
+  }
 
-.tour-main-text{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-  align-items: center;
-  padding-top: 10vh;
-  color: white;
-}
+  .tour-main-text{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 10vh;
+    color: white;
+  }
 
-.tour-main-text h1{
-  font-size: 95px;
-}
+  .tour-main-text h1{
+    font-size: 95px;
+  }
 
-.tour-main-text h2{
-  font-size: 45px;
+  .tour-main-text h2{
+    font-size: 45px;
+  }
+
+  .tour-main-photo p{
+    text-align: center;
+    color: white;
+    margin-top: 6vh;
+    font-size: 25px;
+    font-style: italic;
+  }
+
+  .select-a-tour{
+    color: $primary-color;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .tours-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 65vw;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .tour-item{
+    width: 28vw;
+    height: 25vh;
+    margin-bottom: 35px;
+    border: solid 1px transparent;
+    opacity: .7;
+  }
+
+  .tour-item:hover{
+    border: solid 1px $primary-color;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+
+  .tour-item-text{
+    padding: 20px;
+
+  }
+
+  .tour-item-text p{
+    text-align: center;
+    color: $accent-color;
+    font-size: 30px;
+    width: 25vw;
+    margin: 0 auto;
+  }
+
+  .tour-item-photo{
+    width: 100%;
+    height: 70%;
+    background-color: $accent-color-light;
+  }
+
+  @media screen and (min-width: 600px){
+
+  }
 }
