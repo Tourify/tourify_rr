@@ -1,5 +1,5 @@
 class Tour < ApplicationRecord
-  has_many :stops
+  has_many :stops, dependent: :destroy
   belongs_to :admin
   belongs_to :organization
 

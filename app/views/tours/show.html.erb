@@ -10,15 +10,17 @@
     <li>Time: <%= @tour.time_in_mins %> minutes</li>
   </ul>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Stop Number</th>
-        <th>Name</th>
-      </tr>
-    </thread>
-    <tbody>
-      <% @tour.stops.reverse.each do |stop| %>
+<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stop Number</th>
+      <th>Name</th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
         <tr>
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
