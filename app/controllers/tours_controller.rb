@@ -17,21 +17,23 @@ class ToursController < ApplicationController
   end
 
   def create
-    @tour = Tour.new(tour_params)
-    @tour.admin_id = 1
-    @tour.organization = @organization
+    @tour = @organization.tours.build(tour_params)
+    @tour.admin = current_user
     if @tour.save!
       redirect_to organization_path@organization
     else
-      render 'new', errors: @tour.errors
+      render 'new'
     end
+  end
+
+  def edit
   end
 
   def update
     if logged_in? && current_user.organization == @organization
       @tour.update!(tour_params)
       if @tour.save
-        render :show, status: :accepted
+        render 'show'
       else
         render 'edit'
       end
@@ -58,7 +60,4 @@ class ToursController < ApplicationController
     @organization = Organization.find(params[:organization_id])
   end
 
-  # def is_admin?
-  #   set_tour
-  # end
 end

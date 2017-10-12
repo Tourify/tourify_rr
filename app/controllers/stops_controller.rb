@@ -8,11 +8,16 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
-    # render 'index.json'
   end
 
   def create
-    @stop = Stop.create(stop_params)
+    @stop = @tour.stops.build(stop_params)
+    @stop.admin = current_user
+    if @stop.save
+      render 'show'
+    else
+      render 'new'
+    end
   end
 
   def show
