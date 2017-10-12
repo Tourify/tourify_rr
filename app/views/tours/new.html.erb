@@ -1,7 +1,16 @@
 <h1>Submit your new tour on this form.</h1>
 
-<%= form_for @tour, url: {action: "create"} do |form| %>
+<% if @tour.errors.any? %>
+  <div class="error_messages">
+    <ul>
+      <% @admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<%= form_for @tour, url: {action: "create"} do |form| %>
 
   <p>
     <%= form.label :name %><br />
@@ -12,6 +21,22 @@
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </p>
+
+  <p>
+    <%= form.label :main_tour_photo %><br>
+    <%= form.text_field :main_tour_photo %>
+  </p>
+
+  <p>
+    <%= form.label :distance %><br>
+    <%= form.text_field :distance %> miles
+  </p>
+
+  <p>
+    <%= form.label :time_in_mins %><br>
+    <%= form.text_field :time_in_mins %>
+  </p>
+
 
   <div class="actions">
     <%= form.submit %>

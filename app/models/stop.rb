@@ -2,6 +2,10 @@ class Stop < ApplicationRecord
   belongs_to :tour
   belongs_to :admin
 
+  validates_presence_of :stop_num
+  validates_presence_of :name
+  validates_presence_of :location
+
   require 'csv'
 
   def self.import(file)
@@ -16,4 +20,5 @@ class Stop < ApplicationRecord
       end
     end
   end
+
 end

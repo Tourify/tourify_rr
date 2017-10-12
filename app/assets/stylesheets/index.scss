@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$primary-color: #E34008;
+$accent-color: #777879;
+$accent-color-light: lightgrey;
+
 body{
-  margin: 0;
+  margin: 0!important;
   font-family: 'Lato', sans-serif;
 }
 
@@ -31,7 +35,7 @@ footer{
   width: 80vw;
   margin: 0 auto;
   text-align:justify;
-  color: #777879;
+  color: $accent-color;
   line-height: 1.4;
   font-weight: 300;
 }
@@ -51,14 +55,14 @@ footer{
 
 .tourstop-header-text h1{
   text-align: center;
-  color: #E34008;
+  color: $primary-color;
   font-size: 45px;
   padding-bottom: 0;
 }
 
 .tourstop-header-text p {
   text-align: center;
-  color: #777879;
+  color: $accent-color;
   font-size: 15px;
   padding-bottom: 0;
 }
@@ -69,7 +73,7 @@ footer{
   justify-content: center;
   align-content: center;
   margin: 0 auto;
-  color: #E34008;
+  color: $primary-color;
   font-size: 35px;
   width: 80vw;
 }
@@ -79,19 +83,25 @@ footer{
 }
 
 .tourstop-header-links a{
-  color: #E34008;
+  color: $primary-color;
   text-decoration: none;
   font-size: 35px;
 }
 
 .tourstop-travel-tip{
-  background-color: lightgrey;
+  background-color: $accent-color-light;
   margin-top: 40px;
   display: flex;
   align-content: center;
   justify-content: center;
   padding: 15px;
   line-height: 1.1;
+}
+
+.tourstop-travel-tip h2{
+  padding: 30px;
+  line-height: 1.1;
+  font-size: 28px;
 }
 
 
@@ -173,6 +183,94 @@ footer{
 }
 
 .tourstop-footer-links a{
-  color: #E34008;
+  color: $primary-color;
   text-decoration: none;
+}
+
+// main tour page //
+@media screen and (min-width: 375px){
+  .tour-main-photo{
+    height: 700px;
+    background-image: url('https://static1.squarespace.com/static/56eff436c2ea5144e9b6dce0/5861b28bbe6594106ff76705/5861b2aa03596eeb527fe719/1482883865229/Downtown-Durham-NC.jpg');
+
+  }
+
+  .tour-main-text{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 10vh;
+    color: white;
+  }
+
+  .tour-main-text h1{
+    font-size: 95px;
+  }
+
+  .tour-main-text h2{
+    font-size: 45px;
+  }
+
+  .tour-main-photo p{
+    text-align: center;
+    color: white;
+    margin-top: 6vh;
+    font-size: 25px;
+    font-style: italic;
+  }
+
+  .select-a-tour{
+    color: $primary-color;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .tours-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 65vw;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .tour-item{
+    width: 28vw;
+    height: 25vh;
+    margin-bottom: 35px;
+    border: solid 1px transparent;
+    opacity: .7;
+  }
+
+  .tour-item:hover{
+    border: solid 1px $primary-color;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+
+  .tour-item-text{
+    padding: 20px;
+
+  }
+
+  .tour-item-text p{
+    text-align: center;
+    color: $accent-color;
+    font-size: 30px;
+    width: 25vw;
+    margin: 0 auto;
+  }
+
+  .tour-item-photo{
+    width: 100%;
+    height: 70%;
+    background-color: $accent-color-light;
+  }
+
+  @media screen and (min-width: 600px){
+
+  }
 }
