@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get '/', to: 'index#index'
-
   get '/stops/download_template'
 
   resources :sessions
-  resources :organizations do
+  resources :organizations, except: [:create, :destroy] do
     get 'register', to: 'admins#new', as: 'register'
     resources :admins
     resources :tours do
