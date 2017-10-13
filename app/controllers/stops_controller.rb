@@ -10,6 +10,10 @@ class StopsController < ApplicationController
     @stops = Stop.all
   end
 
+  def download_template
+    send_file('./public/Stops_template.xlsx')
+  end
+
   def create
     @stop = @tour.stops.build(stop_params)
     @stop.admin = current_user

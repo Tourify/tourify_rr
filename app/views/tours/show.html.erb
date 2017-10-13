@@ -10,7 +10,8 @@
     <li>Time: <%= @tour.time_in_mins %> minutes</li>
   </ul>
 
-<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %>
+<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %><br />
+<%= link_to 'Add/Edit Stops in Bulk', organization_tour_stops_path(@organization, @tour) %>
 
 <table>
   <thead>
