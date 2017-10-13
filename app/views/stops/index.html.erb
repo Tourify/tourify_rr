@@ -1,7 +1,5 @@
 <div class="hp">
 <h2><%= @stops[0].tour.name%> Stop List</h2>
-<div>
-
 <h3>Load stops by importing a CSV File. If you have not done this before, you may need to use the template available for download.</h3>
 <%= link_to 'Download template', stops_download_template_url %>
   <%= form_tag import_organization_tour_stops_path, multipart: true do %>

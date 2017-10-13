@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :update, :destroy, :edit]
-  before_action :get_tour, only: [:create, :new]
+  before_action :get_tour, only: [:create, :new, :destroy]
 
   def new
     @stop = Stop.new
@@ -50,7 +50,7 @@ class StopsController < ApplicationController
   end
 
   def destroy
-    @stop.destroy
+    # @stop = Stop.find(params[:id])
   end
 
   private

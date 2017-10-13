@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
   get '/', to: 'index#index'
-  
   get '/stops/download_template'
 
   resources :sessions
@@ -18,30 +18,4 @@ Rails.application.routes.draw do
       end
     end
   end
-   #
-  #  get 'admin/index'
-   #
-  #  get 'admin/show'
-   #
-  #  get 'admin/create'
-   #
-  #  get 'admin/update'
-   #
-  #  get 'admin/destroy'
-   #
-  #  get 'tour/index'
-   #
-  #  get 'tour/show'
-   #
-  #  get 'tour/create'
-   #
-  #  get 'tour/update'
-   #
-  #  get 'tour/destroy'
-   #
-  #  get 'stops/index'
-   #
-  #  get 'stops/import'
-
-#   For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

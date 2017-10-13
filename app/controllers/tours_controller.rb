@@ -54,6 +54,15 @@ class ToursController < ApplicationController
   end
 
   def destroy
+    @tour = Tour.find(params[:id])
+    if logged_in? && current_user.organization == @organization
+      @tour.destroy
+      flash[:notice] = 'Tour was successfully deleted.'
+      redirect_to @organization
+    else
+      flash[:notice] = 'You are not authorized to delete this Tour.'
+      render 'show'
+    end
   end
 
   private
