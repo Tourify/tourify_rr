@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
         session[:admin_id] = admin.id
         redirect_to organization, notice: 'Logged in!'
       else
-        flash.now.alert = 'Username or password is invalid'
+        flash[:alert] = 'Username or password is invalid'
         render :new
       end
     else
-      flash.now.alert = 'Username not found'
+      flash[:alert] = 'Username not found'
       render :new
     end
   end

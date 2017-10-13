@@ -14,3 +14,7 @@
     <li><span class="bold_text">Badge: </span><%= @stop.badge %></li>
   </ul>
 </div>
+
+<%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
+<br>
+<%= link_to "Back to Organzation Home Page", organization_path(@stop.tour.organization_id) %>
