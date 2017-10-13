@@ -44,8 +44,8 @@ export default class TourHome extends React.Component {
           <div className= "tour-list">
             <button className= "tour-start-button">START TOUR</button>
             {this.state.tourStops.map( (stop) => {
-              return <div className= "tour-stop-preview">
-                <div className="tour-stop-image">image</div>
+              return <div className= "tour-stop-preview" key={stop.stop_num}>
+                <div className="tour-stop-image"><img src={stop.image_current} alt={stop.name}/></div>
                 <div className="tour-stop-text">
                   <h1>{stop.stop_num}. {stop.name}</h1>
                   <p>{stop.description}</p>
