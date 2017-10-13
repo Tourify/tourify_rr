@@ -1,10 +1,17 @@
 <div class="hp">
-<h2><%= @stops[0].tour.name%> Stop List</h2>
+<h2>Stop List</h2>
 <h3>Test.....Load stops by importing a CSV File. If you have not done this before, you may need to use the template available for download.</h3>
 
 <!-- <h3>Download the stops associated with the <%= @stops[0].tour.name%> tour.</h3> -->
+<%= link_to 'Download template', stops_download_template_url %>
+  <%= form_tag import_organization_tour_stops_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+<br />
+
 </div>
-  <!-- <table>
+  <table>
     <thead>
       <tr>
         <th>Stop Number</th>
@@ -22,4 +29,4 @@
         </tr>
       <% end %>
     </tbody>
-  </table> -->
+  </table>
