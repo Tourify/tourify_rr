@@ -23,7 +23,7 @@ class ToursController < ApplicationController
   end
 
   def create
-    if current_user.organzation == @organization
+    if current_user.organization == @organization
       @tour = @organization.tours.build(tour_params)
       @tour.admin = current_user
       if @tour.save!
