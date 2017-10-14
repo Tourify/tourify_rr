@@ -30,8 +30,8 @@
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
           <td><%= link_to 'See stop details', organization_tour_stop_path(@organization.id, @tour.id, stop.id) %></td>
-          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@tour.organization_id, @tour.id, stop.id) %></td>
-          <td><%= link_to 'Delete stop', organization_tour_stop_path(@tour.organization_id, @tour.id, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization.id, @tour.id, stop.id) %></td>
+          <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
