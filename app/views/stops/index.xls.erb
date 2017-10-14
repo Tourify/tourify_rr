@@ -7,13 +7,20 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">Stop Number</Data></Cell>
-        <Cell><Data ss:Type="String">Name</Data></Cell>
-        <Cell><Data ss:Type="String">Directions to Next Stop</Data></Cell>
-        <Cell><Data ss:Type="String">Learn More Link</Data></Cell>
-        <Cell><Data ss:Type="String">Travel Tip</Data></Cell>
-        <Cell><Data ss:Type="String">Description</Data></Cell>
-        <Cell><Data ss:Type="String">Location</Data></Cell>
+        <Cell><Data ss:Type="String">stop_num</Data></Cell>
+        <Cell><Data ss:Type="String">name</Data></Cell>
+        <Cell><Data ss:Type="String">directions_to_next_stop</Data></Cell>
+        <Cell><Data ss:Type="String">learn_more_URL</Data></Cell>
+        <Cell><Data ss:Type="String">travel_tip</Data></Cell>
+        <Cell><Data ss:Type="String">description</Data></Cell>
+        <Cell><Data ss:Type="String">location</Data></Cell>
+        <Cell><Data ss:Type="String">image_current</Data></Cell>
+        <Cell><Data ss:Type="String">image_historic</Data></Cell>
+        <Cell><Data ss:Type="String">gps_lat</Data></Cell>
+        <Cell><Data ss:Type="String">gps_long</Data></Cell>
+        <Cell><Data ss:Type="String">badge</Data></Cell>
+        <Cell><Data ss:Type="String">tour_id</Data></Cell>
+        <Cell><Data ss:Type="String">admin_id</Data></Cell>
       </Row>
     <% @stops.each do |stop| %>
       <Row>
@@ -24,6 +31,13 @@
         <Cell><Data ss:Type="String"><%= stop.travel_tip %></Data></Cell>
         <Cell><Data ss:Type="Textarea"><%= stop.description %></Data></Cell>
         <Cell><Data ss:Type="String"><%= stop.location %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.image_current %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.image_historic %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= stop.gps_lat %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= stop.gps_long %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.badge %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= stop.tour_id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= stop.admin_id %></Data></Cell>
     <% end %>
     </Table>
   </Worksheet>
