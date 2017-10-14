@@ -9,6 +9,7 @@ class StopsController < ApplicationController
   def index
     @stops = Stop.all
     respond_to do |format|
+      format.html
       format.csv { send_data @stops.to_csv }
       format.xls { send_data @stops.to_csv(col_sep: "\t") }
     end

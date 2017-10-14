@@ -1,14 +1,22 @@
 <div class="hp">
-  <h2><%= @tour.name%> Stop List</h2>
-  <h3>Load stops by importing a CSV File. If you have not done this before, you may need to use the template available for download.</h3>
-  <%= link_to 'Download template', stops_download_template_url %>
+  <div id="stops_index_top">
+    <h2>Stop list for the <%= @tour.name%></h2>
+    <p>Load your stops for the <%= @tour.name%> tour by importing a CSV File.</p>
+    <p>If you have not done this before, you may want to use the provided template:</p><%= button_to 'Download template', stops_download_template_url %>
+    <br />
+    <p>If you've already added your Stop information to the template, use the buttons below to choose your file and upload it.</p>
     <%= form_tag import_organization_tour_stops_path, multipart: true do %>
       <%= file_field_tag :file %>
-      <%= submit_tag "Import CSV" %>
+      <%= submit_tag " Import CSV " %>
     <% end %>
-    <p>Download: <%= link_to "CSV", organization_tour_stops_path(format: "csv") %> | <%= link_to "Excel", organization_tour_stops_path(format: "xls") %></p>
-  <br />
-  <h3>Download the stops associated with the <%= @tour.name%> tour.</h3>
+    <br />
+    <p>Use the buttons below to download your tour stops in either CSV or xls format.</p>
+    <div class="button_div">
+      <%= button_to "   CSV   ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %> | <%= button_to "  Excel  ", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+    </div>
+    <br />
+  </div>
+
   <table>
     <thead>
       <tr>
@@ -21,9 +29,9 @@
         <tr>
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
-          <td><%= link_to 'See stop details', organization_tour_stop_path(stop.tour.organization_id, stop.tour_id, stop.id) %></td>
-          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(stop.tour.organization_id, stop.tour_id, stop.id) %></td>
-          <td><%= link_to 'Delete stop', organization_tour_stop_path(stop.tour.organization_id, stop.tour_id, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'See stop details', organization_tour_stop_path(@tour.organization_id, @tour.id, stop.id) %></td>
+          <td><%= button_to 'Edit stop details', edit_organization_tour_stop_path(@tour.organization_id, @tour.id, stop.id) %></td>
+          <td><%= button_to 'Delete stop', organization_tour_stop_path(@tour.organization_id, @tour.id, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
