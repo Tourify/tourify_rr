@@ -6,6 +6,7 @@
       <%= file_field_tag :file %>
       <%= submit_tag "Import CSV" %>
     <% end %>
+    <p>Download: <%= link_to "CSV", organization_tour_stops_path(format: "csv") %> | <%= link_to "Excel", organization_tour_stops_path(format: "xls") %></p>
   <br />
   <h3>Download the stops associated with the <%= @tour.name%> tour.</h3>
   <table>

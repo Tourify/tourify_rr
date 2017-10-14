@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Stop Number</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Directions to Next Stop</Data></Cell>
+        <Cell><Data ss:Type="String">Learn More Link</Data></Cell>
+        <Cell><Data ss:Type="String">Travel Tip</Data></Cell>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+        <Cell><Data ss:Type="String">Location</Data></Cell>
+      </Row>
+    <% @stops.each do |stop| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= stop.stop_num %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.directions_to_next_stop %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.learn_more_URL %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.travel_tip %></Data></Cell>
+        <Cell><Data ss:Type="Textarea"><%= stop.description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= stop.location %></Data></Cell>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
