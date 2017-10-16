@@ -1,7 +1,7 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :update, :edit]
   before_action :get_tour, only: [:index, :create, :new, :destroy]
-  before_action :get_organization, only: [:index, :destroy]
+  before_action :get_organization, only: [:index, :destroy, :update]
 
   def new
     @stop = Stop.new

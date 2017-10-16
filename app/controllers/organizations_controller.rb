@@ -17,8 +17,9 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     if logged_in?
       render :action => 'show.html' and return
+    else
+      redirect_to new_session_path
     end
-    render :action => 'show.json'
   end
 
   # def create
