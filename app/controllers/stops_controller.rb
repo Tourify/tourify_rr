@@ -69,6 +69,7 @@ class StopsController < ApplicationController
   private
 
   def set_stop
+    get_organization
     get_tour
     @stop = @tour.stops.find_by(stop_num: params[:id])
   end
@@ -82,6 +83,7 @@ class StopsController < ApplicationController
   end
 
   def get_tour
+    get_organization
     @tour = Tour.find(params[:tour_id])
   end
 
