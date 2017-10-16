@@ -25,7 +25,7 @@
       </tr>
     </thread>
     <tbody>
-      <% @stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
+      <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
         <tr>
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>

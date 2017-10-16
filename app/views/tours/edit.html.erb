@@ -1,2 +1,42 @@
-<h1>Tour#update</h1>
-<p>Find me in app/views/tour/update.html.erb</p>
+<h1>Edit Tour</h1>
+
+<%= form_for [:organization, @tour] do |f| %>
+
+<% if @tour.errors.any? %>
+  <div class="error_messages">
+    <ul>
+    <% @tour.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 12, :cols => 35 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :main_tour_photo %><br />
+    <%= f.text_field :main_tour_photo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :distance %><br />
+    <%= f.text_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_in_mins %><br />
+    <%= f.text_field :time_in_mins %>
+  </div>
+
+  <div class="actions"><%= f.submit %></div>
+
+<% end %>
