@@ -6,9 +6,9 @@ export default class TourStop extends React.Component {
     this.state = {
       tourInfo: [],
       ImageSource: ""
-    }
+        }
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.onClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
   }
 
@@ -33,7 +33,8 @@ handleClick(e){
     return(
       <div>
         <div className = 'tourstop-main-photo'>
-          <img src = {this.state.ImageSource} onClick={this.onClick}/>
+          <button className = 'photo-change-btn' onClick={this.handleClick}>More Photos</button>
+          <img src = {this.state.ImageSource}/>
         </div>
         <div className = "tourstop-header-text">
           <h1>{this.state.tourInfo.name}</h1>
