@@ -68,8 +68,12 @@ class StopsController < ApplicationController
 
   private
 
+  # def set_stop
+  #   @stop = Stop.find_by(stop_num: params[:id])
+  # end
+
   def set_stop
-    @stop = Stop.find_by(stop_num: params[:id])
+    @stop = Stop.find(params[:id])
   end
 
   def stop_params
