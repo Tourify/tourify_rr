@@ -13,7 +13,7 @@ export default class TourHome extends React.Component {
   }
 
   componentDidMount(){
-    fetch('https://evening-retreat-85270.herokuapp.com/organizations/1/tours/1/').then(results =>{
+    fetch('http://localhost:3000/organizations/1/tours/1/').then(results =>{
       return results.json();
     }).then(data =>{
       this.setState({tourInfo: data});
