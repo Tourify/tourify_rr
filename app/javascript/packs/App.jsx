@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <BrowserRouter>
       <Baselayout>
       <Switch>
-        <Route exact path = "/" component={TourHome}/>
+        <Route exact path = "/" component={Home}/>
       </Switch>
     </Baselayout>
     </BrowserRouter>
