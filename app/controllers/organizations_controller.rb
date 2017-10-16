@@ -5,7 +5,12 @@ class OrganizationsController < ApplicationController
   end
 
   def index
-    @organizations = Organization.all
+    if logged_in?
+      redirect_to current_user.organization
+    else
+      flash[:alert] = 'Please login to continue.'
+      redirect_to '/login'
+    end
   end
 
   def show
@@ -16,10 +21,10 @@ class OrganizationsController < ApplicationController
     render :action => 'show.json'
   end
 
-  def create
-    @organization = Organization.create(organization_params)
-    render :show, status: :created
-  end
+  # def create
+  #   @organization = Organization.create(organization_params)
+  #   render :show, status: :created
+  # end
 
   def update
     @organization = Organization.find(params[:id])
@@ -29,23 +34,27 @@ class OrganizationsController < ApplicationController
         flash[:notice] = 'Organization information sucessfully updated'
         render :show
       else
-        flash[:notice] = 'Invalid update. Please try again.'
+        flash[:alert] = 'Invalid update. Please try again.'
         render :edit
       end
+    elsif logged_in?
+      redirect_to current_user.organization
+    else
+      redirect_to '/login'
     end
   end
 
-  def destroy
-    @organization = Organization.find(params[:id])
-    if logged_in? && current_user.organization == @organization
-      @organization.destroy
-      flash[:notice] = 'Organization successfully deleted.'
-      redirect_to '/'
-    else
-      flash[:notice] = 'You are not authorized to delete this Organization.'
-      render 'show'
-    end
-  end
+  # def destroy
+  #   @organization = Organization.find(params[:id])
+  #   if logged_in? && current_user.organization == @organization
+  #     @organization.destroy
+  #     flash[:notice] = 'Organization successfully deleted.'
+  #     redirect_to '/'
+  #   else
+  #     flash[:alert] = 'You are not authorized to delete this Organization.'
+  #     render 'show'
+  #   end
+  # end
 
   private
 

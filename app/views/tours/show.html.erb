@@ -2,6 +2,8 @@
   <h1><strong><%= @tour.name %> for <%= @organization.name %><strong></h1>
 
   <%= link_to "Logout", logout_path %>
+  <br>
+  <%= link_to "Back to Organzation Home Page", organization_path(@tour.organization_id) %>
 
   <ul>
     <li>Name: <%= @tour.name %></li>
@@ -10,7 +12,8 @@
     <li>Time: <%= @tour.time_in_mins %> minutes</li>
   </ul>
 
-<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %>
+<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %><br />
+<%= link_to 'Add/Edit Stops in Bulk', organization_tour_stops_path(@organization, @tour) %>
 
 <table>
   <thead>

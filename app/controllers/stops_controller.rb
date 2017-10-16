@@ -1,6 +1,7 @@
 class StopsController < ApplicationController
-  before_action :set_stop, only: [:show, :update, :destroy, :edit]
-  before_action :get_tour, only: [:create, :new]
+  before_action :set_stop, only: [:show, :update, :edit]
+  before_action :get_tour, only: [:index, :create, :new, :destroy]
+  before_action :get_organization, only: [:index, :destroy]
 
   def new
     @stop = Stop.new
@@ -8,6 +9,15 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @stops.to_csv }
+      format.xls { send_data @stops.to_csv(col_sep: "\t") }
+    end
+  end
+
+  def download_template
+    send_file('./public/Stops_template.xlsx')
   end
 
   def create
@@ -46,7 +56,15 @@ class StopsController < ApplicationController
   end
 
   def destroy
-    @stop.destroy
+    @stop = Stop.find(params[:id])
+    if logged_in? && current_user.organization.id == @organization.id
+      @stop.destroy
+      flash[:notice] = 'The stop was successfully deleted.'
+      redirect_to organization_tour_stops_path
+    else
+      flash[:notice] = 'You are not authorized to delete this Stop.'
+      render 'show'
+    end
   end
 
   private
@@ -55,12 +73,15 @@ class StopsController < ApplicationController
     @stop = Stop.find(params[:id])
   end
 
-  def get_tour
-    @tour = Tour.find(params[:tour_id])
-  end
-
   def stop_params
     params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
   end
 
+  def get_tour
+    @tour = Tour.find(params[:tour_id])
+  end
+
+  def get_organization
+    @organization = @tour.organization
+  end
 end
