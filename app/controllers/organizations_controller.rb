@@ -6,10 +6,10 @@ class OrganizationsController < ApplicationController
 
   def index
     if logged_in?
-      redirect_to current_user.organization
+      redirect_to admin_user.organization
     else
       flash[:alert] = 'Please login to continue.'
-      redirect_to '/login'
+      redirect_to new_session
     end
   end
 
@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = Organization.find(params[:id])
-    if logged_in? && current_user.organization == @organization
+    if logged_in? && admin_user.organization == @organization
       @organization.update!(organization_params)
       if @organization.save
         flash[:notice] = 'Organization information sucessfully updated'
@@ -38,15 +38,15 @@ class OrganizationsController < ApplicationController
         render :edit
       end
     elsif logged_in?
-      redirect_to current_user.organization
+      redirect_to admin_user.organization
     else
-      redirect_to '/login'
+      redirect_to new_session
     end
   end
 
   # def destroy
   #   @organization = Organization.find(params[:id])
-  #   if logged_in? && current_user.organization == @organization
+  #   if logged_in? && admin_user.organization == @organization
   #     @organization.destroy
   #     flash[:notice] = 'Organization successfully deleted.'
   #     redirect_to '/'
