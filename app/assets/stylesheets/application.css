@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
-.hp{
+
+
+.hp, .admin_form{
   margin: 15px;
+}
+
+.bold_text{
+  font-weight: bold;
 }

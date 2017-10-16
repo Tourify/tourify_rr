@@ -1,43 +1,39 @@
-<table>
-  <th>
+<div class="hp">
+  <div id="stops_index_top">
+    <h2>Stop list for the <%= @tour.name%></h2>
+    <p>Load your stops for the <%= @tour.name%> tour by importing a CSV File.</p>
+    <p>If you have not done this before, you may want to use the provided template:</p><%= button_to 'Download template', stops_download_template_url %>
+    <br />
+    <p>If you've already added your Stop information to the template, use the buttons below to choose your file and upload it.</p>
+    <%= form_tag import_organization_tour_stops_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag " Import CSV " %>
+    <% end %>
+    <br />
+    <p>Use the buttons below to download your tour stops in either CSV or xls format.</p>
+    <div class="button_div">
+      <%= button_to "   CSV   ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %> | <%= button_to "  Excel  ", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+    </div>
+    <br />
+  </div>
+
+  <table>
+    <thead>
       <tr>
         <th>Stop Number</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>Location</th>
-        <th>Directions to next stop</th>
-        <th>Travel tip</th>
-        <th>GPS longitude</th>
-        <th>GPS latitude</th>
-        <th>Learn_more_URL</th>
-        <th>Image Current</th>
-        <th>Image Historic</th>
-        <th>Badge</th>
       </tr>
     </thread>
     <tbody>
-      <% @stops.each do |stop| %>
+      <% @stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
         <tr>
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
-          <td><%= stop.description %></td>
-          <td><%= stop.location %></td>
-          <td><%= stop.directions_to_next_stop %></td>
-          <td><%= stop.travel_tip %></td>
-          <td><%= stop.gps_long %></td>
-          <td><%= stop.gps_lat %></td>
-          <td><%= stop.learn_more_URL %></td>
-          <td><%= stop.image_current %></td>
-          <td><%= stop.image_historic %></td>
-          <td><%= stop.badge %></td>
+          <td><%= link_to 'See stop details', organization_tour_stop_path(@organization.id, @tour.id, stop.id) %></td>
+          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization.id, @tour.id, stop.id) %></td>
+          <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
-</table>
-<div>
-<h3>Import a CSV File</h3>
-  <%= form_tag import_organization_tour_stops_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV" %>
-  <% end %>
+  </table>
 </div>

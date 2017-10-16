@@ -1,6 +1,7 @@
 class StopsController < ApplicationController
-  before_action :set_stop, only: [:show, :update, :destroy]
-  before_action :get_tour, only: [:create]
+  before_action :set_stop, only: [:show, :update, :edit]
+  before_action :get_tour, only: [:index, :create, :new, :destroy]
+  before_action :get_organization, only: [:index, :destroy]
 
   def new
     @stop = Stop.new
@@ -8,11 +9,25 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
-    # render 'index.json'
+    respond_to do |format|
+      format.html
+      format.csv { send_data @stops.to_csv }
+      format.xls { send_data @stops.to_csv(col_sep: "\t") }
+    end
+  end
+
+  def download_template
+    send_file('./public/Stops_template.xlsx')
   end
 
   def create
-    @stop = Stop.create(stop_params)
+    @stop = @tour.stops.build(stop_params)
+    @stop.admin = current_user
+    if @stop.save
+      render 'show'
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -27,16 +42,29 @@ class StopsController < ApplicationController
     redirect_to organization_tour_stops_path, notice: "Data imported"
   end
 
+  def edit
+  end
+
   def update
-    # @organization = Organization.find(params[:organization_id])
-    # @tour = Tour.find(params[:tour_id])
-    # @stop = Stop.find(params[:id])
-    @stop.update!(stop_params)
+    if current_user = stop.admin
+      @stop.update!(stop_params)
+      redirect_to @stop
+    else
+      flash[:notice] = "You are not authorized."
+      render 'edit'
+    end
   end
 
   def destroy
     @stop = Stop.find(params[:id])
-    @stop.destroy
+    if logged_in? && current_user.organization.id == @organization.id
+      @stop.destroy
+      flash[:notice] = 'The stop was successfully deleted.'
+      redirect_to organization_tour_stops_path
+    else
+      flash[:notice] = 'You are not authorized to delete this Stop.'
+      render 'show'
+    end
   end
 
   private
@@ -45,12 +73,15 @@ class StopsController < ApplicationController
     @stop = Stop.find(params[:id])
   end
 
-  def get_tour
-    @tour = Tour.find(params[:tour_id])
-  end
-
   def stop_params
     params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
   end
 
+  def get_tour
+    @tour = Tour.find(params[:tour_id])
+  end
+
+  def get_organization
+    @organization = @tour.organization
+  end
 end

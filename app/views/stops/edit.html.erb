@@ -1,6 +1,6 @@
-<<h1>Edit Stop</h1>
+<h1>Edit Stop</h1>
 
-<%= form_for @stop do |f| %>
+<%= form_for [:organization, :tour, @stop] do |f| %>
 
 <% if @stop.errors.any? %>
   <div class="error_messages">
@@ -63,8 +63,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :gpa_lat %><br />
-    <%= f.text_field :gpa_lat %>
+    <%= f.label :gps_lat %><br />
+    <%= f.text_field :gps_lat %>
   </div>
 
   <div class="field">
