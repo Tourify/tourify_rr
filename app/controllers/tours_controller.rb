@@ -4,10 +4,10 @@ class ToursController < ApplicationController
 
   def index
     if logged_in?
-      redirect_to current_user.organization
+      redirect_to current_admin.organization
     else
       flash[:alert] = 'Please login to continue.'
-      redirect_to '/login'
+      redirect_to new_session_path
     end
   end
 
@@ -23,16 +23,16 @@ class ToursController < ApplicationController
   end
 
   def create
-    if current_user.organization == @organization
+    if current_admin.organization == @organization
       @tour = @organization.tours.build(tour_params)
-      @tour.admin = current_user
-      if @tour.save!
+      @tour.admin = current_admin
+      if @tour.save
         redirect_to organization_path@organization
       else
-        render 'new', notice: 'Tour creation failed'
+        render 'new'
       end
     else
-      redirect_to current_user.organization, notice: 'You do not have access to create a tour for this Organization.'
+      redirect_to current_admin.organization, notice: 'You do not have access to create a tour for this Organization.'
     end
   end
 
@@ -40,7 +40,7 @@ class ToursController < ApplicationController
   end
 
   def update
-    if logged_in? && current_user.organization == @organization
+    if logged_in? && current_admin.organization == @organization
       @tour.update!(tour_params)
       if @tour.save
         render 'show'
@@ -55,7 +55,7 @@ class ToursController < ApplicationController
 
   def destroy
     @tour = Tour.find(params[:id])
-    if logged_in? && current_user.organization == @organization
+    if logged_in? && current_admin.organization == @organization
       @tour.destroy
       flash[:notice] = 'Tour was successfully deleted.'
       redirect_to @organization

@@ -17,7 +17,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
     @admin.organization = @organization
     if @admin.save
-      redirect_to '/login', notice: 'Admin account created!'
+      redirect_to new_session_path, notice: 'Admin account created!'
     else
       render 'new'
     end
@@ -26,7 +26,7 @@ class AdminsController < ApplicationController
   def update
     @organization = Organization.find(params[:organization_id])
     @admin = Admin.find(params[:id])
-    if @admin == current_user
+    if @admin == current_admin
       @admin.update!(admin_params)
       if @admin.save
         redirect_to @organization, status: :accepted
@@ -41,7 +41,7 @@ class AdminsController < ApplicationController
   def destroy
     @organization = Organization.find(params[:organization_id])
     @admin = Admin.find(params[:id])
-    if @admin == current_user
+    if @admin == current_admin
       @admin.destroy
       flash[:notice] = 'Admin account deleted from Organization.'
       redirect_to @organization

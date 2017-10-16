@@ -1,7 +1,7 @@
 <div class="hp">
   <h1><strong><%= @tour.name %> for <%= @organization.name %><strong></h1>
 
-  <%= link_to "Logout", logout_path %>
+  <%= link_to "Logout", session_path, :method => :delete %>
   <br>
   <%= link_to "Back to Organzation Home Page", organization_path(@tour.organization_id) %>
 

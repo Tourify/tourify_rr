@@ -22,7 +22,7 @@ class StopsController < ApplicationController
 
   def create
     @stop = @tour.stops.build(stop_params)
-    @stop.admin = current_user
+    @stop.admin = current_admin
     if @stop.save
       render 'show'
     else
@@ -46,7 +46,7 @@ class StopsController < ApplicationController
   end
 
   def update
-    if current_user = stop.admin
+    if current_admin = stop.admin
       @stop.update!(stop_params)
       redirect_to @stop
     else
@@ -57,7 +57,7 @@ class StopsController < ApplicationController
 
   def destroy
     @stop = Stop.find(params[:id])
-    if logged_in? && current_user.organization.id == @organization.id
+    if logged_in? && current_admin.organization.id == @organization.id
       @stop.destroy
       flash[:notice] = 'The stop was successfully deleted.'
       redirect_to organization_tour_stops_path
