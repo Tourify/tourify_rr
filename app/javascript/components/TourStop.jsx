@@ -5,7 +5,9 @@ export default class TourStop extends React.Component {
     super(props);
     this.state = {
       tourInfo: [],
-      ImageSource: ""
+      defaultSource: "",
+      stopSource: "",
+      currentSource: ""
         }
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -18,15 +20,20 @@ export default class TourStop extends React.Component {
     }).then(data =>{
       this.setState({
         tourInfo: data,
-        ImageSource: data.image_current
+        defaultSource: data.image_current,
+        currentSource: data.image_current,
+        stopSource: "https://jaredpattersonblog.files.wordpress.com/2017/10/trust-building_1955.jpg"
+
       });
     })
   }
 
 handleClick(e){
-  this.setState({
-    ImageSource: "https://jaredpattersonblog.files.wordpress.com/2017/10/trust-building_1955.jpg"
-  })
+  if (this.state.currentSource === this.state.defaultSource){
+    this.setState({currentSource:this.state.stopSource});
+  } else {
+    this.setState({currentSource: this.state.defaultSource})
+  }
 }
 
   render(){
@@ -34,7 +41,7 @@ handleClick(e){
       <div>
         <div className = 'tourstop-main-photo'>
           <button className = 'photo-change-btn' onClick={this.handleClick}>More Photos</button>
-          <img src = {this.state.ImageSource}/>
+          <img src = {this.state.currentSource}/>
         </div>
         <div className = "tourstop-header-text">
           <h1>{this.state.tourInfo.name}</h1>
