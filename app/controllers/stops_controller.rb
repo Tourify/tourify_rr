@@ -1,5 +1,5 @@
 class StopsController < ApplicationController
-  before_action :set_stop, only: [:show, :update, :edit]
+  before_action :set_stop, only: [:show, :update, :edit, :destroy]
   before_action :get_tour, only: [:index, :create, :new, :destroy]
   before_action :get_organization, only: [:index, :destroy, :update]
 
@@ -46,18 +46,17 @@ class StopsController < ApplicationController
   end
 
   def update
-    if current_admin = stop.admin
+    if current_admin == @stop.admin
       @stop.update!(stop_params)
       redirect_to @stop
     else
-      flash[:notice] = "You are not authorized."
+      flash[:notice] = "You are not authorized to update this stop."
       render 'edit'
     end
   end
 
   def destroy
-    @stop = Stop.find(params[:id])
-    if logged_in? && current_admin.organization.id == @organization.id
+    if current_admin == @stop.admin
       @stop.destroy
       flash[:notice] = 'The stop was successfully deleted.'
       redirect_to organization_tour_stops_path
@@ -70,7 +69,7 @@ class StopsController < ApplicationController
   private
 
   def set_stop
-    @stop = Stop.find(params[:id])
+    @stop = Stop.find_by(stop_num: params[:id])
   end
 
   def stop_params
@@ -82,6 +81,6 @@ class StopsController < ApplicationController
   end
 
   def get_organization
-    @organization = @tour.organization
+    @organization = Organization.find(params[:organization_id])
   end
 end

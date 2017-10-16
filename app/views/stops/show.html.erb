@@ -14,7 +14,9 @@
     <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>
   <!-- </ul> -->
 
+      <%= link_to 'Edit Stop Details', edit_organization_tour_stop_path %>
+      <br>
       <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
       <br>
-      <%= link_to "Back to Organzation Home Page", organization_path(@stop.tour.organization_id) %>
+      <%= link_to "Back to Organzation", organization_path(@stop.tour.organization_id) %>
 </div>

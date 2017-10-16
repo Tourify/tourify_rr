@@ -35,7 +35,6 @@ class OrganizationsController < ApplicationController
         flash[:notice] = 'Organization information sucessfully updated'
         render :show
       else
-        flash[:alert] = 'Invalid update. Please try again.'
         render :edit
       end
     elsif logged_in?
