@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'index#index'
   get '/stops/download_template'
 
   resources :sessions
