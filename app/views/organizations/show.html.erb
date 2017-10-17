@@ -21,14 +21,10 @@
           <td><%= link_to 'See tour details', organization_tour_path(@organization, tour.id) %></td>
           <td><%= link_to 'Edit tour details', edit_organization_tour_path(@organization, tour.id) %></td>
           <td><%= link_to 'Delete tour', organization_tour_path(@organization, tour.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
         </tr>
       <% end %>
     </tbody>
   </table>
-
-
-
 
   <h2><%= link_to 'Create a new tour', new_organization_tour_path(@organization) %></h2>
 

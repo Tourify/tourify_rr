@@ -9,7 +9,6 @@ json.organization do
     json.tour_name tour.name
     json.description tour.description
     json.main_tour_photo tour.main_tour_photo
-    # json.url @organization_tour_path
   end
   json.admins @organization.admins do |admin|
     json.username admin.username
