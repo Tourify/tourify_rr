@@ -18,7 +18,7 @@ class OrganizationsController < ApplicationController
     if logged_in?
       render :action => 'show.html' and return
     else
-      redirect_to new_session_path
+      render :action => 'show.json'
     end
   end
 
