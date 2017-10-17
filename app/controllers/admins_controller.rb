@@ -1,4 +1,6 @@
 class AdminsController < ApplicationController
+  before_action :set_admin, only: [:show, :update, :destroy]
+  before_action :get_organization, only: [:create, :update, :destroy]
 
   def new
     @admin = Admin.new
@@ -9,11 +11,9 @@ class AdminsController < ApplicationController
   end
 
   def show
-    @admin = Admin.find(params[:id])
   end
 
   def create
-    @organization = Organization.find(params[:organization_id])
     @admin = Admin.new(admin_params)
     @admin.organization = @organization
     if @admin.save
@@ -24,8 +24,6 @@ class AdminsController < ApplicationController
   end
 
   def update
-    @organization = Organization.find(params[:organization_id])
-    @admin = Admin.find(params[:id])
     if @admin == current_admin
       @admin.update!(admin_params)
       if @admin.save
@@ -39,8 +37,6 @@ class AdminsController < ApplicationController
   end
 
   def destroy
-    @organization = Organization.find(params[:organization_id])
-    @admin = Admin.find(params[:id])
     if @admin == current_admin
       @admin.destroy
       flash[:notice] = 'Admin account deleted from Organization.'
@@ -54,6 +50,14 @@ class AdminsController < ApplicationController
 
   def admin_params
     params.require(:admin).permit(:username, :password)
+  end
+
+  def get_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+
+  def set_admin
+    @admin = Admin.find(params[:id])
   end
 
 end

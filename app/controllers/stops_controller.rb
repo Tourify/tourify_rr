@@ -68,18 +68,14 @@ class StopsController < ApplicationController
 
   private
 
+  def stop_params
+    params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
+  end
+
   def set_stop
     get_organization
     get_tour
     @stop = @tour.stops.find_by(stop_num: params[:id])
-  end
-  #
-  # def set_stop
-  #   @stop = Stop.find(params[:id])
-  # end
-
-  def stop_params
-    params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
   end
 
   def get_tour

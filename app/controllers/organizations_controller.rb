@@ -22,11 +22,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # def create
-  #   @organization = Organization.create(organization_params)
-  #   render :show, status: :created
-  # end
-
   def update
     @organization = Organization.find(params[:id])
     if logged_in? && current_admin.organization == @organization
@@ -43,6 +38,10 @@ class OrganizationsController < ApplicationController
       redirect_to new_session_path
     end
   end
+  # def create
+  #   @organization = Organization.create(organization_params)
+  #   render :show, status: :created
+  # end
 
   # def destroy
   #   @organization = Organization.find(params[:id])
