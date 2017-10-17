@@ -13,6 +13,7 @@ class AdminsController < ApplicationController
   def show
   end
 
+  # This serves as the registration method
   def create
     @admin = Admin.new(admin_params)
     @admin.organization = @organization
