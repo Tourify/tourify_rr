@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   get '/stops/download_template'
+  
+  root to: "photos#index"
+  resources :photos
 
   resources :sessions
   resources :organizations, except: [:create, :destroy] do

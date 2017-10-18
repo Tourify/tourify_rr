@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
 
 .hp, .admin_form{
   margin: 15px;

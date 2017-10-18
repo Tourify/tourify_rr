@@ -11,11 +11,22 @@
   </head>
 
   <body>
-    <div id="container">
+    <!-- Renders navigation file located at app/views/layouts/_navigation.html.erb -->
+   <%= render "layouts/navigation" %>
+   <div id="flash">
+     <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+     <% end %>
+   </div>
+   <div class="container-fluid">
+     <%= yield %>
+   </div>
+    <!-- <div id="container">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
       <% end %>
     <%= yield %>
-    </div>
+    </div> -->
+
   </body>
 </html>
