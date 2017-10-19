@@ -48,10 +48,14 @@
       <%= form.text_field :location %>
     </p>
 
+    <%= render "layouts/photos", :form => :photos %>
+
     <p>
       <%= form.label :image_current %><br>
       <%= form.text_field :image_current %>
     </p>
+
+
 
     <p>
       <%= form.label :image_historic %><br>

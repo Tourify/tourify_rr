@@ -3,6 +3,8 @@ class Stop < ApplicationRecord
   belongs_to :admin
 
   has_many :photos, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :photos
+
 
   validates_presence_of :stop_num
   validates_uniqueness_of :stop_num, scope: [:tour_id]
