@@ -20,5 +20,3 @@ main_tour = Tour.create!(name: "Main route", description: "This is the main rout
 # stop3 = Stop.create(stop_num: 3, name: 'Old Hill Building', description: '1925 Georgian revival Old Hill Building commissioned by John Sprunt Hill.', location: '300 Block of W Main St')
 #
 # stop4 = Stop.create(stop_num: 4, name: 'Temple Building', description: '1909 Spanish colonial-style Temple Building built with leftover materials from the 1909 Watts Hospital.', location: '302 W Main St')
-
-# TODO: Add float to long and lat values, make unique all fields in database that need it,
