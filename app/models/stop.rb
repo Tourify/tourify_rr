@@ -10,19 +10,15 @@ class Stop < ApplicationRecord
 
   require 'csv'
 
-  def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      stop_hash = row.to_hash
-      stop = Stop.where(id: stop_hash["id"])
-
-      if stop.count == 1
-        stop.first.update_attributes(stop_hash)
-      else
-        Stop.create!(stop_hash)
+  def self.import(file, tour_id)
+    tour = Tour.find_by(id: tour_id)
+    if tour
+      CSV.foreach(file.path, headers: true) do |row|
+        tour.stops.create! row.to_hash
       end
     end
   end
-  
+
   def self.to_csv(options = {})
     all_columns = column_names
     desired_columns = all_columns - ["id", "created_at", "updated_at"]
