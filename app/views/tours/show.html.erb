@@ -28,9 +28,9 @@
         <tr>
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
-          <td><%= link_to 'See Stop Details', organization_tour_stop_path(@organization, @tour, stop.id) %></td>
-          <td><%= link_to 'Edit Stop Details', edit_organization_tour_stop_path(@organization, @tour, stop.id) %></td>
-          <td><%= link_to 'Delete Stop', organization_tour_stop_path(@organization, @tour, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'See Stop Details', organization_tour_stop_path(@organization, @tour, stop.stop_num) %></td>
+          <td><%= link_to 'Edit Stop Details', edit_organization_tour_stop_path(@organization, @tour, stop.stop_num) %></td>
+          <td><%= link_to 'Delete Stop', organization_tour_stop_path(@organization, @tour, stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     </tbody>
