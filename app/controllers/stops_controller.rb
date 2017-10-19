@@ -65,6 +65,18 @@ class StopsController < ApplicationController
     end
   end
 
+  def destroy_stops
+    @stops = @tour.stops
+    if current_admin == @tour.admin
+      @stops.destroy_all
+      flash[:notice] = 'Stops were successfully deleted.'
+      redirect_to organization_tour_stops_path
+    else
+      flash[:notice] = 'You are not authorized to delete these stops.'
+      render 'show'
+    end
+  end
+
   private
 
   def stop_params
