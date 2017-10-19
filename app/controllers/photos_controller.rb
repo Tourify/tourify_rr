@@ -12,9 +12,6 @@ class PhotosController < ApplicationController
  #Create action ensures that submitted photo gets created if it meets the requirements
  def create
    @photo = Photo.new(photo_params)
-   @photo.organization_id = 1
-   @photo.tour_id = 1
-   @photo.stop_id = 1
 
   if @photo.save
    flash[:notice] = "Successfully added new photo!"

@@ -4,7 +4,7 @@ class StopsController < ApplicationController
 
   def new
     @stop = Stop.new
-    photo = @stop.photos.build
+    @photo = @stop.photos.build
   end
 
   def index
@@ -82,7 +82,11 @@ class StopsController < ApplicationController
   private
 
   def stop_params
-    params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
+    params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :photo, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
+  end
+
+  def get_photo
+    @photo = Photo.new
   end
 
   def set_stop
