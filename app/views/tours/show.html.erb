@@ -10,6 +10,7 @@
     <li>Description: <%= @tour.description %>.</li>
     <li>Distance: <%= @tour.distance %> miles</li>
     <li>Time: <%= @tour.time_in_mins %> minutes</li>
+    <li>Created By: <%= @tour.admin.username %></li>
   </ul>
 
 <%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %><br />
