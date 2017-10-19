@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_admin.nil?
   end
-  
+
+  def home_org
+    @organization_main = Organization.find(1)
+  end
+
 end
