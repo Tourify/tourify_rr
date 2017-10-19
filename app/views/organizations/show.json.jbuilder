@@ -11,7 +11,4 @@ json.organization do
     json.description tour.description
     json.main_tour_photo tour.main_tour_photo
   end
-  json.admins @organization.admins do |admin|
-    json.username admin.username
-  end
 end

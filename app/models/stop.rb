@@ -3,6 +3,8 @@ class Stop < ApplicationRecord
   belongs_to :admin
 
   validates_presence_of :stop_num
+  validates_uniqueness_of :stop_num, scope: [:tour_id]
+
   validates_presence_of :name
   validates_presence_of :location
 
