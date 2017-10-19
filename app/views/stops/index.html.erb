@@ -1,5 +1,4 @@
 <div class="hp">
-
   <div id="stops_index_top">
     <h2>Stop list for the <%= @tour.name%></h2>
     <p>Load your stops for the <%= @tour.name%> tour by importing a CSV File.</p>
@@ -16,7 +15,11 @@
       <%= button_to "   CSV   ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %> | <%= button_to "  Excel  ", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
     </div>
     <br />
+
+
   </div>
+
+  <%= link_to 'Delete All Stops', destroy_stops_organization_tour_stops_path(@organization.id, @tour.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %>
 
   <table>
     <thead>
