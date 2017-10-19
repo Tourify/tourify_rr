@@ -4,6 +4,7 @@ class StopsController < ApplicationController
 
   def new
     @stop = Stop.new
+    photo = @stop.photos.build
   end
 
   def index
@@ -37,6 +38,7 @@ class StopsController < ApplicationController
   end
 
   def import
+    # @stop.admin = current_admin
     Stop.import(params[:file], params[:tour_id])
     redirect_to organization_tour_stops_path, notice: "Data imported"
   end
