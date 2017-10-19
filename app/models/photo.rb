@@ -1,7 +1,5 @@
 class Photo < ApplicationRecord
-  belongs_to :organization
-  belongs_to :tour
-  belongs_to :stop
+  belongs_to :imageable, polymorphic: true
 
   #Mounts paperclip image >> styles code grabbed from heroku site: https://devcenter.heroku.com/articles/paperclip-s3
   has_attached_file :image, styles: {
