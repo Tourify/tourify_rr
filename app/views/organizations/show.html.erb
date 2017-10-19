@@ -1,8 +1,6 @@
 <div class="hp">
   <h1>Creator's Homepage for Organization</h1>
 
-  <%= link_to "Logout", session_path, :method => :delete %>
-
   <h2>Your organization currently has the following tours: </h2>
 
   <table>
@@ -27,5 +25,7 @@
   </table>
 
   <h2><%= link_to 'Create a new tour', new_organization_tour_path(@organization) %></h2>
+
+  <%= link_to "Logout", session_path, :method => :delete %>
 
 </div>
