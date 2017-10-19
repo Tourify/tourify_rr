@@ -2,7 +2,7 @@ class Stop < ApplicationRecord
   belongs_to :tour
   belongs_to :admin
 
-  has_many :photos, as: imageable, dependent: :destroy
+  has_many :photos, as: :imageable, dependent: :destroy
 
   validates_presence_of :stop_num
   validates_uniqueness_of :stop_num, scope: [:tour_id]
@@ -12,7 +12,7 @@ class Stop < ApplicationRecord
 
   require 'csv'
 
-  def self.import(file, tour_id, current_admin)
+  def self.import(file, tour_id)
     tour = Tour.find_by(id: tour_id)
     if tour
       CSV.foreach(file.path, headers: true) do |row|
