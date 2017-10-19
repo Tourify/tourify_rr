@@ -1,15 +1,16 @@
 <div class="hp">
   <h1><strong><%= @tour.name %> for <%= @organization.name %><strong></h1>
 
-  <%= link_to "Logout", logout_path %>
+  <%= link_to "Logout", session_path, :method => :delete %>
   <br>
-  <%= link_to "Back to Organzation Home Page", organization_path(@tour.organization_id) %>
+  <%= link_to "Back to Organzation", organization_path(@tour.organization_id) %>
 
   <ul>
     <li>Name: <%= @tour.name %></li>
     <li>Description: <%= @tour.description %>.</li>
     <li>Distance: <%= @tour.distance %> miles</li>
     <li>Time: <%= @tour.time_in_mins %> minutes</li>
+    <li>Created By: <%= @tour.admin.username %></li>
   </ul>
 
 <%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %><br />
@@ -27,9 +28,9 @@
         <tr>
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
-          <td><%= link_to 'See stop details', organization_tour_stop_path(@organization, @tour, stop.id) %></td>
-          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization, @tour, stop.id) %></td>
-          <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization, @tour, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'See Stop Details', organization_tour_stop_path(@organization, @tour, stop.id) %></td>
+          <td><%= link_to 'Edit Stop Details', edit_organization_tour_stop_path(@organization, @tour, stop.id) %></td>
+          <td><%= link_to 'Delete Stop', organization_tour_stop_path(@organization, @tour, stop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     </tbody>

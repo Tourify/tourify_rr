@@ -21,7 +21,7 @@
   </div>
   <div class="actions"><%= f.submit "Register" %></div>
 <% end %>
-
-<%= link_to "Log In", new_session_path %>
-<br>
-<%= link_to "Logout", logout_path %>
+<br />
+<span>
+If you've already registered, you can go login here:
+</span><%= link_to "Log In", new_session_path %>

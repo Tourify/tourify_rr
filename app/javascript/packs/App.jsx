@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </Switch>
     </Baselayout>
     </BrowserRouter>
-
     ,
     document.getElementById('mount')
   )
