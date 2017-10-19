@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get '/stops/download_template'
-  
+
   root to: "photos#index"
   resources :photos
 
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :stops do
         collection do
           post :import
+          delete :destroy_stops
         end
       end
     end

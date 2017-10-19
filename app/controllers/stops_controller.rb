@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :update, :edit, :destroy]
-  before_action :get_tour, only: [:index, :update, :create, :new, :destroy]
+  before_action :get_tour, only: [:index, :update, :create, :new, :destroy, :destroy_stops]
   before_action :get_organization, only: [:index, :destroy, :update]
 
   def new
@@ -62,6 +62,18 @@ class StopsController < ApplicationController
       redirect_to organization_tour_stops_path
     else
       flash[:notice] = 'You are not authorized to delete this Stop.'
+      render 'show'
+    end
+  end
+
+  def destroy_stops
+    @stops = @tour.stops
+    if current_admin == @tour.admin
+      @stops.destroy_all
+      flash[:notice] = 'Stops were successfully deleted.'
+      redirect_to organization_tour_stops_path
+    else
+      flash[:notice] = 'You are not authorized to delete these stops.'
       render 'show'
     end
   end
