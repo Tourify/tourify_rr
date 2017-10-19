@@ -11,13 +11,12 @@
   </head>
 
   <body>
-   <%= render "layouts/navigation" %>
+    <%= render "layouts/navigation" %>
     <div id="container" class="container-fluid">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
       <% end %>
-    <%= yield %>
+      <%= yield %>
     </div>
-
   </body>
 </html>
