@@ -1,5 +1,4 @@
 <div class="hp">
-  <!-- <ul> -->
     <p><span class="bold_text">Stop Number: </span><%= @stop.stop_num %></p>
     <p><span class="bold_text">Name: </span><%= @stop.name %></p>
     <p><span class="bold_text">Description: </span><%= @stop.description %></p>
@@ -26,11 +25,7 @@
         <% end %>
       </p>
     </div>
-    <p class="p_with_img"><span class="bold_text">Uploaded Image </span>
-      <% if @stop.images do |image| %>
-        <%= image_tag(image, class: "style_image") %>
-      <% end %>
-    </p>
+
     <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>
 
   <div class="link_container">
@@ -38,7 +33,7 @@
       <div class="previous">
           <%= link_to "Previous Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num-1) %>
       </div>
-      <%end%>
+    <% end %>
     <% if (@stop.stop_num+1 != nil) %>
       <div class="next">
         <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>

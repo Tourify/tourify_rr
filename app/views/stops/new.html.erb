@@ -14,7 +14,7 @@
   <%= form_for @stop, url: {action: "create"}, html: { multipart: true } do |f| %>
     <p class="field">
       <%= f.label :images %><br>
-      <%= f.file_field :images, multiple: true %>
+      <%= f.file_field :images %>
     </p>
 
     <p>
