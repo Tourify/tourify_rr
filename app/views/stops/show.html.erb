@@ -25,7 +25,9 @@
     </p>
     <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>
   <!-- </ul> -->
-
+  <% if (@stop.stop_num-1 != 0) %>
+    <%= link_to "Previous Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num-1) %>
+    <%end%>
   <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>
   <br />
   <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
