@@ -5,6 +5,11 @@ json.stop_count @tour.stops.count
 json.main_tour_photo @tour.main_tour_photo
 json.distance @tour.distance
 json.time_in_mins @tour.time_in_mins
+json.stops_coordinates @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop|
+  json.stop_num stop.stop_num
+  json.gps_long stop.gps_long
+  json.gps_lat stop.gps_lat
+end
 
 json.stops @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop|
   json.stop_num stop.stop_num
