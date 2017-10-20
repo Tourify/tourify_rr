@@ -84,10 +84,6 @@ class StopsController < ApplicationController
     params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge, {images: []})
   end
 
-  def get_photo
-    @photo = Photo.new
-  end
-
   def set_stop
     get_organization
     get_tour
