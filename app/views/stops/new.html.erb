@@ -1,4 +1,4 @@
-<div class="admin_form">
+< class="admin_form">
   <h1>New Stop</h1>
 
   <% if @stop.errors.any? %>
@@ -11,80 +11,76 @@
     </div>
   <% end %>
 
-  <%= form_for @stop, url: {action: "create"} do |form| %>
+  <%= form_for @stop, url: {action: "create"}, html: { multipart: true } do |f| %>
 
     <p>
-      <%= form.label :stop_num %><br />
-      <%= form.text_field :stop_num %>
+      <%= f.label :stop_num %><br />
+      <%= f.text_field :stop_num %>
     </p>
 
     <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= form.label :directions_to_next_stop %><br />
-      <%= form.text_field :directions_to_next_stop %>
+      <%= f.label :directions_to_next_stop %><br />
+      <%= f.text_field :directions_to_next_stop %>
     </p>
 
     <p>
-      <%= form.label :learn_more_URL %><br>
-      <%= form.text_field :learn_more_URL %>
+      <%= f.label :learn_more_URL %><br>
+      <%= f.text_field :learn_more_URL %>
     </p>
 
     <p>
-      <%= form.label :travel_tip %><br />
-      <%= form.text_field :travel_tip %>
+      <%= f.label :travel_tip %><br />
+      <%= f.text_field :travel_tip %>
     </p>
 
     <p>
-      <%= form.label :description %><br>
-      <%= form.text_area :description %>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
     </p>
 
     <p>
-      <%= form.label :location %><br>
-      <%= form.text_field :location %>
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
     </p>
 
     <p>
-      <%= form.fields_for :photos do |p| %>
-          <%= p.label :title %>
-          <%= text_field :title %>
-
-          <%= p.label :image %>
-          <%= p.file_field :image %>
-      <% end %>
+      <%=f.fields_for(:photo) do |pf| %>
+        <%= pf.file_field :image %>
+      <%end%>
     </p>
 
     <p>
-      <%= form.label :image_current %><br>
-      <%= form.text_field :image_current %>
+      <%= f.label :image_current %><br>
+      <%= f.text_field :image_current %>
     </p>
 
     <p>
-      <%= form.label :image_historic %><br>
-      <%= form.text_field :image_historic %>
+      <%= f.label :image_historic %><br>
+      <%= f.text_field :image_historic %>
     </p>
 
     <p>
-      <%= form.label :gps_long %><br>
-      <%= form.text_field :gps_long %>
+      <%= f.label :gps_long %><br>
+      <%= f.text_field :gps_long %> miles
     </p>
 
     <p>
-      <%= form.label :gps_lat %><br>
-      <%= form.text_field :gps_lat %>
+      <%= f.label :gps_lat %><br>
+      <%= f.text_field :gps_lat %>
     </p>
 
     <p>
-      <%= form.label :badge %><br>
-      <%= form.text_field :badge %>
+      <%= f.label :badge %><br>
+      <%= f.text_field :badge %>
     </p>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= f.submit %>
     </div>
   <% end %>
 </div>
