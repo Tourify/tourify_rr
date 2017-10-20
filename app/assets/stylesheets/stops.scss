@@ -46,5 +46,17 @@ p {
 }
 
 .hp .style_image{
-  width: 35%;
+  width: 85%;
+}
+
+.image_holder{
+  display: flex;
+  flex-direction: row;
+}
+
+.link_container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 }

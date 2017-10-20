@@ -14,24 +14,33 @@
         <%= link_to @stop.learn_more_URL, url_for(@stop.learn_more_URL) %>
       <% end %>
     </p>
-
-
-    <p class="p_with_img"><span class="bold_text">Image Current </span>
-      <% if @stop.image_current %>
-        <%= image_tag(@stop.image_current, class: "style_image") %>
-      <% end %>
-    </p>
-    <p class="p_with_img"><span class="bold_text">Image Historic </span>
-      <% if @stop.image_historic %>
-        <%= image_tag(@stop.image_historic, class: "style_image") %>
-      <% end %>
-    </p>
+    <div class="image_holder">
+      <p class="p_with_img"><span class="bold_text">Image Current </span>
+        <% if @stop.image_current %>
+          <%= image_tag(@stop.image_current, class: "style_image") %>
+        <% end %>
+      </p>
+      <p class="p_with_img"><span class="bold_text">Image Historic </span>
+        <% if @stop.image_historic %>
+          <%= image_tag(@stop.image_historic, class: "style_image") %>
+        <% end %>
+      </p>
+    </div>
     <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>
   <!-- </ul> -->
-  <% if (@stop.stop_num-1 != 0) %>
-    <%= link_to "Previous Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num-1) %>
-    <%end%>
-  <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>
+  <div class="link_container">
+    <% if (@stop.stop_num-1 != 0) %>
+      <div class="previous">
+          <%= link_to "Previous Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num-1) %>
+      </div>
+      <%end%>
+    <% if (@stop.stop_num+1 != nil) %>
+      <div class="next">
+        <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>
+      </div>
+    <% end %>
+  </div>
+
   <br />
   <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
   <br>
