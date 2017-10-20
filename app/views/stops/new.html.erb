@@ -48,14 +48,20 @@
       <%= form.text_field :location %>
     </p>
 
-    <%= render "layouts/photos", :form => :photos %>
+    <p>
+      <%= form.fields_for :photos do |p| %>
+          <%= p.label :title %>
+          <%= text_field :title %>
+
+          <%= p.label :image %>
+          <%= p.file_field :image %>
+      <% end %>
+    </p>
 
     <p>
       <%= form.label :image_current %><br>
       <%= form.text_field :image_current %>
     </p>
-
-
 
     <p>
       <%= form.label :image_historic %><br>
@@ -64,7 +70,7 @@
 
     <p>
       <%= form.label :gps_long %><br>
-      <%= form.text_field :gps_long %> miles
+      <%= form.text_field :gps_long %>
     </p>
 
     <p>
