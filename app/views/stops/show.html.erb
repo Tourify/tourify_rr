@@ -13,20 +13,29 @@
         <%= link_to @stop.learn_more_URL, url_for(@stop.learn_more_URL) %>
       <% end %>
     </p>
-    <div class="image_holder">
-      <p class="p_with_img"><span class="bold_text">Image Current </span>
-        <% if @stop.image_current %>
-          <%= image_tag(@stop.image_current, class: "style_image") %>
-        <% end %>
-      </p>
-      <p class="p_with_img"><span class="bold_text">Image Historic </span>
-        <% if @stop.image_historic %>
+    <% if @stop.image_historic %>
+      <div class="images_holder">
+        <p class="p_with_img"><span class="bold_text">Image Current </span>
+          <% if @stop.image_current %>
+            <%= image_tag(@stop.image_current, class: "style_image") %>
+          <% end %>
+        </p>
+        <p class="p_with_img"><span class="bold_text">Image Historic </span>
           <%= image_tag(@stop.image_historic, class: "style_image") %>
-        <% end %>
-      </p>
-    </div>
-
-    <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>
+        </p>
+      </div>
+      <% else %>
+        <div class="second_image_na">
+          <p class="bold_text">Image Current
+          </p>
+          <%= image_tag(@stop.image_current, class: "style_image") %>
+        </div>
+        <p>
+          <br />
+          <span class="bold_text">Image Historic </span>
+          None available
+        </p>
+      <% end %>
 
   <div class="link_container">
     <% if (@stop.stop_num-1 != 0) %>
