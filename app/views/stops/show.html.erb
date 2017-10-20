@@ -10,8 +10,11 @@
     <p><span class="bold_text">GPS latitude: </span><%= @stop.gps_lat %></p>
 
     <p><span class="bold_text">Learn_more_URL: </span>
-      <%= link_to @stop.learn_more_URL, url_for(@stop.learn_more_URL) %>
+      <% if @stop.learn_more_URL != nil %>
+        <%= link_to @stop.learn_more_URL, url_for(@stop.learn_more_URL) %>
+      <% end %>
     </p>
+
 
     <p class="p_with_img"><span class="bold_text">Image Current </span>
       <% if @stop.image_current %>
