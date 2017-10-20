@@ -27,8 +27,8 @@
       </p>
     </div>
     <p class="p_with_img"><span class="bold_text">Uploaded Image </span>
-      <% if @stop.avatar %>
-        <%= image_tag(@stop.avatar, class: "style_image") %>
+      <% if @stop.images do |image| %>
+        <%= image_tag(image, class: "style_image") %>
       <% end %>
     </p>
     <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020160709) do
+ActiveRecord::Schema.define(version: 20171020172620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,19 +36,6 @@ ActiveRecord::Schema.define(version: 20171020160709) do
     t.string "content_credit"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.string "imageable_type"
-    t.bigint "imageable_id"
-    t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id"
-  end
-
   create_table "stops", force: :cascade do |t|
     t.integer "stop_num", null: false
     t.string "name", null: false
@@ -66,7 +53,7 @@ ActiveRecord::Schema.define(version: 20171020160709) do
     t.datetime "updated_at", null: false
     t.bigint "tour_id"
     t.bigint "admin_id"
-    t.string "avatar"
+    t.json "images"
     t.index ["admin_id"], name: "index_stops_on_admin_id"
     t.index ["tour_id"], name: "index_stops_on_tour_id"
   end

@@ -1,12 +1,8 @@
 class Stop < ApplicationRecord
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :images, ImageUploader
 
   belongs_to :tour
   belongs_to :admin
-
-  has_attached_file :image
-  has_many :photos, as: :imageable, dependent: :destroy
-  accepts_nested_attributes_for :photos
 
   validates_presence_of :stop_num
   validates_uniqueness_of :stop_num, scope: [:tour_id]
