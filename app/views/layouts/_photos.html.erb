@@ -1,12 +1,3 @@
-
-<%= form.fields_for :photos do |p| %>
-    <div class="form-group">
-    <%= p.label :title %>
-    <%= text_field :title, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= p.label :image %>
-    <%= p.file_field :image, class: 'form-control' %>
-  </div>
-<% end %>
+<p>
+    <%= f.label :photo_title, "Amazing Photo" %><br />
+</p>
