@@ -1,4 +1,6 @@
 class Stop < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+
   belongs_to :tour
   belongs_to :admin
 

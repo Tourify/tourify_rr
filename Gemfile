@@ -38,7 +38,13 @@ gem 'rack-cors'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
-gem "paperclip", "~> 5.1"
+
+# gem "paperclip", "~> 5.0.0"
+gem 'carrierwave', '~> 0.11.2'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+
+# gem "paperclip", "~> 5.1"
+# >>>>>>> master
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

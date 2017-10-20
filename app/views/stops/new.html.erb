@@ -12,6 +12,10 @@
   <% end %>
 
   <%= form_for @stop, url: {action: "create"}, html: { multipart: true } do |f| %>
+    <p class="field">
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar %>
+    </p>
 
     <p>
       <%= f.label :stop_num %><br />
