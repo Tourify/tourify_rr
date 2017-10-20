@@ -8,17 +8,27 @@
     <p><span class="bold_text">Travel tip: </span><%= @stop.travel_tip %></p>
     <p><span class="bold_text">GPS longitude: </span><%= @stop.gps_long %></p>
     <p><span class="bold_text">GPS latitude: </span><%= @stop.gps_lat %></p>
-    <p><span class="bold_text">Learn_more_URL: </span><%= @stop.learn_more_URL %></p>
-    <p><span class="bold_text">Image Current: </span>
-      <% if @stop.image_current %>
-        <%= image_tag(@stop.image_current) %>
-      <% end %>    
+
+    <p><span class="bold_text">Learn_more_URL: </span>
+      <%= link_to @stop.learn_more_URL, url_for(@stop.learn_more_URL) %>
     </p>
-    <p><span class="bold_text">Image Historic: </span><%= @stop.image_historic %></p>
+
+    <p class="p_with_img"><span class="bold_text">Image Current </span>
+      <% if @stop.image_current %>
+        <%= image_tag(@stop.image_current, class: "style_image") %>
+      <% end %>
+    </p>
+    <p class="p_with_img"><span class="bold_text">Image Historic </span>
+      <% if @stop.image_historic %>
+        <%= image_tag(@stop.image_historic, class: "style_image") %>
+      <% end %>
+    </p>
     <p><span class="bold_text">Badge: </span><%= @stop.badge %></p>
   <!-- </ul> -->
 
-      <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
-      <br>
-      <%= link_to "Back to Organzation", organization_path(@stop.tour.organization_id) %>
+  <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>
+  <br />
+  <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
+  <br>
+  <%= link_to "Back to Organzation", organization_path(@stop.tour.organization_id) %>
 </div>

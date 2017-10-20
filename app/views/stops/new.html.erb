@@ -49,23 +49,15 @@
     </p>
 
     <p>
-        <%= f.label :photo, "Current photo" %><br />
-        <%= f.fields_for :photo do |p| %>
-          <%= p.label :title %>
-          <%= text_field :title, class: 'form-control' %><br />
-          <%= p.label :image %>
-          <%= p.file_field :image %>
-        <% end %>
-
-
+      <%=f.fields_for(:photo) do |pf| %>
+        <%= pf.file_field :image %>
+      <%end%>
     </p>
 
     <p>
       <%= f.label :image_current %><br>
       <%= f.text_field :image_current %>
     </p>
-
-
 
     <p>
       <%= f.label :image_historic %><br>

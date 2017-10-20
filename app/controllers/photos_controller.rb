@@ -11,16 +11,13 @@ class PhotosController < ApplicationController
 
  #Create action ensures that submitted photo gets created if it meets the requirements
  def create
-   @photo = Photo.new(photo_params)
-
-  if @photo.save
-   flash[:notice] = "Successfully added new photo!"
-   redirect_to root_path
-  else
-   flash[:alert] = "Error adding new photo!"
-   render :new
-  end
+   if params[:stop_id]
+     @imageable = Stop.find(params[:stop_id])
+   end
+   @photo = @imageable.photos.build(photo_params)
  end
+ # code above is based on suggestions in this post: http://karimbutt.github.io/blog/2015/01/03/step-by-step-guide-to-polymorphic-associations-in-rails/
+
 
  private
 
@@ -28,16 +25,4 @@ class PhotosController < ApplicationController
  def photo_params
   params.require(:photo).permit(:title, :image)
  end
-
- # def get_stop
- #   @stop =
- # end
- #
- # def get_tour
- #   @tour = Tour.find(params[:tour_id])
- # end
- #
- # def get_organization
- #   @organization = Organization.find(params[:organization_id])
- # end
 end
