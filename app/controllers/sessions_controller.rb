@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = 'Username not found'
+      flash[:alert] = 'Log in failed. Please try again.'
       render :new
     end
   end

@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20171020172620) do
     t.datetime "updated_at", null: false
     t.bigint "tour_id"
     t.bigint "admin_id"
+    t.string "avatar"
     t.json "images"
     t.index ["admin_id"], name: "index_stops_on_admin_id"
     t.index ["tour_id"], name: "index_stops_on_tour_id"
