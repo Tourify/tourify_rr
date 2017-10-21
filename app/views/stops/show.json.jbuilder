@@ -14,3 +14,4 @@ json.image_historic @stop.image_historic
 json.tour_id @stop.tour_id
 json.badge @stop.badge
 json.image @stop.image
+json.attachments @stop.attachments

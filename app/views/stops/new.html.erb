@@ -17,6 +17,11 @@
       <%= f.file_field :image %>
     </p>
 
+    <p class="field">
+      <%= f.label :attachments %><br>
+      <%= f.file_field :attachments, multiple: true, name: "stops[]" %>
+    </p>
+
     <p>
       <%= f.label :stop_num %><br />
       <%= f.text_field :stop_num %>
