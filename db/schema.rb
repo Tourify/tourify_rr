@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021134129) do
+ActiveRecord::Schema.define(version: 20171021154557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,18 +34,6 @@ ActiveRecord::Schema.define(version: 20171021134129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "content_credit"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "organization_id"
-    t.bigint "tour_id"
-    t.bigint "stop_id"
-    t.index ["organization_id"], name: "index_photos_on_organization_id"
-    t.index ["stop_id"], name: "index_photos_on_stop_id"
-    t.index ["tour_id"], name: "index_photos_on_tour_id"
   end
 
   create_table "stops", force: :cascade do |t|
@@ -86,9 +74,6 @@ ActiveRecord::Schema.define(version: 20171021134129) do
   end
 
   add_foreign_key "admins", "organizations"
-  add_foreign_key "photos", "organizations"
-  add_foreign_key "photos", "stops"
-  add_foreign_key "photos", "tours"
   add_foreign_key "stops", "admins"
   add_foreign_key "stops", "tours"
   add_foreign_key "tours", "admins"
