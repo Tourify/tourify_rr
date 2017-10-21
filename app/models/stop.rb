@@ -1,5 +1,5 @@
 class Stop < ApplicationRecord
-  mount_uploader :images, ImageUploader
+  mount_uploader :image, ImageUploader
 
   belongs_to :tour
   belongs_to :admin

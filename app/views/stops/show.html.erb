@@ -43,11 +43,9 @@
           <%= link_to "Previous Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num-1) %>
       </div>
     <% end %>
-    <% if (@stop.stop_num+1 != nil) %>
       <div class="next">
         <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>
       </div>
-    <% end %>
   </div>
 
   <br />
