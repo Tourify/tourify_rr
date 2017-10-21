@@ -1,5 +1,5 @@
 class ChangeImagesToArrayInStops < ActiveRecord::Migration[5.1]
   def change
-    change_column :stops, :images, :string
+    add_column :stops, :image, :string
   end
 end
