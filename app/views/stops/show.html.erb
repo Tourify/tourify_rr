@@ -1,6 +1,6 @@
 <div class="hp">
-    <p><span class="bold_text">Stop Number: </span><%= @stop.stop_num %></p>
-    <p><span class="bold_text">Name: </span><%= @stop.name %></p>
+    <h2><span class="bold_text">Stop Number: </span><%= @stop.stop_num %></h2>
+    <h2><%= @stop.name %></h2>
     <p><span class="bold_text">Description: </span><%= @stop.description %></p>
     <p><span class="bold_text">Location: </span><%= @stop.location %></p>
     <p><span class="bold_text">Directions to next stop: </span><%= @stop.directions_to_next_stop %></p>
@@ -49,6 +49,8 @@
       </p>
 
   <div><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+
+  <div><%= link_to 'Edit stop', edit_organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num) %></div>
 
   <div class="link_container">
     <% if (@stop.stop_num-1 != 0) %>
