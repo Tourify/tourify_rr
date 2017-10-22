@@ -49,9 +49,13 @@ p {
   width: 85%;
 }
 
-.image_holder{
+.images_holder{
   display: flex;
   flex-direction: row;
+}
+
+.second_image_na{
+  display: inline-block;
 }
 
 .link_container {
