@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       organization = admin.organization
       if admin.authenticate(params[:password])
         session[:admin_id] = admin.id
-        redirect_to organization, notice: 'Logged in as !'
+        redirect_to organization
       else
         flash[:alert] = 'Username or password is invalid'
         render :new
