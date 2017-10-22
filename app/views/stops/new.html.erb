@@ -12,10 +12,18 @@
   <% end %>
 
   <%= form_for @stop, url: {action: "create"}, html: { multipart: true } do |f| %>
-    <p class="field">
-      <%= f.label :image %><br>
-      <%= f.file_field :image %>
-    </p>
+  <div class=”field”>
+    <% if @stop.image? %>
+      <div class=”thumbnail”>
+        <%= image_tag @stop.image.url %>
+      </div>
+    <% end %>
+    <br>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
 
     <p>
       <%= f.label :stop_num %><br />

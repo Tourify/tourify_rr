@@ -42,6 +42,15 @@
         <% end %>
       </p>
 
+      <p>
+       <strong>Uploaded Image:</strong>
+       <% if @stop.image? %>
+       <div class=”thumbnail”>
+       <%= image_tag @store.image.url %>
+       </div>
+       <% end %>
+      </p>
+
       <p class="p_with_img"><span class="bold_text">Uploaded Attachments </span>
         <% if @stop.attachments %>
           <%= image_tag(@stop.attachments, class: "style_image") %>

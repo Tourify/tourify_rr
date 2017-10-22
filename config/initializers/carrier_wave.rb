@@ -14,10 +14,11 @@ CarrierWave.configure do |config|
     end
   end
 
+  config.fog_provider = 'fog/aws' 
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: 'AKIAI7XJRYPQXNL2OVNA',
-    aws_secret_access_key: '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',
+    aws_access_key_id: 'access_key',
+    aws_secret_access_key: 'secret_key',
     region: 'us-east-1 '
   }
   config.fog_directory  = 'tourifync'

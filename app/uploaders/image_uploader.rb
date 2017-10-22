@@ -1,36 +1,28 @@
-# encoding: utf-8
 class ImageUploader < CarrierWave::Uploader::Base
+
   include CarrierWave::MiniMagick
 
-  # storage :file
   storage :fog
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
-
   process resize_to_fit: [800, 800]
 
-  version :thumb do
-    process resize_to_fill: [200,200]
+  version :medium, :from_version => :large do
+    process resize_to_limit: [500, 500]
+  end
+
+  version :thumb, :from_version => :medium do
+    process resize_to_fit: [100, 100]
+  end
+
+  version :square do
+    process :resize_to_fill => [500, 500]
   end
 
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
-
 end
