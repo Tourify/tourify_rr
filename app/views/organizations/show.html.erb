@@ -1,7 +1,7 @@
 <div class="hp">
-  <h1>Creator's Homepage for Organization</h1>
+  <h1><%=@organization.name%></h1>
 
-  <h2>Your organization currently has the following tours: </h2>
+  <h3>Your organization currently has the following tours: </h3>
 
   <table>
     <thead>
@@ -24,8 +24,7 @@
     </tbody>
   </table>
 
-  <h2><%= link_to 'Create a new tour', new_organization_tour_path(@organization) %></h2>
+  <button class = 'new-tour-btn'><%= link_to 'Create a new tour', new_organization_tour_path(@organization) %></button>
 
-  <%= link_to "Logout", session_path, :method => :delete %>
 
 </div>

@@ -11,7 +11,16 @@
   </head>
 
   <body>
-    <%= render "layouts/navigation" %>
+    <nav>
+      <div>
+      <a href="/organizations/1">
+        <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-logo-glow-200px2.png" alt = "tourify logo">
+      </a>
+    </div>
+    <div>
+      <h2>Content Creator Dashboard</h2>
+    </div>
+    </nav>
     <div id="container" class="container-fluid">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
