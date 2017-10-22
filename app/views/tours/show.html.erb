@@ -13,8 +13,10 @@
     <li>Created By: <%= @tour.admin.username %></li>
   </ul>
 
-<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %><br />
+<%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %>
+<br>
 <%= link_to 'Add/Edit Stops in Bulk', organization_tour_stops_path(@organization, @tour) %>
+<br>
 
 <table>
   <thead>
@@ -29,8 +31,6 @@
           <td><%= stop.stop_num %></td>
           <td><%= stop.name %></td>
           <td><%= link_to 'See Stop Details', organization_tour_stop_path(@organization, @tour, stop.stop_num) %></td>
-          <td><%= link_to 'Edit Stop Details', edit_organization_tour_stop_path(@organization, @tour, stop.stop_num) %></td>
-          <td><%= link_to 'Delete Stop', organization_tour_stop_path(@organization, @tour, stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     </tbody>

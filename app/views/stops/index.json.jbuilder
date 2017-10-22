@@ -11,4 +11,5 @@ json.stops @stops do |stop|
   json.image_current stop.image_current
   json.image_historic stop.image_historic
   json.badge stop.badge
+  json.image stop.image
 end

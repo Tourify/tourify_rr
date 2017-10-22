@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019182308) do
+ActiveRecord::Schema.define(version: 20171021154557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(version: 20171019182308) do
     t.string "content_credit"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "organization_id"
-    t.bigint "tour_id"
-    t.bigint "stop_id"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.index ["organization_id"], name: "index_photos_on_organization_id"
-    t.index ["stop_id"], name: "index_photos_on_stop_id"
-    t.index ["tour_id"], name: "index_photos_on_tour_id"
-  end
-
   create_table "stops", force: :cascade do |t|
     t.integer "stop_num", null: false
     t.string "name", null: false
@@ -69,6 +53,8 @@ ActiveRecord::Schema.define(version: 20171019182308) do
     t.datetime "updated_at", null: false
     t.bigint "tour_id"
     t.bigint "admin_id"
+    t.string "image"
+    t.string "attachments", default: [], array: true
     t.index ["admin_id"], name: "index_stops_on_admin_id"
     t.index ["tour_id"], name: "index_stops_on_tour_id"
   end
@@ -88,9 +74,6 @@ ActiveRecord::Schema.define(version: 20171019182308) do
   end
 
   add_foreign_key "admins", "organizations"
-  add_foreign_key "photos", "organizations"
-  add_foreign_key "photos", "stops"
-  add_foreign_key "photos", "tours"
   add_foreign_key "stops", "admins"
   add_foreign_key "stops", "tours"
   add_foreign_key "tours", "admins"

@@ -7,6 +7,11 @@ json.travel_tip @stop.travel_tip
 json.gps_long @stop.gps_long
 json.gps_lat @stop.gps_lat
 json.learn_more_URL @stop.learn_more_URL
+
 json.image_current @stop.image_current
 json.image_historic @stop.image_historic
+
+json.tour_id @stop.tour_id
 json.badge @stop.badge
+json.image @stop.image
+json.attachments @stop.attachments
