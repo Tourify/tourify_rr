@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass'
 
 # gem "paperclip", "~> 5.0.0"
 gem 'carrierwave', '~> 0.11.2'
