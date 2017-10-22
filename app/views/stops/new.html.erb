@@ -1,4 +1,4 @@
-< class="admin_form">
+<div class="admin_form">
   <h1>New Stop</h1>
 
   <% if @stop.errors.any? %>
@@ -15,11 +15,6 @@
     <p class="field">
       <%= f.label :image %><br>
       <%= f.file_field :image %>
-    </p>
-
-    <p class="field">
-      <%= f.label :attachments %><br>
-      <%= f.file_field :attachments, multiple: true, name: "stops[]" %>
     </p>
 
     <p>
