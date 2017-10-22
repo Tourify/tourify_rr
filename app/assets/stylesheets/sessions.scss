@@ -16,6 +16,11 @@ input{
   width:300px;
 }
 
+.submit-button input:hover{
+  opacity: .7;
+  cursor: pointer;
+}
+
 .submit-button input{
   background-color: #E83D1E;
   border: none;
