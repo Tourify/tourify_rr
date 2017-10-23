@@ -24,32 +24,15 @@ p {
   background-color: white;
 }
 
-.choose_file {
-  position: relative;
-  overflow: hidden;
-  width: 25%;
-  color: white;
-  border-style: outset;
-  padding: 2px;
-  text-align: center;
-  border-color: #D34D26;
-  background: #D34D26;
+.choose_file{
+  padding: 10px;
+  border: #D34D3F solid;
 }
 
+
 .choose_file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
+  padding: 0 0 10px 0;
+  width: 90%;
 }
 
 
@@ -117,4 +100,17 @@ p {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+
+td a:link{
+  color: grey;
+}
+
+td a:hover{
+  color: black;
+}
+
+td a:visited{
+  color: #D34D26;
 }
