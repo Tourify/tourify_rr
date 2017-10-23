@@ -1,18 +1,28 @@
-<h1>Edit Stop</h1>
+<div class="admin_form">
 
-<%= form_for @stop, url: {action: "update"} do |f| %>
+<h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></div>
 
-  <% if @stop.errors.any? %>
-    <div class="error_messages">
-      <ul>
-        <% @stop.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="top_link_box">
 
-  <%= link_to "Back to Tour", organization_tour_path %>
+  <div class="top_link">
+    <%= link_to "Back to Tour", organization_tour_path %>
+  </div>
+
+</div>
+
+<h2>Edit Stop <%=@stop.stop_num%>: <%= @stop.name%></h2>
+
+<%= form_for [:organization, :tour, @stop] do |f| %>
+
+<% if @stop.errors.any? %>
+  <div class="error_messages">
+    <ul>
+    <% @stop.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= f.label :stop_num %><br />
@@ -74,8 +84,9 @@
     <%= f.text_field :badge %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="submit">
+    <div class="actions"><%= f.submit %></div>
   </div>
 
 <% end %>
+</div>

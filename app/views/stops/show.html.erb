@@ -1,5 +1,7 @@
 <div class="hp">
 
+  <h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></h1>
+
   <div class="top_link_box">
 
     <div class="top_link">
@@ -10,10 +12,13 @@
       <%= link_to "Back to Organization", organization_path(@stop.tour.organization_id) %>
     </div>
 
+    <div class="top_link">
+      <%= link_to "Logout", session_path, :method => :delete %>
+    </div>
+
   </div>
 
-  <h2 class="stop_num">Stop Number: <%= @stop.stop_num %></h2>
-  <h2><%= @stop.name %></h2>
+  <h2>STOP <%= @stop.stop_num %>: <%= @stop.name %></h2>
 
   <div class="admin-btn"><%= link_to 'Edit stop', edit_organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num) %></div>
 

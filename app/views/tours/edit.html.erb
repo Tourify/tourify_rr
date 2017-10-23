@@ -1,4 +1,8 @@
-<h1>Edit Tour</h1>
+<div class="admin_form">
+
+<h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></h1>
+
+<h2>Edit Tour</div>
 
 <%= form_for [:organization, @tour] do |f| %>
 
@@ -37,8 +41,9 @@
     <%= f.text_field :time_in_mins %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="submit">
+    <div class="actions"><%= f.submit %></div>
   </div>
 
 <% end %>
+</div>
