@@ -1,19 +1,23 @@
-// Place all the styles related to the Stops controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-li {
-  list-style: none;
-}
-
 p {
   -webkit-margin-before: 0.2em;
   -webkit-margin-after: 0.2em;
 }
 
-#stops_index_top{
-  margin-left: 20px;
+#stops_index_top a{
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  color: white;
+  background-color: #D34D26;;
+  box-sizing: border-box;
+  padding: 2px 6px 3px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: #D34D26;
+  border-image: initial;
+  text-decoration: none;
 }
+
 
 .button_div{
   display: flex;
@@ -41,8 +45,18 @@ p {
   margin: 0 0 0 15px;
 }
 
-.p_with_img{
-  display: inline-grid;
+#stops_index_top form input, .hp form input {
+  background-color: #D34D26;
+  border-color: #D34D26;
+  color: white;
+  font-size: medium;
+  font-family: 'Lato', sans-serif;
+  width: 25vw;
+}
+
+#stops_index_top form #file{
+  color: black;
+  background-color: white;
 }
 
 .hp .style_image{
@@ -54,6 +68,76 @@ p {
   flex-direction: row;
 }
 
+.top_link_box {
+  display: flex;
+
+}
+
+.top_link a{
+  color: gray;
+  margin: 0 10px 0 0;
+}
+
+.stop_num {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.stop_item {
+  margin-bottom: 20px;
+  display: flex;
+  border: 1px solid #C9C9C9;
+  padding: 0;
+}
+
+.bold_text {
+  text-transform: uppercase;
+  background: #C9C9C9;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px;
+  // margin-right: 10px;
+}
+
+.stop_content {
+  align-self: center;
+  padding: 5px 10px;
+}
+
+.coordinates_box {
+  display: flex;
+}
+
+.coordinates_box .stop_item {
+  width: 50%;
+  // margin-right: 10px;
+}
+
+.admin-btn{
+ font-size: 16px;
+ font-weight: 300;
+ letter-spacing: 2px;
+ margin-bottom: 20px;
+ background: #E34008 ;
+ padding: 5px 10px;
+ border-radius: 50px;
+ border: none;
+ color: white;
+ // width: 105px;
+ text-align: center;
+ display: inline-block;
+}
+
+.admin-btn:hover{
+  opacity: .7;
+}
+
+.admin-btn a{
+  text-decoration: none;
+  color: white;
+}
+
 .second_image_na{
   display: inline-block;
 }
@@ -63,4 +147,116 @@ p {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  // align-content: center;
+}
+
+.hp h2 {
+  color: #E83D1E;
+}
+
+.top_link_box {
+  display: flex;
+
+}
+
+.top_link a{
+  color: gray;
+  margin: 0 10px 0 0;
+}
+
+.stop_num {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.stop_item {
+  margin-bottom: 20px;
+  display: flex;
+  border: 1px solid #C9C9C9;
+  padding: 0;
+}
+
+.bold_text {
+  text-transform: uppercase;
+  background: #C9C9C9;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px;
+  // margin-right: 10px;
+}
+
+.stop_content {
+  align-self: center;
+  padding: 5px 10px;
+}
+
+.coordinates_box {
+  display: flex;
+}
+
+.coordinates_box .stop_item {
+  width: 50%;
+  // margin-right: 10px;
+}
+
+.admin-btn{
+ font-size: 16px;
+ font-weight: 300;
+ letter-spacing: 2px;
+ margin-bottom: 20px;
+ background: #E34008 ;
+ padding: 5px 10px;
+ border-radius: 50px;
+ border: none;
+ color: white;
+ width: 105px;
+ text-align: center;
+ display: inline-block;
+}
+
+.admin-btn:hover{
+  opacity: .7;
+}
+
+.admin-btn a{
+  text-decoration: none;
+  color: white;
+}
+
+.previous, .next {
+  display: flex;
+}
+
+.next img, .previous img {
+  height: 50px;
+}
+
+.next a, .previous a {
+  color: #E83D1E;
+  align-self: center;
+}
+
+
+td a:link{
+  color: grey;
+}
+
+td a:hover{
+  color: black;
+}
+
+td a:visited{
+  color: #D34D26;
+}
+
+.choose_file{
+  padding: 10px;
+  border: #D34D3F solid;
+  width: 60%;
+}
+
+.choose_file input[type=file] {
+  padding: 0 0 10px 0;
+  width: 90%;
 }

@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :update, :edit, :destroy]
-  before_action :get_tour
+  before_action :get_tour, except: [:download_template]
 
   def new
     @stop = Stop.new
@@ -16,7 +16,7 @@ class StopsController < ApplicationController
   end
 
   def download_template
-    send_file('./public/Stops_template.xlsx')
+    send_file('./public/Tourify_stops_template.xlsx')
   end
 
   def create
@@ -37,7 +37,6 @@ class StopsController < ApplicationController
   end
 
   def import
-    # @stop.admin = current_admin
     Stop.import(params[:file], params[:tour_id])
     redirect_to organization_tour_stops_path, notice: "Data imported"
   end
@@ -48,7 +47,7 @@ class StopsController < ApplicationController
   def update
     if current_admin == @stop.admin
       @stop.update!(stop_params)
-      redirect_to @stop
+      redirect_to organization_tour_stop_path
     else
       flash[:notice] = "You are not authorized to update this stop."
       render 'edit'

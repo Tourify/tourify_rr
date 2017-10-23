@@ -1,5 +1,7 @@
 <div class="admin_form">
-  <h1>Create a New Tour</h1>
+  <h1 class="stop_num"><%=@organization.name%></h1>
+
+  <h2>Create a New Tour</h2>
 
   <% if @tour.errors.any? %>
     <div class="error_messages">
