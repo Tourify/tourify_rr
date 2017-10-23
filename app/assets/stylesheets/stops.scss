@@ -1,49 +1,50 @@
-// Place all the styles related to the Stops controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-// li {
-//   list-style: none;
-// }
-
 p {
   -webkit-margin-before: 0.2em;
   -webkit-margin-after: 0.2em;
 }
-//
-// #stops_index_top{
-//   margin-left: 20px;
-// }
-//
-// .button_div{
-//   display: flex;
-//   flex-direction: row;
-// }
 
-// #button_left, #button_right{
-//   text-align: center;
-//   cursor: default;
-//   color: buttontext;
-//   background-color: buttonface;
-//   box-sizing: border-box;
-//   padding: 2px 6px 3px;
-//   border-width: 2px;
-//   border-style: outset;
-//   border-color: buttonface;
-//   border-image: initial;
-// }
-//
-// #button_left{
-//   margin: 0 15px 0 0;
-// }
-//
-// #button_right{
-//   margin: 0 0 0 15px;
-// }
+#stops_index_top a{
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  color: white;
+  background-color: #D34D26;;
+  box-sizing: border-box;
+  padding: 2px 6px 3px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: #D34D26;
+  border-image: initial;
+  text-decoration: none;
+}
 
-// .p_with_img{
-//   display: inline-grid;
-// }
+
+.button_div{
+  display: flex;
+  flex-direction: row;
+}
+
+#button_left, #button_right{
+  text-align: center;
+  cursor: default;
+  color: buttontext;
+  background-color: buttonface;
+  box-sizing: border-box;
+  padding: 2px 6px 3px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonface;
+  border-image: initial;
+}
+
+#button_left{
+  margin: 0 15px 0 0;
+}
+
+#button_right{
+  margin: 0 0 0 15px;
+}
+
 
 #stops_index_top form input, .hp form input {
   background-color: #D34D26;
@@ -54,6 +55,11 @@ p {
   width: 25vw;
 }
 
+#stops_index_top form #file{
+  color: black;
+  background-color: white;
+}
+
 .hp .style_image{
   width: 85%;
 }
@@ -61,17 +67,6 @@ p {
 .images_holder{
   display: flex;
   flex-direction: row;
-}
-
-.choose_file{
-  padding: 10px;
-  border: #D34D3F solid;
-}
-
-
-.choose_file input[type=file] {
-  padding: 0 0 10px 0;
-  width: 90%;
 }
 
 .top_link_box {
@@ -254,4 +249,15 @@ td a:hover{
 
 td a:visited{
   color: #D34D26;
+}
+
+.choose_file{
+  padding: 10px;
+  border: #D34D3F solid;
+  width: 60%;
+}
+
+.choose_file input[type=file] {
+  padding: 0 0 10px 0;
+  width: 90%;
 }
