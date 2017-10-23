@@ -1,4 +1,16 @@
-<h1>Edit Stop</h1>
+<div class="admin_form">
+
+<h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></h1>
+
+<div class="top_link_box">
+
+  <div class="top_link">
+    <%= link_to "Back to Tour", organization_tour_path %>
+  </div>
+
+</div>
+
+<h2>Edit Stop <%=@stop.stop_num%>: <%= @stop.name%></h2>
 
 <%= form_for [:organization, :tour, @stop] do |f| %>
 
@@ -11,8 +23,6 @@
     </ul>
   </div>
 <% end %>
-
-  <%= link_to "Back to Tour", organization_tour_path %>
 
   <div class="field">
     <%= f.label :stop_num %><br />
@@ -74,6 +84,9 @@
     <%= f.text_field :badge %>
   </div>
 
-  <div class="actions"><%= f.submit %></div>
+  <div class="submit">
+    <div class="actions"><%= f.submit %></div>
+  </div>
 
 <% end %>
+</div>

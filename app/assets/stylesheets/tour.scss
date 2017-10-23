@@ -6,14 +6,18 @@
 //   margin: 15px;
 // }
 
+// .admin_form{
+//   margin: 0 auto;
+//   width: 80%;
+// }
 
-h1{
+h1, h2{
   color: #e83d1e;
 }
 
 
 .submit input{
-  font-size: 16px;
+ font-size: 16px;
  font-weight: 300;
  letter-spacing: 2px;
  margin: 20px auto;
@@ -24,4 +28,40 @@ h1{
  width: 160px;
  color: white;
  text-transform: uppercase;
+}
+
+.stop-btn{
+ font-size: 16px;
+ font-weight: 300;
+ letter-spacing: 2px;
+ margin-bottom: 20px;
+ background: #E34008 ;
+ padding: 5px 10px;
+ border-radius: 50px;
+ border: none;
+ color: white;
+ // width: 105px;
+ text-align: center;
+ display: inline-block;
+}
+
+.stop-btn:hover{
+  opacity: .7;
+}
+
+.stop-btn a{
+  text-decoration: none;
+  color: white;
+}
+
+input {
+  border: 1px solid gray;
+  padding: 10px;
+  width: 80%;
+}
+
+textarea {
+  border: 1px solid gray;
+  padding: 10px;
+  width: 80%;
 }
