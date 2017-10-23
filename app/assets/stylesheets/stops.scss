@@ -11,8 +11,62 @@ p {
   -webkit-margin-after: 0.2em;
 }
 
-#stops_index_top{
-  margin-left: 20px;
+#stops_index_top form input, .hp form input {
+  background-color: #D34D26;
+  border-color: #D34D26;
+  color: white;
+  font-size: medium;
+  font-family: 'Lato', sans-serif;
+}
+
+#stops_index_top form #file{
+  color: black;
+  background-color: white;
+}
+
+.choose_file {
+  position: relative;
+  overflow: hidden;
+  width: 25%;
+  color: white;
+  border-style: outset;
+  padding: 2px;
+  text-align: center;
+  border-color: #D34D26;
+  background: #D34D26;
+}
+
+.choose_file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+
+#stops_index_top a{
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  color: white;
+  background-color: #D34D26;;
+  box-sizing: border-box;
+  padding: 2px 6px 3px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: #D34D26;
+  border-image: initial;
+  text-decoration: none;
 }
 
 .button_div{

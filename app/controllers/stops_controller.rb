@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :update, :edit, :destroy]
-  before_action :get_tour
+  before_action :get_tour, except: [:download_template]
 
   def new
     @stop = Stop.new
@@ -16,7 +16,7 @@ class StopsController < ApplicationController
   end
 
   def download_template
-    send_file('./public/Stops_template.xlsx')
+    send_file('./public/Tourify_stops_template.xlsx')
   end
 
   def create
