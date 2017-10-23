@@ -2,14 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-li {
-  list-style: none;
-}
+// li {
+//   list-style: none;
+// }
 
 p {
   -webkit-margin-before: 0.2em;
   -webkit-margin-after: 0.2em;
 }
+//
+// #stops_index_top{
+//   margin-left: 20px;
+// }
+//
+// .button_div{
+//   display: flex;
+//   flex-direction: row;
+// }
+
+// #button_left, #button_right{
+//   text-align: center;
+//   cursor: default;
+//   color: buttontext;
+//   background-color: buttonface;
+//   box-sizing: border-box;
+//   padding: 2px 6px 3px;
+//   border-width: 2px;
+//   border-style: outset;
+//   border-color: buttonface;
+//   border-image: initial;
+// }
+//
+// #button_left{
+//   margin: 0 15px 0 0;
+// }
+//
+// #button_right{
+//   margin: 0 0 0 15px;
+// }
+
+// .p_with_img{
+//   display: inline-grid;
+// }
 
 #stops_index_top form input, .hp form input {
   background-color: #D34D26;
@@ -18,12 +52,17 @@ p {
   font-size: medium;
   font-family: 'Lato', sans-serif;
   width: 25vw;
+
+.hp .style_image{
+  width: 85%;
 }
 
-#stops_index_top form #file{
-  color: black;
-  background-color: white;
+
+.images_holder{
+  display: flex;
+  flex-direction: row;
 }
+
 
 .choose_file{
   padding: 10px;
@@ -36,71 +75,87 @@ p {
   width: 90%;
 }
 
+.top_link_box {
+  display: flex;
 
+}
 
-#stops_index_top a{
-  align-items: flex-start;
-  text-align: center;
-  cursor: default;
-  color: white;
-  background-color: #D34D26;;
-  box-sizing: border-box;
-  padding: 2px 6px 3px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: #D34D26;
-  border-image: initial;
+.top_link a{
+  color: gray;
+  margin: 0 10px 0 0;
+}
+
+.stop_num {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.stop_item {
+  margin-bottom: 20px;
+  display: flex;
+  border: 1px solid #C9C9C9;
+  padding: 0;
+}
+
+.bold_text {
+  text-transform: uppercase;
+  background: #C9C9C9;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px;
+  // margin-right: 10px;
+}
+
+.stop_content {
+  align-self: center;
+  padding: 5px 10px;
+}
+
+.coordinates_box {
+  display: flex;
+}
+
+.coordinates_box .stop_item {
+  width: 50%;
+  // margin-right: 10px;
+}
+
+.admin-btn{
+ font-size: 16px;
+ font-weight: 300;
+ letter-spacing: 2px;
+ margin-bottom: 20px;
+ background: #E34008 ;
+ padding: 5px 10px;
+ border-radius: 50px;
+ border: none;
+ color: white;
+ width: 105px;
+ text-align: center;
+ display: inline-block;
+}
+
+.admin-btn:hover{
+  opacity: .7;
+}
+
+.admin-btn a{
   text-decoration: none;
+  color: white;
 }
 
-.button_div{
+.previous, .next {
   display: flex;
-  flex-direction: row;
 }
 
-#button_left, #button_right{
-  text-align: center;
-  cursor: default;
-  color: buttontext;
-  background-color: buttonface;
-  box-sizing: border-box;
-  padding: 2px 6px 3px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: buttonface;
-  border-image: initial;
+.next img, .previous img {
+  height: 50px;
 }
 
-#button_left{
-  margin: 0 15px 0 0;
-}
-
-#button_right{
-  margin: 0 0 0 15px;
-}
-
-.p_with_img{
-  display: inline-grid;
-}
-
-.hp .style_image{
-  width: 85%;
-}
-
-.images_holder{
-  display: flex;
-  flex-direction: row;
-}
-
-.second_image_na{
-  display: inline-block;
-}
-
-.link_container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+.next a, .previous a {
+  color: #E83D1E;
+  align-self: center;
 }
 
 
