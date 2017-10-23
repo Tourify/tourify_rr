@@ -89,24 +89,6 @@
       </div>
     <% end %>
 
-    <div class="stop_item">
-      <p class="bold_text">Uploaded Image:</p>
-      <p class="stop_content">
-        <% if @stop.image %>
-          <%= image_tag(@stop.image, class: "style_image") %>
-        <% end %>
-      </p>
-    </div>
-
-    <div class="stop_item">
-      <p class="bold_text">Uploaded Attachments:</p>
-      <p class="stop_content">
-        <% if @stop.attachments %>
-          <%= image_tag(@stop.attachments, class: "style_image") %>
-        <% end %>
-      </p>
-    </div>
-
   <div class="link_container">
     <% if (@stop.stop_num-1 != 0) %>
       <div class="previous">

@@ -47,7 +47,7 @@ class StopsController < ApplicationController
   def update
     if current_admin == @stop.admin
       @stop.update!(stop_params)
-      redirect_to @stop
+      redirect_to organization_tour_stop_path
     else
       flash[:notice] = "You are not authorized to update this stop."
       render 'edit'
