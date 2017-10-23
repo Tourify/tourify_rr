@@ -1,70 +1,125 @@
 <div class="hp">
-    <h2><span class="bold_text">Stop Number: </span><%= @stop.stop_num %></h2>
-    <h2><%= @stop.name %></h2>
-    <p><span class="bold_text">Description: </span><%= @stop.description %></p>
-    <p><span class="bold_text">Location: </span><%= @stop.location %></p>
-    <p><span class="bold_text">Directions to next stop: </span><%= @stop.directions_to_next_stop %></p>
-    <p><span class="bold_text">Travel tip: </span><%= @stop.travel_tip %></p>
-    <p><span class="bold_text">GPS longitude: </span><%= @stop.gps_long %></p>
-    <p><span class="bold_text">GPS latitude: </span><%= @stop.gps_lat %></p>
 
-    <p><span class="bold_text">Learn_more_URL: </span>
+  <div class="top_link_box">
+
+    <div class="top_link">
+      <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
+    </div>
+
+    <div class="top_link">
+      <%= link_to "Back to Organization", organization_path(@stop.tour.organization_id) %>
+    </div>
+
+  </div>
+
+  <h2 class="stop_num">Stop Number: <%= @stop.stop_num %></h2>
+  <h2><%= @stop.name %></h2>
+
+  <div class="admin-btn"><%= link_to 'Edit stop', edit_organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num) %></div>
+
+  <div class="admin-btn"><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+
+  <div class="stop_item">
+    <p class="bold_text">Description:</p>
+    <p class="stop_content"><%= @stop.description %></p>
+  </div>
+
+  <div class="stop_item">
+    <p class="bold_text">Location:</p>
+    <p class="stop_content"><%= @stop.location %></p>
+  </div>
+
+  <div class="stop_item">
+    <p class="bold_text">Directions to next stop:</p>
+    <p class="stop_content"><%= @stop.directions_to_next_stop %></p>
+  </div>
+
+  <div class="stop_item">
+    <p class="bold_text">Travel tip:</p>
+    <p class="stop_content"><%= @stop.travel_tip %></p>
+  </div>
+
+  <div class="coordinates_box">
+    <div class="stop_item">
+      <p class="bold_text">GPS longitude:</p><p class="stop_content"><%= @stop.gps_long %></p>
+    </div>
+    <div class="stop_item">
+      <p class="bold_text">GPS latitude:</p><p class="stop_content"><%= @stop.gps_lat %></p>
+    </div>
+  </div>
+
+  <div class="stop_item">
+    <p class="bold_text">Learn_more_URL:</p>
+    <p class="stop_content">
       <% if @stop.learn_more_URL != nil %>
         <%= link_to @stop.learn_more_URL, url_for(@stop.learn_more_URL) %>
       <% end %>
     </p>
+  </div>
+
     <% if @stop.image_historic %>
-      <div class="images_holder">
-        <p class="p_with_img"><span class="bold_text">Image Current </span>
-          <% if @stop.image_current %>
-            <%= image_tag(@stop.image_current, class: "style_image") %>
-          <% end %>
-        </p>
-        <p class="p_with_img"><span class="bold_text">Image Historic </span>
-          <%= image_tag(@stop.image_historic, class: "style_image") %>
-        </p>
-      </div>
-      <% else %>
-        <div class="second_image_na">
-          <p class="bold_text">Image Current
+      <div class="stop_item">
+        <div class="images_holder">
+          <p class="bold_text">Image Current:</p>
+          <p class="stop_content">
+            <% if @stop.image_current %>
+              <%= image_tag(@stop.image_current, class: "style_image") %>
+            <% end %>
           </p>
-          <%= image_tag(@stop.image_current, class: "style_image") %>
         </div>
-        <p>
-          <br />
-          <span class="bold_text">Image Historic </span>
-          None available
-        </p>
-      <% end %>
-      <p class="p_with_img"><span class="bold_text">Uploaded Image </span>
+      </div>
+      <div class="stop_item">
+          <p class="bold_text">Image Historic:</p>
+          <p class="stop_content">
+            <%= image_tag(@stop.image_historic, class: "style_image") %>
+          </p>
+      </div>
+
+    <% else %>
+      <div class="stop_item">
+          <div class="images_holder">
+            <p class="bold_text">Image Current:</p>
+            <p class="stop_content"><%= image_tag(@stop.image_current, class: "style_image") %>
+            </p>
+          </div>
+      </div>
+      <div class="stop_item">
+          <p class="bold_text">Image Historic:</p>
+          <p class="stop_content">None available</p>
+      </div>
+    <% end %>
+
+    <div class="stop_item">
+      <p class="bold_text">Uploaded Image:</p>
+      <p class="stop_content">
         <% if @stop.image %>
           <%= image_tag(@stop.image, class: "style_image") %>
         <% end %>
       </p>
+    </div>
 
-      <p class="p_with_img"><span class="bold_text">Uploaded Attachments </span>
+    <div class="stop_item">
+      <p class="bold_text">Uploaded Attachments:</p>
+      <p class="stop_content">
         <% if @stop.attachments %>
           <%= image_tag(@stop.attachments, class: "style_image") %>
         <% end %>
       </p>
-
-  <div><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></div>
-
-  <div><%= link_to 'Edit stop', edit_organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num) %></div>
+    </div>
 
   <div class="link_container">
     <% if (@stop.stop_num-1 != 0) %>
       <div class="previous">
+        <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-arrow.png" alt = "left arrow"/>
           <%= link_to "Previous Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num-1) %>
       </div>
     <% end %>
       <div class="next">
         <%= link_to "Next Stop", organization_tour_stop_path(@stop.tour.organization_id, @stop.tour_id, @stop.stop_num+1) %>
+        <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-arrow-right.png" alt = "right arrow"/>
       </div>
   </div>
 
   <br />
-  <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
-  <br>
-  <%= link_to "Back to Organzation", organization_path(@stop.tour.organization_id) %>
+
 </div>
