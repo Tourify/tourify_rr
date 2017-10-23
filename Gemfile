@@ -40,9 +40,9 @@ gem 'rack-cors'
 #gem 'bootstrap-sass'
 
 # gem "paperclip", "~> 5.0.0"
-gem 'carrierwave', '~> 0.11.2'
-gem "fog-aws"
-gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+# gem 'carrierwave', '~> 0.11.2'
+# gem "fog-aws"
+# gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 
 # gem "paperclip", "~> 5.1"
