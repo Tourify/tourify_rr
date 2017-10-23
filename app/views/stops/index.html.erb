@@ -5,32 +5,34 @@
     <p>If you have not done this before, you may want to use the provided template:</p><%= link_to 'Download template', stops_download_template_url %>
     <br />
     <br />
+
     <p>If you've already added your Stop information to the template, use the buttons below to choose your file and upload it.</p>
-    <%= form_tag import_organization_tour_stops_path, multipart: true do %>
-      <p class="choose_file">
-      Choose File
+    <div class="choose_file">
+      <%= form_tag import_organization_tour_stops_path, multipart: true do %>
       <%= file_field_tag :file %>
-      </p>
+      <br />
       <%= submit_tag " Import CSV " %>
-    <% end %>
+      <% end %>
+    </div>
     <br />
+
     <p>Use the buttons below to download your tour stops in either CSV or xls format.</p>
     <div class="button_div">
       <%= button_to "   CSV   ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %> | <%= button_to "  Excel  ", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
     </div>
     <br />
-
-
   </div>
 
   <%= button_to 'Delete All Stops', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %>
   <br />
 
+<% if @stops.blank? %>
+<% else %>
   <table>
     <thead>
       <tr>
         <th>Stop Number</th>
-        <th>Name</th>
+        <th>Stop Name</th>
         <th></th>
         <th></th>
         <th></th>
@@ -48,4 +50,8 @@
       <% end %>
     </tbody>
   </table>
+<% end %>
+
 </div>
+<br />
+<br />
