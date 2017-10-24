@@ -46,6 +46,7 @@ p {
 }
 
 #stops_index_top form input, .hp form input {
+  border: 0px;
   background-color: #D34D26;
   border-color: #D34D26;
   color: white;
@@ -60,7 +61,7 @@ p {
 }
 
 .hp .style_image{
-  width: 85%;
+  height: 60vh;
 }
 
 .images_holder{

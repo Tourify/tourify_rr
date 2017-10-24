@@ -1,5 +1,15 @@
 <div class="admin_form">
   <h1 class="stop_num"><%=@organization.name%>: <%=@tour.name%></h1>
+  <div class="top_link_box">
+    <div class="top_link"><%= link_to 'Back to Stops', organization_tour_stops_path(@organization, @tour) %></div>
+    <div class="top_link">
+      <%= link_to "Back to Tour", organization_tour_path(@organization, @tour) %>
+    </div>
+
+    <div class="top_link">
+      <%= link_to "Back to Organization", organization_path(@organization) %>
+    </div>
+  </div>
 
   <h2>New Stop</h2>
 
@@ -14,11 +24,6 @@
   <% end %>
 
   <%= form_for @stop, url: {action: "create"}, html: { multipart: true } do |f| %>
-    <p class="field">
-      <%= f.label :image %><br>
-      <%= f.file_field :image %>
-    </p>
-
     <p>
       <%= f.label :stop_num %><br />
       <%= f.text_field :stop_num %>

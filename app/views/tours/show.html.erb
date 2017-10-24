@@ -1,52 +1,59 @@
 <div class="hp">
 
-  <h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></h1>
+  <h2><%=@organization.name%>:
+    <%= @tour.name%></h2>
 
   <div class="top_link_box">
-
     <div class="top_link">
       <%= link_to "Back to Organization", organization_path(@tour.organization_id) %>
     </div>
-
-    <div class="top_link">
-      <%= link_to "Logout", session_path, :method => :delete %>
-    </div>
-
   </div>
 
   <h2>Tour Overview</h2>
 
   <ul>
-    <li>Tour Name: <%= @tour.name %></li>
-    <li>Description: <%= @tour.description %>.</li>
-    <li>Distance: <%= @tour.distance %> miles</li>
-    <li>Time: <%= @tour.time_in_mins %> minutes</li>
-    <li>Created By: <%= @tour.admin.username %></li>
+    <li>Tour Name:
+      <%= @tour.name %></li>
+    <li>Total number of stops:
+      <%= @tour.stops.count %></li>
+    <li>Description:
+      <%= @tour.description %>.</li>
+    <li>Distance:
+      <%= @tour.distance %>
+      miles</li>
+    <li>Time:
+      <%= @tour.time_in_mins %>
+      minutes</li>
+    <li>Created By:
+      <%= @tour.admin.username %></li>
   </ul>
+  <p>
+    Visit thep Stops Main Page to modify stops in bulk, delete stops, and more.
+  </p>
 
-<h2>Tour Stop List</h2>
+  <div class="stop-btn"><%= link_to 'Stops Main Page', organization_tour_stops_path(@organization, @tour) %></div>
 
-<div class="stop-btn"><%= link_to 'Add New Stop', new_organization_tour_stop_path(@organization, @tour) %></div>
+  <h2>Tour Stop List</h2>
 
-<div class="stop-btn"><%= link_to 'Add/Edit Stops in Bulk', organization_tour_stops_path(@organization, @tour) %></div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Stop Number</th>
-      <th>Name</th>
-      <th>Details</th>
-    </tr>
-  </thread>
-  <tbody>
-    <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
-        <tr>
-          <td><%= stop.stop_num %></td>
-          <td><%= stop.name %></td>
-          <td><%= link_to 'See Stop Details', organization_tour_stop_path(@organization, @tour, stop.stop_num) %></td>
-        </tr>
-        <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Stop Number</th>
+        <th>Name</th>
+        <th>Details</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
+      <tr>
+        <td><%= stop.stop_num %></td>
+        <td><%= stop.name %></td>
+        <td><%= link_to 'See Stop Details', organization_tour_stop_path(@organization, @tour, stop.stop_num) %></td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
+  <br />
+    <div class="stop-btn"><%= link_to 'Add Single Stop', new_organization_tour_stop_path(@organization, @tour) %></div>
 
-</>
+  <br/>
