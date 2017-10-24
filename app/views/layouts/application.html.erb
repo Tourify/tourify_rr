@@ -18,8 +18,7 @@
     </div>
     <div  id="logout_div">
       <h2>Content Creator Dashboard </h2>
-      <% if @current_admin.blank? %>
-      <% else %>
+      <% if @current_admin %>
       <div class="top_link", id="logout">
       <%= link_to "Logout", logout_path, :method => :delete %>
       </div>
