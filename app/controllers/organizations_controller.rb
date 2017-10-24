@@ -38,6 +38,7 @@ class OrganizationsController < ApplicationController
       redirect_to new_session_path
     end
   end
+  
   # def create
   #   @organization = Organization.create(organization_params)
   #   render :show, status: :created
