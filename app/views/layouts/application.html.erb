@@ -5,7 +5,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
     <meta name="viewport" content="width=device-width">
     <%= csrf_meta_tags %>
-    <%= javascript_pack_tag 'App' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,9 +18,13 @@
     </div>
     <div  id="logout_div">
       <h2>Content Creator Dashboard </h2>
+      <% if @current_admin.blank? %>
+      <% else %>
       <div class="top_link", id="logout">
       <%= link_to "Logout", logout_path, :method => :delete %>
       </div>
+      <% end %>
+
     </div>
     </nav>
     <div id="container" class="container-fluid">
