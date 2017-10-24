@@ -10,7 +10,6 @@
   </head>
 
   <body>
-
     <nav>
       <div>
         <a href="/organizations/1">
@@ -26,7 +25,6 @@
         <% end %>
       </div>
     </nav>
-
     <div id="container" class="container-fluid">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
