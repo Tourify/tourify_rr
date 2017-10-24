@@ -67,7 +67,7 @@ class ToursController < ApplicationController
   private
 
   def tour_params
-    params.require(:tour).permit(:name, :description, :distance, :time_in_mins)
+    params.require(:tour).permit(:name, :description, :distance, :time_in_mins, :main_tour_photo)
   end
 
   def set_tour

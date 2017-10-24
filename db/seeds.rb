@@ -11,7 +11,7 @@ dcvb = Organization.create!(name: "DCVB", display_name: "DURHAM, NC", org_photo:
 
 admin1 = Admin.create!(username: "dcvbadmin", password: "bullcity", organization: dcvb)
 
-main_tour = Tour.create!(name: "Main route", description: "This is the main route as defined by the DCVB", distance: 1.2, time_in_mins: 60, organization: dcvb, admin: admin1, main_tour_photo: "https://jaredpattersonblog.files.wordpress.com/2017/10/dsc_0009.jpg")
+main_tour = Tour.create!(name: "Downtown Durham History Walk", description: "Learn unique facts while exploring national landmarks, historic buildings, and local businesses.", distance: 1.2, time_in_mins: 60, organization: dcvb, admin: admin1, main_tour_photo: "https://jaredpattersonblog.files.wordpress.com/2017/10/dsc_0009.jpg")
 #
 # stop1 = Stop.create(stop_num: 1, name: 'Durham Visitor Info  Center', description: 'Experience experts are on hand to assist visitors and newcomers with directions, maps, and literature. Also home to Durham’s official marketing agency, the Durham Convention & Visitors Bureau. The Info Center is housed in the historic Trust Building, a 1905 Beaux Arts-style building and tallest office building in the state at the time of its construction.', location: '212 W Main St #101', tour: main_tour)
 #

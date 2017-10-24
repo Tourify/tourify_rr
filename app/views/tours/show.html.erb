@@ -11,6 +11,10 @@
 
   <h2>Tour Overview</h2>
 
+  <% if @tour.main_tour_photo %>
+        <%= image_tag(@tour.main_tour_photo, class: "main_tour_photo") %>
+  <% end %>
+
   <ul>
     <li>Tour Name:
       <%= @tour.name %></li>
@@ -26,9 +30,11 @@
       minutes</li>
     <li>Created By:
       <%= @tour.admin.username %></li>
+    <li>Main Tour Photo URL: <%= @tour.main_tour_photo %></li>
   </ul>
+
   <p>
-    Visit thep Stops Main Page to modify stops in bulk, delete stops, and more.
+    Visit the Stops Main Page to modify stops in bulk, delete stops, and more.
   </p>
 
   <div class="stop-btn"><%= link_to 'Stops Main Page', organization_tour_stops_path(@organization, @tour) %></div>
