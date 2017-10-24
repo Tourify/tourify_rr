@@ -30,3 +30,14 @@
   margin-top: 150px;
   // text-align: center;
 }
+
+#logout_div{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  text-align: end;
+}
+
+#logout{
+  margin-right: 10px;
+}
