@@ -10,34 +10,35 @@
       <div class="top_link">
         <%= link_to "Back to Organization", organization_path(@tour.organization_id) %>
       </div>
-
   </div>
-  <br />
-  <div id="stops_index_top">
 
-    <p>Load your stops for the <%= @tour.name%> tour by importing a CSV File.</p>
-    <p>If you have not done this before, you may want to use the provided template:</p><%= link_to 'Download template', stops_download_template_url %>
-    <br />
-    <br />
+  <div>
+    <h3 class="stop-h3">Bulk Upload Stop Data</h3>
+    <p class="stop-para">To bulk upload stops for the <%= @tour.name%> tour you can import your content with a CSV File. If you have not done this before, you should <%= link_to 'download the template', stops_download_template_url %>.</p>
 
-    <p>If you've already added your Stop information to the template, use the buttons below to choose your file and upload it.</p>
-    <div class="choose_file">
-      <%= form_tag import_organization_tour_stops_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <br />
-      <%= submit_tag " Import CSV " %>
+    <p>Once your stop data is in the template, use the buttons below to choose and import your CSV file:</p>
+
+    <div class="import-csv">
+      <div class="csv-options">
+        <div><%= form_tag import_organization_tour_stops_path, multipart: true do %></div>
+        <div><%= file_field_tag :file %></div>
+      </div>
+      <div class="import-button">
+        <div class="submit"><%= submit_tag " Import CSV " %></div>
+      </div>
       <% end %>
     </div>
-    <br />
 
-    <p>Use the buttons below to download your tour stops in either CSV or xls format.</p>
+    <h3 class="stop-h3">Bulk Edit Stop Data</h3>
+    <p class="stop-para">Use the buttons below to download your existing stop data in either CSV or xls format. After editing the file, you can upload changes using the steps above.</p>
     <div class="button_div">
-      <%= button_to "   CSV   ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %> | <%= button_to "  Excel  ", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+      <div class="admin-btn"><%= button_to "CSV", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %></div><div class="admin-btn"><%= button_to "Excel", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %></div>
     </div>
-    <br />
   </div>
 
-  <%= button_to 'Delete All Stops', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %>
+  <h3 class="stop-h3">Delete Stop Data</h3>
+  <p class="stop-para">Delete stops individually in the following list, or delete ALL stops using the button below.</p>
+  <div class="admin-btn"><%= button_to 'Delete All Stops', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %></div>
   <br />
 
 <% if @stops.blank? %>
