@@ -27,13 +27,13 @@ p {
 #button_left, #button_right{
   text-align: center;
   cursor: default;
-  color: buttontext;
-  background-color: buttonface;
-  box-sizing: border-box;
+  color: white;
+  // background-color: buttonface;
+  // box-sizing: border-box;
   padding: 2px 6px 3px;
   border-width: 2px;
-  border-style: outset;
-  border-color: buttonface;
+  // border-style: outset;
+  // border-color: buttonface;
   border-image: initial;
 }
 
@@ -47,8 +47,8 @@ p {
 
 #stops_index_top form input, .hp form input {
   border: 0px;
-  background-color: #D34D26;
-  border-color: #D34D26;
+  background-color: #E34008;
+  border-color: #E34008;
   color: white;
   font-size: medium;
   font-family: 'Lato', sans-serif;
@@ -120,6 +120,7 @@ p {
  font-weight: 300;
  letter-spacing: 2px;
  margin-bottom: 20px;
+ margin-right: 10px;
  background: #E34008 ;
  padding: 5px 10px;
  border-radius: 50px;
@@ -201,21 +202,6 @@ p {
   // margin-right: 10px;
 }
 
-.admin-btn{
- font-size: 16px;
- font-weight: 300;
- letter-spacing: 2px;
- margin-bottom: 20px;
- background: #E34008 ;
- padding: 5px 10px;
- border-radius: 50px;
- border: none;
- color: white;
- width: 105px;
- text-align: center;
- display: inline-block;
-}
-
 .admin-btn:hover{
   opacity: .7;
 }
@@ -260,4 +246,42 @@ td a:visited{
 .choose_file input[type=file] {
   padding: 0 0 10px 0;
   width: 90%;
+}
+
+.import-csv {
+  display: flex;
+  background: lightgray;
+  // justify-content: center;
+  align-items: center;
+  // padding: 5px;
+  margin: 20px 0;
+  width: 500px;
+}
+
+.csv-options {
+  background: white;
+  // font-size: 20px;
+  padding: 20px;
+  margin: 5px;
+  width: 55%;
+}
+
+.import-button {
+  width: 40%;
+}
+
+.stop-para {
+  margin: 10px 0;
+}
+
+.stop-para a {
+  color: #E83D1E;
+}
+
+.stop-h3 {
+  color: #E83D1E;
+}
+
+.choose-file {
+  background: gray;
 }
