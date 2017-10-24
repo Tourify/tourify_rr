@@ -34,12 +34,14 @@ class StopsController < ApplicationController
   end
 
   def create
-    @stop = @tour.stops.build(stop_params)
-    @stop.admin = current_admin
-    if @stop.save
-      render 'show'
-    else
-      render 'new'
+    if logged_in? && current_admin.organization == @organization
+      @stop = @tour.stops.build(stop_params)
+      @stop.admin = current_admin
+      if @stop.save
+        render 'show'
+      else
+        render 'new'
+      end
     end
   end
 
@@ -51,7 +53,7 @@ class StopsController < ApplicationController
   end
 
   def import
-    if logged_in?
+    if logged_in? && current_admin.organization == @organization
       Stop.import(params[:file], params[:tour_id])
       redirect_to organization_tour_stops_path, notice: "Data imported"
     else
@@ -60,7 +62,7 @@ class StopsController < ApplicationController
   end
 
   def edit
-    if logged_in?
+    if logged_in? && current_admin.organization == @organization
       render :action => 'edit.html'
     else
       redirect_to new_session_path
@@ -120,4 +122,5 @@ class StopsController < ApplicationController
   def get_organization
     @organization = Organization.find(params[:organization_id])
   end
+
 end

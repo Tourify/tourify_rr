@@ -4,7 +4,7 @@
 
   <h2>Edit Tour</h2>
 
-  <%= form_for [:organization, @tour] do |f| %>
+  <%= form_for [@organization, @tour] do |f| %>
 
   <% if @tour.errors.any? %>
     <div class="error_messages">
