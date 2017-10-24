@@ -4,19 +4,33 @@ class StopsController < ApplicationController
 
   def new
     @stop = Stop.new
+    if logged_in?
+      render :action => 'new.html'
+    else
+      redirect_to new_session_path
+    end
   end
 
   def index
     @stops = Stop.all
-    respond_to do |format|
-      format.html
-      format.csv { send_data @stops.to_csv }
-      format.xls { send_data @stops.to_csv(col_sep: "\t") }
+    if logged_in?
+      render :action => 'index.html'
+      respond_to do |format|
+        format.html
+        format.csv { send_data @stops.to_csv }
+        format.xls { send_data @stops.to_csv(col_sep: "\t") }
+      end
+    else
+      redirect_to new_session_path
     end
   end
 
   def download_template
-    send_file('./public/Tourify_stops_template.xlsx')
+    if logged_in?
+      send_file('./public/Tourify_stops_template.xlsx')
+    else
+      redirect_to new_session_path
+    end
   end
 
   def create
@@ -37,11 +51,20 @@ class StopsController < ApplicationController
   end
 
   def import
-    Stop.import(params[:file], params[:tour_id])
-    redirect_to organization_tour_stops_path, notice: "Data imported"
+    if logged_in?
+      Stop.import(params[:file], params[:tour_id])
+      redirect_to organization_tour_stops_path, notice: "Data imported"
+    else
+      redirect_to new_session_path
+    end
   end
 
   def edit
+    if logged_in?
+      render :action => 'edit.html'
+    else
+      redirect_to new_session_path
+    end
   end
 
   def update
