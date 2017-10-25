@@ -1,8 +1,4 @@
 class Stop < ApplicationRecord
-  # mount_uploader :image, ImageUploader
-  # mount_uploader :attachments, AttachmentUploader
-  # attr_accessor :image
-
   belongs_to :tour
   belongs_to :admin
 

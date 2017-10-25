@@ -8,12 +8,12 @@ p {
   text-align: center;
   cursor: default;
   color: white;
-  background-color: #D34D26;;
+  background-color: #E34008;;
   box-sizing: border-box;
   padding: 2px 6px 3px;
   border-width: 2px;
   border-style: outset;
-  border-color: #D34D26;
+  border-color: #E34008;
   border-image: initial;
   text-decoration: none;
 }
@@ -28,12 +28,8 @@ p {
   text-align: center;
   cursor: default;
   color: white;
-  // background-color: buttonface;
-  // box-sizing: border-box;
-  padding: 2px 6px 3px;
+  padding: 10px 0;
   border-width: 2px;
-  // border-style: outset;
-  // border-color: buttonface;
   border-image: initial;
 }
 
@@ -153,7 +149,9 @@ p {
 }
 
 .hp h2 {
-  color: #E83D1E;
+  color: #E34008;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .top_link_box {
@@ -220,7 +218,7 @@ p {
 }
 
 .next a, .previous a {
-  color: #E83D1E;
+  color: #E34008;
   align-self: center;
 }
 
@@ -234,7 +232,7 @@ td a:hover{
 }
 
 td a:visited{
-  color: #D34D26;
+  color: #E34008;
 }
 
 .choose_file{
@@ -255,7 +253,7 @@ td a:visited{
   align-items: center;
   // padding: 5px;
   margin: 20px 0;
-  width: 500px;
+  width: 55vw;
 }
 
 .csv-options {
@@ -267,7 +265,7 @@ td a:visited{
 }
 
 .import-button {
-  width: 40%;
+  padding: 0 20px;
 }
 
 .stop-para {
@@ -275,11 +273,11 @@ td a:visited{
 }
 
 .stop-para a {
-  color: #E83D1E;
+  color: #E34008;
 }
 
 .stop-h3 {
-  color: #E83D1E;
+  color: #E34008;
 }
 
 .choose-file {
