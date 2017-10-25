@@ -1,86 +1,94 @@
 <div class="admin_form">
 
-<h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></h1>
+  <h1 class="stop_num"><%=@organization.name%>:
+    <%= @tour.name%></h1>
 
-<div class="top_link_box">
+  <div class="top_link_box">
+    <div class="top_link">
+      <%= link_to 'Back to Stops', organization_tour_stops_path(@organization, @tour) %>
+    </div>
+    <div class="top_link">
+      <%= link_to "Back to Tour", organization_tour_path(@organization, @tour) %>
+    </div>
 
-  <div class="top_link">
-    <%= link_to "Back to Tour", organization_tour_path %>
+    <div class="top_link">
+      <%= link_to "Back to Organization", organization_path(@organization) %>
+    </div>
   </div>
 
-</div>
+  <h2>Edit Stop
+    <%= @stop.stop_num %>:
+    <%= @stop.name %></h2>
 
-<h2>Edit Stop <%=@stop.stop_num%>: <%= @stop.name%></h2>
+  <%= form_for @stop, url: {action: "update"} do |f| %>
 
-<%= form_for @stop, url: {action: "update"} do |f| %>
-
-<% if @stop.errors.any? %>
-  <div class="error_messages">
-    <ul>
-    <% @stop.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @stop.errors.any? %>
+    <div class="error_messages">
+      <ul>
+        <% @stop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
-    <%= f.label :stop_num %><br />
+    <%= f.label :stop_num %><br/>
     <%= f.text_field :stop_num %>
   </div>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %><br/>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %><br/>
     <%= f.text_area :description, :rows => 12, :cols => 35 %>
   </div>
 
   <div class="field">
-    <%= f.label :directions_to_next_stop %><br />
+    <%= f.label :directions_to_next_stop %><br/>
     <%= f.text_field :directions_to_next_stop %>
   </div>
 
   <div class="field">
-    <%= f.label :learn_more_URL %><br />
+    <%= f.label :learn_more_URL %><br/>
     <%= f.text_field :learn_more_URL %>
   </div>
 
   <div class="field">
-    <%= f.label :travel_tip %><br />
+    <%= f.label :travel_tip %><br/>
     <%= f.text_field :travel_tip %>
   </div>
 
   <div class="field">
-    <%= f.label :location %><br />
+    <%= f.label :location %><br/>
     <%= f.text_field :location %>
   </div>
 
   <div class="field">
-    <%= f.label :image_current %><br />
+    <%= f.label :image_current %><br/>
     <%= f.text_field :image_current %>
   </div>
 
   <div class="field">
-    <%= f.label :image_historic %><br />
+    <%= f.label :image_historic %><br/>
     <%= f.text_field :image_historic %>
   </div>
 
   <div class="field">
-    <%= f.label :gps_long %><br />
+    <%= f.label :gps_long, "GPS longitude" %><br/>
     <%= f.text_field :gps_long %>
   </div>
 
   <div class="field">
-    <%= f.label :gps_lat %><br />
+    <%= f.label :gps_lat, "GPS latitude" %><br/>
     <%= f.text_field :gps_lat %>
   </div>
 
   <div class="field">
-    <%= f.label :badge %><br />
+    <%= f.label :badge %><br/>
     <%= f.text_field :badge %>
   </div>
 
@@ -88,5 +96,5 @@
     <div class="actions"><%= f.submit %></div>
   </div>
 
-<% end %>
+  <% end %>
 </div>
