@@ -17,8 +17,8 @@ class StopsController < ApplicationController
       # render :action => 'index.html'
       respond_to do |format|
         format.html
-        format.csv { send_data @stops.to_csv }
-        format.xls { send_data @stops.to_csv(col_sep: "\t") }
+        format.csv { send_data @tour.stops.to_csv }
+        format.xls { send_data @tour.stops.to_csv(col_sep: "\t") }
       end
     # else
       #
