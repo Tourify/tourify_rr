@@ -22,11 +22,9 @@
 
     <p>Once your stop data is in the template, use the buttons below to choose and import your CSV file:</p>
 
+    <%= form_tag import_organization_tour_stops_path, multipart: true do %>
     <div class="import-csv">
       <div class="csv-options">
-        <div>
-          <%= form_tag import_organization_tour_stops_path, multipart: true do %>
-        </div>
         <%= file_field_tag :file %>
       </div>
       <div class="import-button">
@@ -34,18 +32,20 @@
           <%= submit_tag " Import CSV " %>
         </div>
       </div>
-      <% end %>
     </div>
+    <% end %>
+  </div>
 
-    <% if @stops.blank? %>
+  <% if @tour.stops.blank? %>
   <% else %>
+  <div class="show_when_stops">
     <h3 class="stop-h3">Bulk Edit Stop Data</h3>
     <p class="stop-para">Use the buttons below to download your existing stop data in either CSV or xls format. After editing the file, you can upload changes using the steps above.</p>
     <div class="button_div">
       <div class="admin-btn"><%= button_to "CSV", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %></div>
       <div class="admin-btn"><%= button_to "EXCEL", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %></div>
     </div>
-  </div>
+
 
   <h3 class="stop-h3">Delete Stop Data</h3>
   <p class="stop-para">To delete stops individually, use the link next to each stop in the list below. To delete ALL stops at once, use the button below.</p>
@@ -74,6 +74,7 @@
       <% end %>
     </tbody>
   </table>
+  </div>
   <% end %>
 
 </div>

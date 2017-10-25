@@ -253,7 +253,7 @@ td a:visited{
   align-items: center;
   // padding: 5px;
   margin: 20px 0;
-  width: 55vw;
+  width: 75vw;
 }
 
 .csv-options {
@@ -262,6 +262,20 @@ td a:visited{
   padding: 20px;
   margin: 5px;
   width: 55%;
+}
+
+#stops_index_top form input, .hp form input {
+  border: 0px;
+  background-color: #E34008;
+  border-color: #E34008;
+  color: white;
+  font-size: medium;
+  font-family: 'Lato', sans-serif;
+  width: 25vw;
+}
+.csv-options #file{
+  color: black;
+  background-color: white;
 }
 
 .import-button {
