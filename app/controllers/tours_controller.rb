@@ -12,7 +12,11 @@ class ToursController < ApplicationController
   end
 
   def new
-    @tour = Tour.new
+    if logged_in?
+      @tour = Tour.new
+    else
+      redirect_to new_session_path
+    end
   end
 
   def show
@@ -37,6 +41,11 @@ class ToursController < ApplicationController
   end
 
   def edit
+    if logged_in?
+      render :action => 'edit.html'
+    else
+      redirect_to new_session_path
+    end
   end
 
   def update
