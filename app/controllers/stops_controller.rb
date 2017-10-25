@@ -13,15 +13,11 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
-    if logged_in?
-      render :action => 'index.html'
-      respond_to do |format|
-        format.html
-        format.csv { send_data @stops.to_csv }
-        format.xls { send_data @stops.to_csv(col_sep: "\t") }
-      end
-    else
-      redirect_to new_session_path
+    render :action => 'index.html'
+    respond_to do |format|
+      format.html
+      format.csv { send_data @stops.to_csv }
+      format.xls { send_data @stops.to_csv(col_sep: "\t") }
     end
   end
 
