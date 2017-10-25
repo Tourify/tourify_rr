@@ -22,6 +22,7 @@ p {
 .button_div{
   display: flex;
   flex-direction: row;
+  width: 85%;
 }
 
 #button_left, #button_right{
@@ -29,11 +30,7 @@ p {
   cursor: default;
   color: white;
   background-color: #E34008;
-  box-sizing: border-box;
-  padding: 10px 0;
   border-width: 2px;
-  border-style: outset;
-  border-color: buttonface;
   border-image: initial;
 }
 
