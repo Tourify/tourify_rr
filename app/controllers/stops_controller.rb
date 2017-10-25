@@ -12,13 +12,17 @@ class StopsController < ApplicationController
   end
 
   def index
+    redirect_to new_session_path unless logged_in?
     @stops = Stop.all
-    render :action => 'index.html'
-    respond_to do |format|
-      format.html
-      format.csv { send_data @stops.to_csv }
-      format.xls { send_data @stops.to_csv(col_sep: "\t") }
-    end
+      # render :action => 'index.html'
+      respond_to do |format|
+        format.html
+        format.csv { send_data @stops.to_csv }
+        format.xls { send_data @stops.to_csv(col_sep: "\t") }
+      end
+    # else
+      #
+    # end
   end
 
   def download_template

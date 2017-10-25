@@ -11,7 +11,6 @@ class Stop < ApplicationRecord
   require 'csv'
 
   def self.import(file, tour_id)
-    # byebug
     tour = Tour.find_by(id: tour_id)
     if tour
       CSV.foreach(file.path, headers: true) do |row|
