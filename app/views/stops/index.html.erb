@@ -48,10 +48,10 @@
       </div>
     </div>
 
-
+    <br />
   <h3 class="stop-h3">Delete Stop Data</h3>
   <p class="stop-para">To delete stops individually, use the link next to each stop in the list below. To delete ALL stops at once, use the button below.</p>
-  <div class="admin-btn"><%= button_to 'DELETE ALL STOPS', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %></div>
+  <div><%= button_to 'DELETE ALL STOPS', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %></div>
   <br/>
 
   <table>

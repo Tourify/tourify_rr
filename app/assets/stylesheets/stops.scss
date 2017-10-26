@@ -26,30 +26,43 @@ p {
 }
 
 #button_left, #button_right{
-  text-align: center;
-  cursor: default;
-  color: white;
-  background-color: #E34008;
-  border-width: 2px;
-  border-image: initial;
+  padding: 10px;
 }
 
 #button_left{
-  margin: 0 15px 0 0;
+  margin: 0 25.89px;
 }
 
 #button_right{
-  margin: 0 0 0 15px;
+  margin: 0 15px;
 }
 
 #stops_index_top form input, .hp form input {
   border: 0px;
   background-color: #E34008;
-  border-color: #E34008;
+  // border-color: #E34008;
   color: white;
   font-size: medium;
   font-family: 'Lato', sans-serif;
-  width: 25vw;
+  // width: 25vw;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: medium;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.import-button .submit input {
+  width: 100%;
+}
+
+.hp form input {
+  width: 35%
+}
+
+.button_to{
+  display: flex;
+  justify-content: center;
 }
 
 #stops_index_top form #file{
@@ -95,7 +108,6 @@ p {
   padding: 10px;
   margin: 0;
   font-size: 14px;
-  // margin-right: 10px;
 }
 
 .stop_content {
@@ -109,21 +121,18 @@ p {
 
 .coordinates_box .stop_item {
   width: 50%;
-  // margin-right: 10px;
 }
 
 .admin-btn{
  font-size: 16px;
  font-weight: 300;
  letter-spacing: 2px;
- margin-bottom: 20px;
+ padding: 10px 0;
  margin-right: 10px;
  background: #E34008 ;
- padding: 5px 10px;
  border-radius: 50px;
  border: none;
  color: white;
- // width: 105px;
  text-align: center;
  display: inline-block;
 }
@@ -146,7 +155,6 @@ p {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  // align-content: center;
 }
 
 .hp h2 {
@@ -201,15 +209,6 @@ p {
   // margin-right: 10px;
 }
 
-.admin-btn:hover{
-  opacity: .7;
-}
-
-.admin-btn a{
-  text-decoration: none;
-  color: white;
-}
-
 .previous, .next {
   display: flex;
 }
@@ -250,9 +249,7 @@ td a:visited{
 .import-csv {
   display: flex;
   background: lightgray;
-  // justify-content: center;
   align-items: center;
-  // padding: 5px;
   margin: 20px 0;
   width: 75vw;
 }
@@ -265,18 +262,10 @@ td a:visited{
   width: 55%;
 }
 
-#stops_index_top form input, .hp form input {
-  border: 0px;
-  background-color: #E34008;
-  border-color: #E34008;
-  color: white;
-  font-size: medium;
-  font-family: 'Lato', sans-serif;
-  width: 25vw;
-}
 .csv-options #file{
   color: black;
   background-color: white;
+  font-weight: 500;
 }
 
 .import-button {
