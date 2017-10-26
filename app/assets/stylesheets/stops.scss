@@ -18,11 +18,18 @@ p {
   text-decoration: none;
 }
 
+.outer_button_div{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
 
 .button_div{
   display: flex;
   flex-direction: row;
-  width: 85%;
+  justify-content: space-evenly;
+  width: 50%;
 }
 
 #button_left, #button_right{
@@ -251,12 +258,11 @@ td a:visited{
   background: lightgray;
   align-items: center;
   margin: 20px 0;
-  width: 75vw;
+  width: 100%;
 }
 
 .csv-options {
   background: white;
-  // font-size: 20px;
   padding: 20px;
   margin: 5px;
   width: 55%;
@@ -266,10 +272,12 @@ td a:visited{
   color: black;
   background-color: white;
   font-weight: 500;
+  width: 70%;
 }
 
 .import-button {
   padding: 0 20px;
+  width: 40%;
 }
 
 .stop-para {

@@ -41,10 +41,12 @@
   <div class="show_when_stops">
     <h3 class="stop-h3">Bulk Edit Stop Data</h3>
     <p class="stop-para">Use the buttons below to download your existing stop data in either CSV or xls format. After editing the file, you can upload changes using the steps above.</p>
-    <div class="button_div">
-      <div class="admin-btn"><%= link_to " CSV ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %>
-      </div>
-      <div class="admin-btn"><%= link_to "EXCEL", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+    <div class="outer_button_div">
+      <div class="button_div">
+        <div class="admin-btn"><%= link_to " CSV ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %>
+        </div>
+        <div class="admin-btn"><%= link_to "EXCEL", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+        </div>
       </div>
     </div>
 
