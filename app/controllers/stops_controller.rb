@@ -3,34 +3,23 @@ class StopsController < ApplicationController
   before_action :get_tour, except: [:download_template]
 
   def new
+    redirect_to new_session_path unless logged_in?
     @stop = Stop.new
-    if logged_in?
-      render :action => 'new.html'
-    else
-      redirect_to new_session_path
-    end
   end
 
   def index
+    redirect_to new_session_path unless logged_in?
     @stops = Stop.all
-    if logged_in?
-      render :action => 'index.html'
-      respond_to do |format|
-        format.html
-        format.csv { send_data @stops.to_csv }
-        format.xls { send_data @stops.to_csv(col_sep: "\t") }
-      end
-    else
-      redirect_to new_session_path
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tour.stops.to_csv }
+      format.xls { send_data @tour.stops.to_csv(col_sep: "\t") }
     end
   end
 
   def download_template
-    if logged_in?
-      send_file('./public/Tourify_stops_template.xlsx')
-    else
-      redirect_to new_session_path
-    end
+    redirect_to new_session_path unless logged_in?
+    send_file('./public/Tourify_stops_template.xlsx')
   end
 
   def create
@@ -105,7 +94,7 @@ class StopsController < ApplicationController
   private
 
   def stop_params
-    params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge, :image, {attachments: []})
+    params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
   end
 
   def set_stop
@@ -122,5 +111,4 @@ class StopsController < ApplicationController
   def get_organization
     @organization = Organization.find(params[:organization_id])
   end
-
 end
