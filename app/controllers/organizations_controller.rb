@@ -19,7 +19,11 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     if logged_in?
-      render :action => 'show.html' and return
+      if organization_member?
+        render :action => 'show.html' and return
+      else
+        redirect_to organization_path(@current_admin.organization_id) and return
+      end
     end
     render :action => 'show.json'
   end
@@ -46,17 +50,17 @@ class OrganizationsController < ApplicationController
     render :show, status: :created
   end
 
-  # def destroy
-  #   @organization = Organization.find(params[:id])
-  #   if logged_in? && current_admin.organization == @organization
-  #     @organization.destroy
-  #     flash[:notice] = 'Organization successfully deleted.'
-  #     redirect_to '/'
-  #   else
-  #     flash[:alert] = 'You are not authorized to delete this Organization.'
-  #     render 'show'
-  #   end
-  # end
+  def destroy
+    @organization = Organization.find(params[:id])
+    if logged_in? && current_admin.organization == @organization
+      @organization.destroy
+      flash[:notice] = 'Organization successfully deleted.'
+      redirect_to '/'
+    else
+      flash[:alert] = 'You are not authorized to delete this Organization.'
+      render 'show'
+    end
+  end
 
   private
 
@@ -66,5 +70,12 @@ class OrganizationsController < ApplicationController
 
   def set_organization
     @organization = Organization.find_by(params[:id])
+  end
+
+  def organization_member?
+    @organization = Organization.find(params[:id])
+    if @organization.id === @current_admin.organization_id
+      return true
+    end
   end
 end

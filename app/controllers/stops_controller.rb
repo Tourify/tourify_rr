@@ -9,11 +9,15 @@ class StopsController < ApplicationController
 
   def index
     redirect_to new_session_path unless logged_in?
-    @stops = Stop.all
-    respond_to do |format|
-      format.html
-      format.csv { send_data @tour.stops.to_csv }
-      format.xls { send_data @tour.stops.to_csv(col_sep: "\t") }
+    if organization_member?
+      @stops = Stop.all
+      respond_to do |format|
+        format.html
+        format.csv { send_data @tour.stops.to_csv }
+        format.xls { send_data @tour.stops.to_csv(col_sep: "\t") }
+      end
+    else
+      redirect_to organization_path(@current_admin.organization_id) and return
     end
   end
 
@@ -87,7 +91,7 @@ class StopsController < ApplicationController
       redirect_to organization_tour_stops_path
     else
       flash[:notice] = 'You are not authorized to delete these stops.'
-      render 'show'
+      # redirect_to organization_tour_stops_path
     end
   end
 
@@ -110,5 +114,12 @@ class StopsController < ApplicationController
 
   def get_organization
     @organization = Organization.find(params[:organization_id])
+  end
+
+  def organization_member?
+    @organization = Organization.find(params[:organization_id])
+    if @organization.id === @current_admin.organization_id
+      return true
+    end
   end
 end

@@ -31,6 +31,19 @@
   // text-align: center;
 }
 
+.nav_logo_div{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: start;
+  width: 50%;
+}
+
+.nav_logo_div span{
+  margin: -10px 8% 10px;
+  color: gray;
+}
+
 #logout_div{
   display: flex;
   flex-direction: column;
