@@ -6,7 +6,8 @@ class OrganizationsController < ApplicationController
   end
 
   def index
-    redirect_to new_session_path unless logged_in?
+    set_organization
+    redirect_to organization_path(@organization.id) unless tourify_owner?
     @organizations = Organization.all
     respond_to do |format|
       format.html

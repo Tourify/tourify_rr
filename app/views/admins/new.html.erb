@@ -1,27 +1,28 @@
-<div class = "register">
+<div class="register">
   <h1>New User Registration</h1>
   <div class="login-page">
     <%= form_for [:organization, @admin] do |f| %>
-      <% if @admin.errors.any? %>
-        <div class="error_messages">
-          <% @admin.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        </div>
+    <% if @admin.errors.any? %>
+    <div class="error_messages">
+      <% @admin.errors.full_messages.each do |message| %>
+      <%= message %>
       <% end %>
-      <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username %>
-      </div>
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password %>
-      </div>
-      <div class="submit-button"><%= f.submit "REGISTER" %></div>
+    </div>
     <% end %>
-    <br />
+    <div class="field">
+      <%= f.label :username %><br/>
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %>
+    </div>
+    <div class="submit-button"><%= f.submit "REGISTER" %></div>
+    <% end %>
+    <br/>
   </div>
   <div class="italics">
-  If you've already registered, go to the <%= link_to "Log In Page", new_session_path, {:class => "top_link"} %>.
+    If you've already registered, go to the
+    <%= link_to "Log In Page", new_session_path, {:class => "top_link"} %>.
   </div>
 </div>
