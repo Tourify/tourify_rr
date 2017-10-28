@@ -2,17 +2,13 @@
   <h1>New User Registration</h1>
   <div class="login-page">
     <%= form_for [:organization, @admin] do |f| %>
-
       <% if @admin.errors.any? %>
         <div class="error_messages">
-          <ul>
-            <% @admin.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+          <% @admin.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
         </div>
       <% end %>
-
       <div class="field">
         <%= f.label :username %><br />
         <%= f.text_field :username %>
