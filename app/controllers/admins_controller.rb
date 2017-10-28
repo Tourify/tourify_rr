@@ -14,15 +14,15 @@ class AdminsController < ApplicationController
   end
 
   # This serves as the registration method
-  # def create
-  #   @admin = Admin.new(admin_params)
-  #   @admin.organization = @organization
-  #   if @admin.save
-  #     redirect_to new_session_path, notice: 'Admin account created!'
-  #   else
-  #     render 'new'
-  #   end
-  # end
+  def create
+    @admin = Admin.new(admin_params)
+    @admin.organization = @organization
+    if @admin.save
+      redirect_to new_session_path, notice: 'Admin account created!'
+    else
+      render 'new'
+    end
+  end
 
   def update
     if @admin == current_admin
