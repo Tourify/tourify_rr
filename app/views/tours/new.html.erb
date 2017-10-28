@@ -1,5 +1,10 @@
 <div class="admin_form">
   <h1 class="stop_num"><%=@organization.name%></h1>
+  <div class="top_link_box">
+    <div class="top_link">
+      <%= link_to "Back to Organization", organization_path(@organization.id) %>
+    </div>
+  </div>
 
   <h2>Create a New Tour</h2>
 
