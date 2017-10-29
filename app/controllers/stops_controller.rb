@@ -3,21 +3,54 @@ class StopsController < ApplicationController
   before_action :get_tour, except: [:download_template]
 
   def new
-    redirect_to new_session_path unless logged_in?
-    @stop = Stop.new
+    if logged_in?
+      if organization_member?
+        @stop = Stop.new
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
+    else
+      redirect_to new_session_path
+    end
   end
 
   def index
-    redirect_to new_session_path unless logged_in?
-    if organization_member?
-      @stops = Stop.all
-      respond_to do |format|
-        format.html
-        format.csv { send_data @tour.stops.to_csv }
-        format.xls { send_data @tour.stops.to_csv(col_sep: "\t") }
+    if logged_in?
+      if organization_member?
+        @stops = Stop.all
+        respond_to do |format|
+          format.html
+          format.csv { send_data @tour.stops.to_csv }
+          format.xls { send_data @tour.stops.to_csv(col_sep: "\t") }
+        end
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
       end
     else
-      redirect_to organization_path(@current_admin.organization_id) and return
+      redirect_to new_session_path
+    end
+  end
+
+  def show
+    if logged_in?
+      if organization_member?
+        render :action => 'show.html' and return
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations." and return
+      end
+    end
+    render :action => 'show.json'
+  end
+
+  def edit
+    if logged_in?
+      if organization_member?
+        render :action => 'edit.html'
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
+    else
+      redirect_to new_session_path
     end
   end
 
@@ -27,36 +60,31 @@ class StopsController < ApplicationController
   end
 
   def create
-    if logged_in? && current_admin.organization == @organization
-      @stop = @tour.stops.build(stop_params)
-      @stop.admin = current_admin
-      if @stop.save
-        render 'show'
-      else
-        render 'new'
-      end
-    end
-  end
-
-  def show
     if logged_in?
-      render :action => 'show.html' and return
-    end
-    render :action => 'show.json'
-  end
-
-  def import
-    if logged_in? && current_admin.organization == @organization
-      Stop.import(params[:file], params[:tour_id])
-      redirect_to organization_tour_stops_path, notice: "Data imported"
+      if organization_member?
+        @stop = @tour.stops.build(stop_params)
+        @stop.admin = current_admin
+        if @stop.save
+          render 'show'
+        else
+          render 'new'
+        end
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
     else
       redirect_to new_session_path
     end
   end
 
-  def edit
-    if logged_in? && current_admin.organization == @organization
-      render :action => 'edit.html'
+  def import
+    if logged_in?
+      if organization_member?
+        Stop.import(params[:file], params[:tour_id])
+        redirect_to organization_tour_stops_path, notice: "Data imported"
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
     else
       redirect_to new_session_path
     end
@@ -91,7 +119,6 @@ class StopsController < ApplicationController
       redirect_to organization_tour_stops_path
     else
       flash[:notice] = 'You are not authorized to delete these stops.'
-      # redirect_to organization_tour_stops_path
     end
   end
 
