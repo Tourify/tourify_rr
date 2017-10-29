@@ -1,6 +1,5 @@
-<div class="register">
-  <h1>New User Registration</h1>
-  <div class="login-page">
+<div class="logged_out">
+  <div class="login_registration">
     <%= form_for [:organization, @admin] do |f| %>
     <% if @admin.errors.any? %>
     <div class="error_messages">
@@ -19,10 +18,9 @@
     </div>
     <div class="submit-button"><%= f.submit "REGISTER" %></div>
     <% end %>
-    <br/>
   </div>
   <div class="italics">
-    If you've already registered, go to the
+    If you are already a registered user, go to the
     <%= link_to "Log In Page", new_session_path, {:class => "top_link"} %>.
   </div>
 </div>
