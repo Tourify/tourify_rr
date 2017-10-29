@@ -15,13 +15,6 @@ class ApplicationController < ActionController::Base
     !current_admin.nil?
   end
 
-  def organization_member?
-    @organization = Organization.find(params[:id])
-    if @organization.id === @current_admin.organization_id
-      return true
-    end
-  end
-
   def tourify_owner?
     current_admin
     if (@current_admin.organization_id === 2)
