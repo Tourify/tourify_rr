@@ -3,12 +3,12 @@ class AdminsController < ApplicationController
   before_action :get_organization, only: [:new, :create, :update, :destroy]
 
   def new
-    if @organization.id === 3
+    # if @organization.id === 3
     @admin = Admin.new
-    else
-    flash[:notice] = 'New users must use organization #3'
-    redirect_to new_organization_admin_path(3)
-    end
+    # else
+    # flash[:notice] = 'New users must use organization #3'
+    # redirect_to new_organization_admin_path(3)
+    # end
   end
 
   def index
