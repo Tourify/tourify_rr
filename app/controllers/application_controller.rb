@@ -21,8 +21,4 @@ class ApplicationController < ActionController::Base
       return true
     end
   end
-
-  def home_org
-    @organization_main = Organization.find(1)
-  end
 end
