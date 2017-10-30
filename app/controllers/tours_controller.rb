@@ -13,7 +13,11 @@ class ToursController < ApplicationController
 
   def new
     if logged_in?
-      @tour = Tour.new
+      if organization_member?
+        @tour = Tour.new
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to add content for another organization."
+      end
     else
       redirect_to new_session_path
     end
@@ -21,28 +25,44 @@ class ToursController < ApplicationController
 
   def show
     if logged_in?
-      render :action => 'show.html' and return
+      if organization_member?
+        render :action => 'show.html' and return
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view content for another organization." and return
+      end
     end
     render :action => 'show.json'
   end
 
   def create
-    if current_admin.organization == @organization
-      @tour = @organization.tours.build(tour_params)
-      @tour.admin = current_admin
-      if @tour.save
-        redirect_to organization_path@organization
+    if logged_in?
+      if organization_member?
+        @tour = @organization.tours.build(tour_params)
+        @tour.admin = current_admin
+        if @tour.save
+          redirect_to organization_path(@organization)
+        else
+          render 'new'
+        end
       else
-        render 'new'
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to create content for another organization."
       end
     else
-      redirect_to current_admin.organization, notice: 'You do not have access to create a tour for this Organization.'
+      redirect_to new_session_path
     end
   end
 
   def edit
     if logged_in?
-      render :action => 'edit.html'
+      if organization_member?
+        if current_admin == @stop.admin
+          render :action => 'edit.html'
+        else
+          redirect_to organization_tour_path(@current_admin.organization_id, @tour.id), notice: "You are not authorized to edit this tour."
+        end
+      else
+        redirect_to organization_tour_path(@current_admin.organization_id, @tour.id), notice: "You are not authorized to view or edit content belonging to another organization."
+      end
     else
       redirect_to new_session_path
     end
@@ -79,12 +99,19 @@ class ToursController < ApplicationController
     params.require(:tour).permit(:name, :description, :distance, :time_in_mins)
   end
 
-  def set_tour
-    @tour = Tour.find(params[:id])
-  end
-
   def get_organization
     @organization = Organization.find(params[:organization_id])
   end
 
+  def set_tour
+    get_organization
+    @tour = Tour.find(params[:id])
+  end
+
+  def organization_member?
+    @organization = Organization.find(params[:organization_id])
+    if @organization.id === @current_admin.organization_id
+      return true
+    end
+  end
 end

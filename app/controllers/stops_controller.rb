@@ -7,7 +7,7 @@ class StopsController < ApplicationController
       if organization_member?
         @stop = Stop.new
       else
-        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to add content for another organizations."
       end
     else
       redirect_to new_session_path
@@ -82,7 +82,7 @@ class StopsController < ApplicationController
           redirect_to organization_tour_stop_path(@current_admin.organization_id, @tour.id, @stop.id), notice: "You are not authorized to edit this stop."
         end
       else
-        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to another organization."
       end
     else
       redirect_to new_session_path
