@@ -22,45 +22,45 @@ class OrganizationsController < ApplicationController
       if organization_member?
         render :action => 'show.html' and return
       else
-        redirect_to organization_path(@current_admin.organization_id) and return
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view, add, or edit content for another organization." and return
       end
     end
     render :action => 'show.json'
   end
 
-  def update
-    @organization = Organization.find(params[:id])
-    if logged_in? && current_admin.organization == @organization
-      @organization.update!(organization_params)
-      if @organization.save
-        flash[:notice] = 'Organization information sucessfully updated'
-        render :show
-      else
-        render :edit
-      end
-    elsif logged_in?
-      redirect_to current_admin.organization
-    else
-      redirect_to new_session_path
-    end
-  end
-
-  def create
-    @organization = Organization.create(organization_params)
-    render :show, status: :created
-  end
-
-  def destroy
-    @organization = Organization.find(params[:id])
-    if logged_in? && current_admin.organization == @organization
-      @organization.destroy
-      flash[:notice] = 'Organization successfully deleted.'
-      redirect_to '/'
-    else
-      flash[:alert] = 'You are not authorized to delete this Organization.'
-      render 'show'
-    end
-  end
+  # def update
+  #   @organization = Organization.find(params[:id])
+  #   if logged_in? && current_admin.organization == @organization
+  #     @organization.update!(organization_params)
+  #     if @organization.save
+  #       flash[:notice] = 'Organization information sucessfully updated'
+  #       render :show
+  #     else
+  #       render :edit
+  #     end
+  #   elsif logged_in?
+  #     redirect_to current_admin.organization
+  #   else
+  #     redirect_to new_session_path
+  #   end
+  # end
+  #
+  # def create
+  #   @organization = Organization.create(organization_params)
+  #   render :show, status: :created
+  # end
+  #
+  # def destroy
+  #   @organization = Organization.find(params[:id])
+  #   if logged_in? && current_admin.organization == @organization
+  #     @organization.destroy
+  #     flash[:notice] = 'Organization successfully deleted.'
+  #     redirect_to '/'
+  #   else
+  #     flash[:alert] = 'You are not authorized to delete this Organization.'
+  #     render 'show'
+  #   end
+  # end
 
   private
 
