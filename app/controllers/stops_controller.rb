@@ -42,23 +42,6 @@ class StopsController < ApplicationController
     render :action => 'show.json'
   end
 
-  def edit
-    if logged_in?
-      if organization_member?
-        render :action => 'edit.html'
-      else
-        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
-      end
-    else
-      redirect_to new_session_path
-    end
-  end
-
-  def download_template
-    redirect_to new_session_path unless logged_in?
-    send_file('./public/Tourify_stops_template.xlsx')
-  end
-
   def create
     if logged_in?
       if organization_member?
@@ -90,35 +73,80 @@ class StopsController < ApplicationController
     end
   end
 
-  def update
-    if current_admin == @stop.admin
-      @stop.update!(stop_params)
-      redirect_to organization_tour_stop_path
+  def edit
+    if logged_in?
+      if organization_member?
+        if current_admin == @stop.admin
+          render :action => 'edit.html'
+        else
+          redirect_to organization_tour_stop_path(@current_admin.organization_id, @tour.id, @stop.id), notice: "You are not authorized to edit this stop."
+        end
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
     else
-      flash[:notice] = "You are not authorized to update this stop."
-      render 'edit'
+      redirect_to new_session_path
+    end
+  end
+
+  def download_template
+    redirect_to new_session_path unless logged_in?
+    send_file('./public/Tourify_stops_template.xlsx')
+  end
+
+  def update
+    if logged_in?
+      if organization_member?
+        if current_admin == @stop.admin
+          @stop.update!(stop_params)
+          redirect_to organization_tour_stop_path
+        else
+          flash[:notice] = "You are not authorized to update this stop."
+          render 'edit'
+        end
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
+    else
+      redirect_to new_session_path
     end
   end
 
   def destroy
-    if current_admin == @stop.admin
-      @stop.destroy
-      flash[:notice] = 'The stop was successfully deleted.'
-      redirect_to organization_tour_stops_path
+    if logged_in?
+      if organization_member?
+        if current_admin == @stop.admin
+          @stop.destroy
+          flash[:notice] = 'The stop was successfully deleted.'
+          redirect_to organization_tour_stops_path
+        else
+          flash[:notice] = 'You are not authorized to delete this Stop.'
+          render 'show'
+        end
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
     else
-      flash[:notice] = 'You are not authorized to delete this Stop.'
-      render 'show'
+      redirect_to new_session_path
     end
   end
 
   def destroy_stops
     @stops = @tour.stops
-    if current_admin == @tour.admin
-      @stops.destroy_all
-      flash[:notice] = 'Stops were successfully deleted.'
-      redirect_to organization_tour_stops_path
+    if logged_in?
+      if organization_member?
+        if current_admin == @tour.admin
+          @stops.destroy_all
+          flash[:notice] = 'Stops were successfully deleted.'
+          redirect_to organization_tour_stops_path
+        else
+          flash[:notice] = 'You are not authorized to delete these stops.'
+        end
+      else
+        redirect_to organization_path(@current_admin.organization_id), notice: "You are not authorized to view or edit content belonging to other organizations."
+      end
     else
-      flash[:notice] = 'You are not authorized to delete these stops.'
+      redirect_to new_session_path
     end
   end
 
@@ -128,10 +156,8 @@ class StopsController < ApplicationController
     params.require(:stop).permit(:stop_num, :name, :directions_to_next_stop, :learn_more_URL, :travel_tip, :description, :location, :image_current, :image_historic, :gps_long, :gps_lat, :badge)
   end
 
-  def set_stop
-    get_organization
-    get_tour
-    @stop = @tour.stops.find_by(stop_num: params[:id])
+  def get_organization
+    @organization = Organization.find(params[:organization_id])
   end
 
   def get_tour
@@ -139,8 +165,10 @@ class StopsController < ApplicationController
     @tour = Tour.find(params[:tour_id])
   end
 
-  def get_organization
-    @organization = Organization.find(params[:organization_id])
+  def set_stop
+    get_organization
+    get_tour
+    @stop = @tour.stops.find_by(stop_num: params[:id])
   end
 
   def organization_member?
