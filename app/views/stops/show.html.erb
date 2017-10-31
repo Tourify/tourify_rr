@@ -4,11 +4,11 @@
   <div class="top_link_box">
     <div class="top_link"><%= link_to 'Back to Stops', organization_tour_stops_path(@organization, @tour) %></div>
     <div class="top_link">
-      <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
+      <%= link_to "Back to Tour", organization_tour_path(@tour.organization_id, @tour.id) %>
     </div>
 
     <div class="top_link">
-      <%= link_to "Back to Organization", organization_path(@stop.tour.organization_id) %>
+      <%= link_to "Back to Organization", organization_path(@tour.organization_id) %>
     </div>
   </div>
 
