@@ -1,0 +1,45 @@
+<div class="hp">
+
+  <h2>Tourify registered members</h2>
+  <br />
+  <div class="top_link_box">
+    <div class="top_link">
+    </div>
+  </div>
+
+    <table id="org_table">
+      <thead>
+        <tr>
+          <th>ID #</th>
+          <th>Member Name</th>
+          <th></th>
+        </tr>
+      </thread>
+      <tbody>
+        <% @organizations.each do |organization| %>
+        <tr>
+          <td><%= organization.id %></td>
+          <td><div class="second_column">
+            <%= organization.name %>
+          </div></td>
+          <td><%= link_to 'See details', organization_path(organization.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />
+
+    <div>
+      <h3 class="stop-h3">Download information for Tourify registered members</h3>
+      <p class="stop-para">Use the buttons below to download data for the organizations that have signed up for Tourify in either CSV or xls format.</p>
+      <div class="outer_button_div">
+        <div class="button_div">
+          <div class="admin-btn"><%= link_to " CSV ", organizations_path(format: "csv"), {:id => "button_left" } %>
+          </div>
+          <div class="admin-btn"><%= link_to "EXCEL", organizations_path(format: "xls"), {:id => "button_right" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+</div>

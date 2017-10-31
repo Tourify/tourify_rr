@@ -1,5 +1,5 @@
 <div class="hp">
-
+  <br/>
   <h2>Stop list for the
     <%= @tour.name%></h2>
 
@@ -41,41 +41,43 @@
   <div class="show_when_stops">
     <h3 class="stop-h3">Bulk Edit Stop Data</h3>
     <p class="stop-para">Use the buttons below to download your existing stop data in either CSV or xls format. After editing the file, you can upload changes using the steps above.</p>
-    <div class="button_div">
-      <div class="admin-btn"><%= link_to " CSV ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %>
-      </div>
-      <div class="admin-btn"><%= link_to "EXCEL", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+    <div class="outer_button_div">
+      <div class="button_div">
+        <div class="admin-btn"><%= link_to " CSV ", organization_tour_stops_path(format: "csv"), {:id => "button_left" } %>
+        </div>
+        <div class="admin-btn"><%= link_to "EXCEL", organization_tour_stops_path(format: "xls"), {:id => "button_right" } %>
+        </div>
       </div>
     </div>
 
+    <br/>
+    <h3 class="stop-h3">Delete Stop Data</h3>
+    <p class="stop-para">To delete stops individually, use the link next to each stop in the list below. To delete ALL stops at once, use the button below.</p>
+    <div><%= button_to 'DELETE ALL STOPS', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %></div>
+    <br/>
 
-  <h3 class="stop-h3">Delete Stop Data</h3>
-  <p class="stop-para">To delete stops individually, use the link next to each stop in the list below. To delete ALL stops at once, use the button below.</p>
-  <div class="admin-btn"><%= button_to 'DELETE ALL STOPS', destroy_stops_organization_tour_stops_path(@organization.id), method: :delete, data: { confirm: 'This will delete ALL stops associated with this tour. Are you sure?' } %></div>
-  <br/>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Stop Number</th>
-        <th>Stop Name</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thread>
-    <tbody>
-      <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
-      <tr>
-        <td><%= stop.stop_num %></td>
-        <td><%= stop.name %></td>
-        <td><%= link_to 'See stop details', organization_tour_stop_path(@organization.id, @tour.id, stop.stop_num) %></td>
-        <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization.id, @tour.id, stop.stop_num) %></td>
-        <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Stop Number</th>
+          <th>Stop Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thread>
+      <tbody>
+        <% @tour.stops.sort_by { |stop| stop.stop_num }.each do |stop| %>
+        <tr>
+          <td><%= stop.stop_num %></td>
+          <td><%= stop.name %></td>
+          <td><%= link_to 'See stop details', organization_tour_stop_path(@organization.id, @tour.id, stop.stop_num) %></td>
+          <td><%= link_to 'Edit stop details', edit_organization_tour_stop_path(@organization.id, @tour.id, stop.stop_num) %></td>
+          <td><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <% end %>
 

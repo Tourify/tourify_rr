@@ -11,16 +11,19 @@
 
   <body>
     <nav>
-      <div>
-      <a href="/organizations/1">
-        <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-logo-glow-200px2.png" alt = "tourify logo">
-      </a>
+      <div class="nav_logo_div">
+      <img src = "https://durhamdill.files.wordpress.com/2017/10/tourify-logo-glow-200px2.png" alt = "tourify logo">
+      <% if @current_admin.blank? %>
+      <% else %>
+      <span>Welcome, <%= @current_admin.username %></p>
+      <% end %>
     </div>
     <div  id="logout_div">
       <h2>Content Creator Dashboard </h2>
       <% if @current_admin.blank? %>
       <% else %>
       <div class="top_link", id="logout">
+
       <%= link_to "Logout", logout_path, :method => :delete %>
       </div>
       <% end %>

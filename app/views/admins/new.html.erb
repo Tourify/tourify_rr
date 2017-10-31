@@ -1,27 +1,26 @@
-<h1>Admin Registration</h1>
-<%= form_for [:organization, @admin] do |f| %>
-
-  <% if @admin.errors.any? %>
+<div class="logged_out">
+  <div class="login_registration">
+    <%= form_for [:organization, @admin] do |f| %>
+    <% if @admin.errors.any? %>
     <div class="error_messages">
-      <ul>
-        <% @admin.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <% @admin.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <% end %>
+    <div class="field">
+      <%= f.label :username %><br/>
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %>
+    </div>
+    <div class="submit-button"><%= f.submit "REGISTER" %></div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+  <div class="italics">
+    If you are already a registered user, go to the
+    <%= link_to "Log In Page", new_session_path, {:class => "top_link"} %>.
   </div>
-  <div class="actions"><%= f.submit "Register" %></div>
-<% end %>
-<br />
-<span>
-If you've already registered, you can go login here:
-</span><%= link_to "Log In", new_session_path %>
+</div>

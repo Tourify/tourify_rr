@@ -1,9 +1,14 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :update, :destroy]
-  before_action :get_organization, only: [:create, :update, :destroy]
+  before_action :get_organization, only: [:new, :create, :update, :destroy]
 
   def new
+    if @organization.id === 3
     @admin = Admin.new
+    else
+    flash[:notice] = 'New users must use organization #3'
+    redirect_to new_organization_admin_path(3)
+    end
   end
 
   def index
@@ -14,15 +19,15 @@ class AdminsController < ApplicationController
   end
 
   # This serves as the registration method
-  # def create
-  #   @admin = Admin.new(admin_params)
-  #   @admin.organization = @organization
-  #   if @admin.save
-  #     redirect_to new_session_path, notice: 'Admin account created!'
-  #   else
-  #     render 'new'
-  #   end
-  # end
+  def create
+    @admin = Admin.new(admin_params)
+    @admin.organization = @organization
+    if @admin.save
+      redirect_to new_session_path, notice: 'Admin account created!'
+    else
+      render 'new'
+    end
+  end
 
   def update
     if @admin == current_admin

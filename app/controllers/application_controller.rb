@@ -15,8 +15,10 @@ class ApplicationController < ActionController::Base
     !current_admin.nil?
   end
 
-  def home_org
-    @organization_main = Organization.find(1)
+  def tourify_owner?
+    current_admin
+    if (@current_admin.organization_id === 2)
+      return true
+    end
   end
-
 end
