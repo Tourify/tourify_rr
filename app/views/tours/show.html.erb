@@ -1,7 +1,7 @@
 <div class="hp">
 
-  <h2><%=@organization.name%>:
-    <%= @tour.name%></h2>
+  <h1><%=@organization.name%>:
+    <%= @tour.name%></h1>
 
   <div class="top_link_box">
     <div class="top_link">
@@ -30,15 +30,20 @@
       minutes</li>
     <li>Created By:
       <%= @tour.admin.username %></li>
-    <li>Main Tour Photo URL: <%= @tour.main_tour_photo %></li>
+    <li id="list_link">
+      <div class="top_link">
+        <%= link_to 'Edit tour overview', edit_organization_tour_path(@organization.id, @tour.id) %>
+      </div>
+    </li>
   </ul>
-
-  <p>
+  <p class="stop-para">
     Visit the Stops Main Page to modify stops in bulk, delete stops, and more.
   </p>
 
   <div class="stop-btn"><%= link_to 'Stops Main Page', organization_tour_stops_path(@organization, @tour) %></div>
 
+  <% if @tour.stops.blank? %>
+  <% else %>
   <h2>Tour Stop List</h2>
 
   <table>
@@ -59,6 +64,7 @@
       <% end %>
     </tbody>
   </table>
+  <% end %>
   <br />
     <div class="stop-btn"><%= link_to 'Add Single Stop', new_organization_tour_stop_path(@organization, @tour) %></div>
 

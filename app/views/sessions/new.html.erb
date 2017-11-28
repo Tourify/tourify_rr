@@ -1,14 +1,19 @@
-<div class = "login-page">
-
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :username %><br />
-    <%= text_field_tag :username, params[:username] %>
+<div class="logged_out">
+  <div class = "login_registration">
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <%= label_tag :username %><br />
+      <%= text_field_tag :username, params[:username] %>
+    </div>
+    <div class="field">
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password %>
+    </div>
+    <div class="submit-button"><%= submit_tag "LOGIN" %></div>
+  <% end %>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
+  <div class="italics">
+    If you are not a registered user, visit the
+    <%= link_to "Registration Page", new_organization_admin_path(3), {:class => "top_link"} %>.
   </div>
-  <div class="submit-button"><%= submit_tag "LOGIN" %></div>
-<% end %>
 </div>

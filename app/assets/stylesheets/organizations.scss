@@ -16,7 +16,7 @@ td {
 }
 
 td a {
-  font-size: small;
+  font-size: medium;
 }
 
 th{
@@ -37,7 +37,7 @@ nav{
   box-shadow: 0px 7px 43px -16px rgba(0,0,0,0.75);
   position: fixed;
   background-color: white;
-  border-bottom: #D34D26 solid 8px;
+  border-bottom: #E34008 solid 8px;
 }
 
 nav h2{
@@ -51,7 +51,7 @@ nav h2{
 }
 
 .hp h1{
-  color: #E83D1E;
+  color: #E34008;
 }
 
 
@@ -62,14 +62,14 @@ nav img{
 
 .new-tour-btn{
   font-size: 16px;
- font-weight: 300;
- letter-spacing: 2px;
- margin: 20px auto;
- background: #E34008 ;
- padding: 10px;
- border-radius: 50px;
- border: none;
- color: white;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 20px auto;
+  background: #E34008 ;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  color: white;
 }
 
 .new-tour-btn:hover{
@@ -83,5 +83,12 @@ nav img{
 
 .logout-btn{
   text-transform: uppercase;
+}
 
+#org_table{
+  margin: auto;
+}
+
+.second_column{
+  width: 400px;
 }

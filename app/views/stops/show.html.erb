@@ -4,19 +4,23 @@
   <div class="top_link_box">
     <div class="top_link"><%= link_to 'Back to Stops', organization_tour_stops_path(@organization, @tour) %></div>
     <div class="top_link">
-      <%= link_to "Back to Tour", organization_tour_path(@stop.tour.organization_id, @stop.tour_id) %>
+      <%= link_to "Back to Tour", organization_tour_path(@tour.organization_id, @tour.id) %>
     </div>
 
     <div class="top_link">
-      <%= link_to "Back to Organization", organization_path(@stop.tour.organization_id) %>
+      <%= link_to "Back to Organization", organization_path(@tour.organization_id) %>
     </div>
   </div>
 
   <h2>STOP <%= @stop.stop_num %>: <%= @stop.name %></h2>
+  <div class = "button_div">
+    <div class="admin-btn"><%= link_to 'Edit Stop', edit_organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num), {:id => "button_left" } %>
+    </div>
 
-  <div class="admin-btn"><%= link_to 'Edit stop', edit_organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num) %></div>
+    <div class="admin-btn"><%= link_to 'Delete Stop', organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num), :id => "button_right", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  </div>
+  <br />
 
-  <div class="admin-btn"><%= link_to 'Delete stop', organization_tour_stop_path(@organization.id, @tour.id, @stop.stop_num), method: :delete, data: { confirm: 'Are you sure?' } %></div>
 
   <div class="stop_item">
     <p class="bold_text">Description:</p>

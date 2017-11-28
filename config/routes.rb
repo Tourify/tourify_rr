@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  root to: 'admins#new', organization_id: 3
+  
   get '/stops/download_template'
 
-  root to: "sessions#new"
   delete '/logout',  to: 'sessions#destroy'
-  
+
   resources :sessions
   resources :organizations, except: [:create, :destroy] do
     resources :admins

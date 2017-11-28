@@ -1,6 +1,13 @@
 <div class="admin_form">
-
   <h1 class="stop_num"><%=@organization.name%>: <%= @tour.name%></h1>
+  <div class="top_link_box">
+    <div class="top_link">
+      <%= link_to "Back to Tour", organization_tour_path(@tour.organization_id, @tour.id) %>
+    </div>
+    <div class="top_link">
+      <%= link_to "Back to Organization", organization_path(@tour.organization_id) %>
+    </div>
+  </div>
 
   <h2>Edit Tour</h2>
 
